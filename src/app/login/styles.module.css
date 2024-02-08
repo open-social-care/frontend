@@ -1,0 +1,15 @@
+.backgroud {
+  height: 100vh;
+  background-color: var(--mantine-color-gray-1);
+  background-image: url(/images/landing-page-background.svg);
+  background-repeat: no-repeat;
+  background-position-y: 50px;
+}
+
+/* @media (min-width: $mantine-breakpoint-md) {
+  .backgroud {
+    background-image: url(/images/landing-page-background.svg);
+    background-repeat: no-repeat;
+    background-position-y: 50px;
+  }
+} */
