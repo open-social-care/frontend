@@ -4,6 +4,10 @@
       "login": "Login",
       "email": "Email",
       "password": "Senha"
+    },
+    "notifications": {
+      "title_success": "Sucesso!",
+      "title_error": "Ops! 🙁"
     }
   }
 }

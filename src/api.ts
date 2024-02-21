@@ -8,12 +8,10 @@ const api = async (input: RequestInfo | URL, init?: RequestInit) => {
     ...init,
   };
 
-  const res = await fetch(
+  return await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}api${input}`,
     config
   );
-
-  return await res.json();
 };
 
 export default api;
