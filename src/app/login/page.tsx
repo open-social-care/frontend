@@ -12,7 +12,10 @@ export default function page() {
 
     const response = await api("/login", {
       method: "POST",
-      body: formData,
+      body: JSON.stringify({
+        email: formData.get("email"),
+        password: formData.get("password"),
+      }),
     });
 
     const data = await response.json();
