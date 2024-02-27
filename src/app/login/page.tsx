@@ -1,5 +1,6 @@
 import api from "@/api";
 import Image from "next/image";
+import SubmitButton from "./_submit-button";
 
 export const metadata = {
   title: "Login",
@@ -62,9 +63,7 @@ export default function page() {
           </div>
 
           <div className="flex justify-center mt-4">
-            <button className="px-6 py-2 leading-5 text-white transition-colors duration-300 transform bg-teal-500 rounded-lg hover:bg-teal-600 focus:outline-none focus:bg-teal-600">
-              Login
-            </button>
+            <SubmitButton />
           </div>
         </form>
       </div>
