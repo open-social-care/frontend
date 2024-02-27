@@ -1,62 +1,73 @@
-import React, { FormEvent } from "react";
+import api from "@/api";
+import Image from "next/image";
+
+export const metadata = {
+  title: "Login",
+};
 
 export default function page() {
   async function onSubmit(formData: FormData) {
     "use server";
 
-    console.log(formData.getAll("emailAddress"));
+    const response = await api('/login', {
+      method: 'POST',
+      body: formData,
+    })
 
-    // const response = await fetch('/api/submit', {
-    //   method: 'POST',
-    //   body: formData,
-    // })
+    const data = await response.json();
 
-    // // Handle response if necessary
-    // const data = await response.json()
-    // // ...
+    console.log(data)
   }
 
   return (
-    <div>
-      <form action={onSubmit}>
-        <div className="grid grid-cols-1 gap-6 mt-4">
-          <div>
-            <label
-              className="text-gray-700 dark:text-gray-200"
-              htmlFor="emailAddress"
-            >
-              Email Address
-            </label>
-            <input
-              id="emailAddress"
-              name="emailAddress"
-              type="email"
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-            />
+    <div className="h-screen flex flex-col items-center justify-center bg-[url('/images/landing-page-background.svg')] bg-gray-100">
+      <Image
+        src="/images/logo-black.png"
+        alt="logo"
+        width="63"
+        height="63"
+      />
+
+      <div className="max-w-md px-4 py-4 bg-white rounded-lg shadow-md mt-4 border">
+        <form action={onSubmit}>
+          <div className="grid grid-cols-1 gap-1 mt-2">
+            <div>
+              <label
+                className="text-gray-700"
+                htmlFor="email"
+              >
+                Email
+              </label>
+              <input
+                name="email"
+                placeholder="your@email.com"
+                className="block w-full px-4 py-1.5 mt-1 text-gray-700 bg-white border border-gray-200 rounded-lg"
+              />
+            </div>
+
+            <div>
+              <label
+                className="text-gray-700"
+                htmlFor="password"
+              >
+                Password
+              </label>
+              <input
+                name="password"
+                type="password"
+                placeholder="********"
+                className="block w-full px-4 py-1.5 mt-1 text-gray-700 bg-white border border-gray-200 rounded-lg"
+              />
+            </div>
           </div>
 
-          <div>
-            <label
-              className="text-gray-700 dark:text-gray-200"
-              htmlFor="password"
-            >
-              Password
-            </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-            />
+          <div className="flex justify-center mt-4">
+            <button className="px-6 py-2 leading-5 text-white transition-colors duration-300 transform bg-teal-500 rounded-lg hover:bg-teal-600 focus:outline-none focus:bg-teal-600">
+              Login
+            </button>
           </div>
-        </div>
-
-        <div className="flex justify-end mt-6">
-          <button className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
-            Save
-          </button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }
