@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useFormStatus } from "react-dom"
+import { useFormStatus } from "react-dom";
 
 export default function SubmitButton() {
-  const { pending } = useFormStatus()
+  const { pending } = useFormStatus();
 
   return (
     <button
@@ -12,5 +12,5 @@ export default function SubmitButton() {
     >
       Login
     </button>
-  )
+  );
 }
