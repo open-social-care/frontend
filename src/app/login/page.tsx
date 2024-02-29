@@ -1,6 +1,7 @@
 import api from "@/api";
+import Form from "@/components/form";
+import Layout from "@/components/layout";
 import Image from "next/image";
-import SubmitButton from "./_submit-button";
 
 export const metadata = {
   title: "Login",
@@ -24,41 +25,34 @@ export default function page() {
   }
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-[url('/images/landing-page-background.svg')] bg-gray-100">
-      <Image src="/images/logo-black.png" alt="logo" width="63" height="63" />
+    <Layout.Fullscreen className="items-center justify-center">
+      <Image
+        src="/images/logo-black.png"
+        alt="logo"
+        width="63"
+        height="63"
+      />
 
-      <div className="max-w-md px-4 py-4 bg-white rounded-lg shadow-md mt-4 border">
-        <form action={onSubmit}>
-          <div className="grid grid-cols-1 gap-1 mt-2">
-            <div>
-              <label className="text-gray-700" htmlFor="email">
-                Email
-              </label>
-              <input
-                name="email"
-                placeholder="your@email.com"
-                className="block w-full px-4 py-1.5 mt-1 text-gray-700 bg-white border border-gray-200 rounded-lg"
-              />
-            </div>
+      <div className="mt-4 w-full rounded-lg border bg-white p-4 shadow-md sm:w-96">
+        <Form action={onSubmit}>
+          <Form.Input
+            name="email"
+            label="Email"
+            placeholder="your@email.com"
+          />
 
-            <div>
-              <label className="text-gray-700" htmlFor="password">
-                Password
-              </label>
-              <input
-                name="password"
-                type="password"
-                placeholder="********"
-                className="block w-full px-4 py-1.5 mt-1 text-gray-700 bg-white border border-gray-200 rounded-lg"
-              />
-            </div>
-          </div>
+          <Form.Input
+            name="password"
+            label="Password"
+            type="password"
+            placeholder="********"
+          />
 
-          <div className="flex justify-center mt-4">
-            <SubmitButton />
-          </div>
-        </form>
+          <Form.Button className="self-center">
+            Login
+          </Form.Button>
+        </Form>
       </div>
-    </div>
+    </Layout.Fullscreen>
   );
 }
