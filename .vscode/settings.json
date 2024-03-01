@@ -1,5 +1,14 @@
 {
-    "editor.codeActionsOnSave": {},
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {},
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // config to match any attribute ending with Classes, e.g.: componentClasses, containerClasses, etc.
+  "tailwindCSS.experimental.classRegex": [
+    ["Classes *\\= *([^;]*);", "'([^']*)'"],
+    ["Classes *\\= *([^;]*);", "\"([^\"]*)\""],
+    ["Classes *\\= *([^;]*);", "\\`([^\\`]*)\\`"],
+    ["Classes *\\: *([^;]*);", "'([^']*)'"],
+    ["Classes *\\: *([^;]*);", "\"([^\"]*)\""],
+    ["Classes *\\: *([^;]*);", "\\`([^\\`]*)\\`"]
+  ]
 }

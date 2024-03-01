@@ -3,13 +3,13 @@ import { twMerge } from "tailwind-merge";
 
 type InputProps = {
   label?: string;
-  error?: string;
+  errors?: string[];
 } & React.ComponentPropsWithoutRef<"input">;
 
 export default function Input({
   label,
   name,
-  error,
+  errors,
   className,
   ...rest
 }: InputProps) {
@@ -35,11 +35,14 @@ export default function Input({
         {...rest}
       />
 
-      {error && (
-        <p className="mt-1 text-sm text-orange-500">
+      {errors?.map((error, index) => (
+        <p
+          key={index}
+          className="mt-1 text-sm text-orange-500"
+        >
           {error}
         </p>
-      )}
+      ))}
     </div>
   );
 }

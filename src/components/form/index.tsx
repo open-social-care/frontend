@@ -3,6 +3,7 @@ import { twMerge } from "tailwind-merge";
 import Container from "./Container";
 import Input from "./Input";
 import Button from "./Button";
+import FlashMessage from "./FlashMessage";
 
 export default function Form({
   children,
@@ -23,5 +24,6 @@ export default function Form({
 }
 
 Form.Container = Container;
+Form.FlashMessage = FlashMessage;
 Form.Input = Input;
 Form.Button = Button;
