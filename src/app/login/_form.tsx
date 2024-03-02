@@ -1,17 +1,15 @@
 "use client";
 
-import React from "react";
 import Form from "@/components/form";
-import { loginAction } from "./_actions";
+import i18n from "@/lang";
 import { useFormState } from "react-dom";
+import { loginAction } from "./_actions";
 
 export default function LoginForm() {
   const [state, formAction] = useFormState(
     loginAction,
     undefined,
   );
-
-  console.log("render");
 
   return (
     <>
@@ -23,30 +21,25 @@ export default function LoginForm() {
 
         <Form.Input
           name="email"
-          label="Email"
+          label={i18n.t("auth.email")}
           placeholder="your@email.com"
-          errors={state?.formErrors?.["email"]}
+          withAsterisk
+          errors={state?.errors?.["email"]}
         />
 
         <Form.Input
           name="password"
-          label="Password"
+          label={i18n.t("auth.password")}
           type="password"
           placeholder="********"
-          errors={state?.formErrors?.["password"]}
+          withAsterisk
+          errors={state?.errors?.["password"]}
         />
 
         <Form.Button className="self-center">
-          Login
+          {i18n.t("auth.login")}
         </Form.Button>
       </Form>
-
-      <div className="mt-4 overflow-scroll rounded-xl bg-teal-600 p-4 text-sm text-white">
-        <p>DEBUG Response:</p>
-        <pre>
-          {JSON.stringify(state, null, 2)}
-        </pre>
-      </div>
     </>
   );
 }

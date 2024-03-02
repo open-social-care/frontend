@@ -15,7 +15,7 @@ export default function Button({
       {...rest}
       disabled={pending}
       className={twMerge(
-        "mt-4 transform rounded-lg bg-teal-500 px-6 py-2 leading-5 text-white transition-colors duration-300 hover:bg-teal-600 focus:bg-teal-600 focus:outline-none disabled:bg-gray-200",
+        "mt-4 transform rounded-lg bg-teal-500 px-6 py-2 leading-5 text-white transition-colors duration-300 hover:bg-teal-600 focus:bg-teal-600 focus:outline-none disabled:animate-pulse disabled:bg-teal-400",
         className,
       )}
     >

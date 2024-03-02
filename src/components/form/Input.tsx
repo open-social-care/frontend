@@ -4,12 +4,14 @@ import { twMerge } from "tailwind-merge";
 type InputProps = {
   label?: string;
   errors?: string[];
+  withAsterisk?: boolean;
 } & React.ComponentPropsWithoutRef<"input">;
 
 export default function Input({
   label,
   name,
   errors,
+  withAsterisk,
   className,
   ...rest
 }: InputProps) {
@@ -26,6 +28,12 @@ export default function Input({
           htmlFor={name}
         >
           {label}
+
+          {withAsterisk && (
+            <span className="ml-1 text-sm text-red-400">
+              *
+            </span>
+          )}
         </label>
       )}
 
@@ -38,7 +46,7 @@ export default function Input({
       {errors?.map((error, index) => (
         <p
           key={index}
-          className="mt-1 text-sm text-orange-500"
+          className="mt-1 text-sm text-red-400"
         >
           {error}
         </p>
