@@ -4,6 +4,7 @@ import Form from "@/components/form";
 import i18n from "@/lang";
 import { useFormState } from "react-dom";
 import { loginAction } from "./_actions";
+import { testIDs } from "@/e2e/_testIDs";
 
 export default function LoginForm() {
   const [state, formAction] = useFormState(
@@ -36,7 +37,7 @@ export default function LoginForm() {
           errors={state?.errors?.["password"]}
         />
 
-        <Form.Button className="self-center">
+        <Form.Button className="self-center" data-testid={testIDs.SUBMIT_BUTTON}>
           {i18n.t("auth.login")}
         </Form.Button>
       </Form>

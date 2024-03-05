@@ -1,5 +1,6 @@
 import i18n from "@/lang";
 import { test, expect } from "@playwright/test";
+import { testIDs } from "../_testIDs";
 
 test("test page title", async ({ page }) => {
   await page.goto("./login");
@@ -23,9 +24,7 @@ test("test successful login", async ({
     .fill("12345678");
 
   await page
-    .getByRole("button", {
-      name: i18n.t("auth.login"),
-    })
+    .getByTestId(testIDs.SUBMIT_BUTTON)
     .click();
 
   await expect(page).toHaveURL(

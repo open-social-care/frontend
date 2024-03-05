@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test-ct": "playwright test -c playwright-ct.config.ts",
+    "test-e2e": "npx playwright test"
   },
   "dependencies": {
     "i18n-js": "^4.3.2",
@@ -16,12 +18,13 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@playwright/experimental-ct-react": "^1.42.1",
     "@playwright/test": "^1.42.1",
-    "dotenv": "^16.3.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.17",
+    "dotenv": "^16.3.1",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
     "postcss": "^8.4.35",

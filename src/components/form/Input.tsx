@@ -26,6 +26,7 @@ export default function Input({
         <label
           className="text-gray-700"
           htmlFor={name}
+          data-testid="label"
         >
           {label}
 
