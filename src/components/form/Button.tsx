@@ -1,5 +1,3 @@
-"use client";
-
 import { useFormStatus } from "react-dom";
 import { twMerge } from "tailwind-merge";
 
@@ -12,6 +10,7 @@ export default function Button({
 
   return (
     <button
+      data-testid="button"
       {...rest}
       disabled={pending}
       className={twMerge(

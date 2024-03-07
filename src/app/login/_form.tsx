@@ -15,10 +15,12 @@ export default function LoginForm() {
   return (
     <>
       <Form action={formAction}>
-        <Form.FlashMessage
-          type={state?.type}
-          message={state?.message}
-        />
+        {state && (
+          <Form.FlashMessage
+            type={state.type}
+            message={state.message}
+          />
+        )}
 
         <Form.Input
           name="email"
@@ -37,7 +39,10 @@ export default function LoginForm() {
           errors={state?.errors?.["password"]}
         />
 
-        <Form.Button className="self-center" data-testid={testIDs.SUBMIT_BUTTON}>
+        <Form.Button
+          className="self-center"
+          data-testid={testIDs.SUBMIT_BUTTON}
+        >
           {i18n.t("auth.login")}
         </Form.Button>
       </Form>

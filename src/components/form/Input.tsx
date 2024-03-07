@@ -48,6 +48,7 @@ export default function Input({
         <p
           key={index}
           className="mt-1 text-sm text-red-400"
+          data-testid="error"
         >
           {error}
         </p>

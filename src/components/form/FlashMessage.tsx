@@ -1,8 +1,8 @@
 import { twMerge } from "tailwind-merge";
 
 type FlashMessageProps = {
-  type?: "error" | "success";
-  message?: string;
+  type: "error" | "success";
+  message: string;
 } & React.ComponentPropsWithoutRef<"div">;
 
 const variants = {
