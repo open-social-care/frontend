@@ -1,0 +1,9 @@
+{
+  "pt-BR": {
+    "auth": {
+      "login": "Login",
+      "email": "Email",
+      "password": "Senha"
+    }
+  }
+}
