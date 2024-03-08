@@ -1,16 +1,13 @@
 import { twMerge } from "tailwind-merge";
 
-export default function Fullscreen({
+export default function PageBody({
   children,
   className,
   ...rest
 }: React.ComponentPropsWithoutRef<"div">) {
   return (
     <div
-      className={twMerge(
-        "flex h-screen flex-col bg-gray-100 bg-[url('/images/landing-page-background.svg')]",
-        className,
-      )}
+      className={twMerge("p-4", className)}
       {...rest}
     >
       {children}

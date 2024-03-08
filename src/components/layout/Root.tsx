@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-export default function Fullscreen({
+export default function Root({
   children,
   className,
   ...rest
@@ -8,7 +8,7 @@ export default function Fullscreen({
   return (
     <div
       className={twMerge(
-        "flex h-screen flex-col bg-gray-100 bg-[url('/images/landing-page-background.svg')]",
+        "flex h-screen bg-gray-100",
         className,
       )}
       {...rest}
