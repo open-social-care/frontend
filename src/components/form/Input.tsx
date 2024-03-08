@@ -44,15 +44,16 @@ export default function Input({
         {...rest}
       />
 
-      {errors?.map((error, index) => (
-        <p
-          key={index}
-          className="mt-1 text-sm text-red-400"
-          data-testid="error"
-        >
-          {error}
-        </p>
-      ))}
+      <div data-testid="errors">
+        {errors?.map((error, index) => (
+          <p
+            key={index}
+            className="mt-1 text-sm text-red-400"
+          >
+            {error}
+          </p>
+        ))}
+      </div>
     </div>
   );
 }

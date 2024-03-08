@@ -39,3 +39,21 @@ test("input must allow text to be written", async ({
     component.locator("input"),
   ).toHaveValue("my-text");
 });
+
+test("input must show field error", async ({
+  mount,
+}) => {
+  const fieldError = "This text is not valid.";
+
+  const component = await mount(
+    <Input errors={[fieldError]} />,
+  );
+
+  await expect(
+    component.getByTestId("errors"),
+  ).toHaveText(fieldError);
+
+  await expect(
+    component.getByTestId("errors").locator("p"),
+  ).toHaveClass(/text-red-400/);
+});
