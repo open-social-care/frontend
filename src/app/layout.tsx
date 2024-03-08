@@ -1,6 +1,8 @@
 import { theme } from "@/theme";
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
+import { Notifications } from "@mantine/notifications";
+import "@mantine/notifications/styles.css";
 import { Inter } from "next/font/google";
 import { PropsWithChildren } from "react";
 import "./globals.css";
@@ -8,8 +10,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Mantine Next.js template",
-  description: "I am using Mantine with Next.js!",
+  title: "Social Care",
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
@@ -24,7 +25,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
         />
       </head>
       <body className={inter.className}>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <MantineProvider theme={theme}>
+          <Notifications />
+
+          {children}
+        </MantineProvider>
       </body>
     </html>
   );
