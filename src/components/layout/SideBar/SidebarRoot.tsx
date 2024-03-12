@@ -1,15 +1,15 @@
 import { twMerge } from "tailwind-merge";
 
-type SideBarProps = {
+type SidebarRootProps = {
   links: React.ReactNode;
 } & React.ComponentPropsWithoutRef<"div">;
 
-export default function SideBar({
+export default function SidebarRoot({
   children,
   className,
   links,
   ...rest
-}: SideBarProps) {
+}: SidebarRootProps) {
   return (
     <div
       className={twMerge(

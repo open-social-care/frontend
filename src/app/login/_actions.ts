@@ -34,7 +34,7 @@ export async function loginAction(
       },
     );
 
-    redirect("/temp-logged-page");
+    redirect("/manager");
   }
 
   return ApiResponse.parse(json);

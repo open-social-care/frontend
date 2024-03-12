@@ -1,3 +1,9 @@
+import ManagerLayout from "./_ManagerLayout";
+
 export default function page() {
-  return <div></div>;
+  return (
+    <ManagerLayout linkActive="subjects-create">
+      Teste
+    </ManagerLayout>
+  );
 }
