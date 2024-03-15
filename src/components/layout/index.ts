@@ -1,13 +1,13 @@
 import Fullscreen from "./Fullscreen";
 import Root from "./Root";
 import Main from "./Main";
-import PageBody from "./PageBody";
+import Page from "./Page";
 
 const Layout = {
   Fullscreen,
   Root,
   Main,
-  PageBody,
+  Page,
 };
 
 export default Layout;

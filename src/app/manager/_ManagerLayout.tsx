@@ -18,90 +18,87 @@ export default function ManagerLayout({
 }: ManagerLayoutProps) {
   return (
     <Layout.Root>
-      <Sidebar.Root
-        links={
-          <>
+      <Sidebar.Root>
+        <Sidebar.LinksRoot>
+          <Sidebar.Link
+            href="#"
+            icon={<CgUserList />}
+            active={
+              linkActive == "subjects-create" ||
+              linkActive == "subjects"
+            }
+            subGroup={
+              <Sidebar.Link
+                href="#"
+                subLink
+                active={
+                  linkActive == "subjects-create"
+                }
+              >
+                Cadastrar
+              </Sidebar.Link>
+            }
+          >
+            Sujeitos
+          </Sidebar.Link>
+
+          <Sidebar.Link
+            href="#"
+            active={linkActive == "link-2"}
+            icon={<CgUserList />}
+          >
+            Link alone
+          </Sidebar.Link>
+
+          <Sidebar.LinkGroup title="Grupo">
+            <Sidebar.Link
+              href="/manager"
+              active
+              icon={<CgUserList />}
+            >
+              1° do grupo
+            </Sidebar.Link>
+
             <Sidebar.Link
               href="#"
               icon={<CgUserList />}
-              active={
-                linkActive == "subjects-create" ||
-                linkActive == "subjects"
-              }
+            >
+              2° do grupo
+            </Sidebar.Link>
+          </Sidebar.LinkGroup>
+
+          <Sidebar.LinkGroup title="Grupo com Sublink">
+            <Sidebar.Link
+              href="#"
+              icon={<CgUserList />}
               subGroup={
                 <Sidebar.Link
                   href="#"
                   subLink
-                  active={
-                    linkActive ==
-                    "subjects-create"
-                  }
                 >
-                  Cadastrar
+                  Sublink do 1°
                 </Sidebar.Link>
               }
             >
-              Sujeitos
+              1° do grupo
             </Sidebar.Link>
 
             <Sidebar.Link
               href="#"
-              active={linkActive == "link-2"}
               icon={<CgUserList />}
             >
-              Link alone
+              Outro link
             </Sidebar.Link>
-
-            <Sidebar.LinkGroup title="Grupo">
-              <Sidebar.Link
-                href="/manager"
-                active
-                icon={<CgUserList />}
-              >
-                1° do grupo
-              </Sidebar.Link>
-
-              <Sidebar.Link
-                href="#"
-                icon={<CgUserList />}
-              >
-                2° do grupo
-              </Sidebar.Link>
-            </Sidebar.LinkGroup>
-
-            <Sidebar.LinkGroup title="Grupo com Sublink">
-              <Sidebar.Link
-                href="#"
-                icon={<CgUserList />}
-                subGroup={
-                  <Sidebar.Link
-                    href="#"
-                    subLink
-                  >
-                    Sublink do 1°
-                  </Sidebar.Link>
-                }
-              >
-                1° do grupo
-              </Sidebar.Link>
-
-              <Sidebar.Link
-                href="#"
-                icon={<CgUserList />}
-              >
-                Outro link
-              </Sidebar.Link>
-            </Sidebar.LinkGroup>
-          </>
-        }
-      />
+          </Sidebar.LinkGroup>
+        </Sidebar.LinksRoot>
+      </Sidebar.Root>
 
       <Layout.Main>
-        <Navbar.Root />
+        <Navbar.Root>
+          <Navbar.ProfileMenu />
+        </Navbar.Root>
 
-        <Layout.PageBody>
-          {children}
-        </Layout.PageBody>
+        <Layout.Page>{children}</Layout.Page>
       </Layout.Main>
     </Layout.Root>
   );

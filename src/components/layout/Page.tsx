@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-export default function PageBody({
+export default function Page({
   children,
   className,
   ...rest

@@ -1,15 +1,10 @@
 import { twMerge } from "tailwind-merge";
 
-type SidebarRootProps = {
-  links: React.ReactNode;
-} & React.ComponentPropsWithoutRef<"div">;
-
 export default function SidebarRoot({
   children,
   className,
-  links,
   ...rest
-}: SidebarRootProps) {
+}: React.ComponentPropsWithoutRef<"div">) {
   return (
     <div
       className={twMerge(
@@ -19,7 +14,7 @@ export default function SidebarRoot({
       {...rest}
     >
       <aside className="flex">
-        <div className="flex h-screen w-16 flex-col items-center bg-white py-8">
+        {/*  <div className="flex h-screen w-16 flex-col items-center bg-white py-8">
           <nav className="flex flex-1 flex-col items-center space-y-8 ">
             <a
               href="#"
@@ -131,12 +126,14 @@ export default function SidebarRoot({
               </svg>
             </a>
           </nav>
-        </div>
+        </div> */}
 
         <div className="h-screen w-60 overflow-y-auto border-l border-r bg-white px-5 py-8 sm:w-64">
-          <nav className="-mx-3 mt-4">
-            {links}
-          </nav>
+          <div className="px-4 text-lg">
+            Social Care
+          </div>
+
+          {children}
         </div>
       </aside>
     </div>
