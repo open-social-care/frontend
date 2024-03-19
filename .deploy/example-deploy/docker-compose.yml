@@ -1,0 +1,58 @@
+version: "3"
+services:
+  laravel:
+    image: ghcr.io/open-social-care/backend:staging
+    ports:
+      - "${APP_PORT:-80}:80"
+    env_file:
+      - ".env"
+    networks:
+      - opensocialcare
+    depends_on:
+      - pgsql
+  pgsql:
+    image: "postgres:15"
+    ports:
+      - "${FORWARD_DB_PORT:-5432}:5432"
+    environment:
+      PGPASSWORD: "${DB_PASSWORD:-secret}"
+      POSTGRES_DB: "${DB_DATABASE}"
+      POSTGRES_USER: "${DB_USERNAME}"
+      POSTGRES_PASSWORD: "${DB_PASSWORD:-secret}"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - opensocialcare
+    healthcheck:
+      test:
+        - CMD
+        - pg_isready
+        - "-q"
+        - "-d"
+        - "${DB_DATABASE}"
+        - "-U"
+        - "${DB_USERNAME}"
+      retries: 3
+      timeout: 5s
+  mailpit:
+    image: "axllent/mailpit:latest"
+    ports:
+      - "${FORWARD_MAILPIT_PORT:-1025}:1025"
+      - "${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025"
+    networks:
+      - opensocialcare
+  next:
+    image: ghcr.io/open-social-care/frontend:staging
+    ports:
+      - "3000:3000"
+    environment:
+      API_BASE_URL: "http://laravel/"
+    networks:
+      - opensocialcare
+
+networks:
+  opensocialcare:
+    driver: bridge
+volumes:
+  pgdata:
+    driver: local
