@@ -14,7 +14,7 @@ const api = async (
   };
 
   return await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}api${input}`,
+    `${process.env.API_BASE_URL}api${input}`,
     config,
   );
 };
