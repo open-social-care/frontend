@@ -1,22 +1,23 @@
 type SideBarLinkGroupProps = {
   title: string;
+  icon: React.ReactNode;
 } & React.ComponentPropsWithoutRef<"div">;
 
 export default function SideBarLinkGroup({
   children,
   title,
+  icon,
   ...rest
 }: SideBarLinkGroupProps) {
   return (
-    <div
-      className="mt-4 rounded-md border"
-      {...rest}
-    >
-      {title && (
-        <label className="px-3 text-xs uppercase text-gray-500 dark:text-gray-400">
+    <div {...rest}>
+      <div className="rounded-m flex transform items-center px-3 py-2 uppercase text-teal-900 transition-colors duration-300">
+        <span className="h-5 w-5">{icon}</span>
+
+        <span className="text-md mx-2 font-medium">
           {title}
-        </label>
-      )}
+        </span>
+      </div>
 
       {children}
     </div>

@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 
 export default function SidebarRoot({
@@ -128,10 +130,16 @@ export default function SidebarRoot({
           </nav>
         </div> */}
 
-        <div className="h-screen w-60 overflow-y-auto border-l border-r bg-white px-5 py-8 sm:w-64">
-          <div className="px-4 text-lg">
-            Social Care
-          </div>
+        <div className="h-screen w-60 overflow-y-auto border-l border-r bg-white px-5 py-2 sm:w-64">
+          <Link href="#">
+            <Image
+              draggable={false}
+              src="/images/logo.png"
+              alt="logo"
+              width="200"
+              height="200"
+            />
+          </Link>
 
           {children}
         </div>

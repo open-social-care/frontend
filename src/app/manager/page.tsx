@@ -1,9 +1,9 @@
-import ManagerLayout from "./_ManagerLayout";
+import ManagerLayout from "./_manager-layout";
 
 export default function page() {
   return (
-    <ManagerLayout linkActive="subjects-create">
-      Teste
+    <ManagerLayout linkActive="manager">
+      Gestor
     </ManagerLayout>
   );
 }
