@@ -74,6 +74,13 @@ export default function NavbarProfileMenu({
         <hr className="border-gray-200" />
 
         <a
+          href="/home"
+          className="block transform px-4 py-3 text-sm capitalize text-gray-600 transition-colors duration-300 hover:bg-gray-100"
+        >
+          Alterar perfil
+        </a>
+
+        <a
           href="#"
           className="block transform px-4 py-3 text-sm capitalize text-gray-600 transition-colors duration-300 hover:bg-gray-100"
         >

@@ -4,16 +4,16 @@ export default function Main({
   children,
   className,
   ...rest
-}: React.ComponentPropsWithoutRef<"div">) {
+}: React.ComponentPropsWithoutRef<"main">) {
   return (
-    <div
+    <main
       className={twMerge(
-        "flex flex-1 flex-col overflow-y-auto",
+        "w-full overflow-y-auto bg-gray-100 p-4 md:ml-64",
         className,
       )}
       {...rest}
     >
       {children}
-    </div>
+    </main>
   );
 }

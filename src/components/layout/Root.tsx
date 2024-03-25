@@ -8,7 +8,7 @@ export default function Root({
   return (
     <div
       className={twMerge(
-        "flex h-screen bg-gray-100",
+        "flex h-screen flex-col",
         className,
       )}
       {...rest}

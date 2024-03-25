@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 
 export default function NavbarHeader({
@@ -8,14 +10,22 @@ export default function NavbarHeader({
   return (
     <div
       className={twMerge(
-        "flex h-16 items-center justify-end border-b border-gray-200 bg-white",
+        "fixed flex h-16 w-full items-center justify-between border-b border-gray-200 bg-white px-2",
         className,
       )}
       {...rest}
     >
-      <div className="mr-4 mt-0 flex items-center">
-        {children}
-      </div>
+      <Link href="#">
+        <Image
+          draggable={false}
+          src="/images/logo.png"
+          alt="logo"
+          width="200"
+          height="200"
+        />
+      </Link>
+
+      {children}
     </div>
   );
 }
