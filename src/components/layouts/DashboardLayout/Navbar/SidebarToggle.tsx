@@ -11,7 +11,9 @@ export default function SidebarToggle() {
   return (
     <button
       className="inline-block md:hidden"
-      onClick={() => (sidebarVisible ? hideSidebar() : showSidebar())}
+      onClick={() => {
+        sidebarVisible ? hideSidebar() : showSidebar();
+      }}
     >
       <div className="mx-1 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full object-cover">
         {sidebarVisible ? <IoMdClose size={22} /> : <AiOutlineMenu size={22} />}

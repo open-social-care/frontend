@@ -1,20 +1,34 @@
 "use client";
 
 import { User } from "@/schemas";
+
 import { AiOutlineUser } from "react-icons/ai";
 import { FaChevronDown } from "react-icons/fa";
-import { twMerge } from "tailwind-merge";
 
-import { useDashboardLayoutContext } from "../../_context";
+import { twMerge } from "tailwind-merge";
+import useOnclickOutside from "react-cool-onclickoutside";
+
 import MenuLink from "./_MenuLink";
 import UserIndicator from "./_UserIndicator";
+import { useDashboardLayoutContext } from "../../_context";
+import { useRef } from "react";
 
 type ProfileProps = {
   user: User;
 } & React.ComponentPropsWithoutRef<"div">;
 
 export default function ProfileMenu({ children, className, user, ...rest }: ProfileProps) {
-  const { showMenu, hideMenu, menuVisible } = useDashboardLayoutContext();
+  const { showMenu, hideMenu, menuVisible, hideSidebar } = useDashboardLayoutContext();
+
+  const buttonRef = useRef(null);
+  const dropdownRef = useRef(null);
+
+  useOnclickOutside(
+    () => {
+      hideMenu();
+    },
+    { refs: [buttonRef, dropdownRef] },
+  );
 
   return (
     <div
@@ -23,8 +37,10 @@ export default function ProfileMenu({ children, className, user, ...rest }: Prof
     >
       <button
         onClick={() => {
+          hideSidebar();
           menuVisible ? hideMenu() : showMenu();
         }}
+        ref={buttonRef}
         className="relative z-10 flex items-center rounded-md border border-transparent bg-white p-2 text-sm  focus:border-teal-500 focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-40"
       >
         <div className="mx-1 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full object-cover">
@@ -45,9 +61,7 @@ export default function ProfileMenu({ children, className, user, ...rest }: Prof
           "absolute right-0 z-20 mt-2 w-56 origin-top-right overflow-hidden rounded-md bg-white py-2 shadow-xl",
           menuVisible ? "block" : "hidden",
         )}
-        onBlur={() => {
-          hideMenu();
-        }}
+        ref={dropdownRef}
       >
         <div className="-mt-2 flex transform flex-col px-4 py-2 sm:hidden">
           <UserIndicator user={user} />

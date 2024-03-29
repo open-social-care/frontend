@@ -2,8 +2,8 @@
 
 import Link, { LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
 import { twMerge } from "tailwind-merge";
+import { useDashboardLayoutContext } from "../_context";
 
 type SideBarLinkProps = {
   icon: React.ReactNode;
@@ -12,6 +12,8 @@ type SideBarLinkProps = {
 
 export default function SideBarLink({ children, className, icon, ...rest }: SideBarLinkProps) {
   const pathname = usePathname();
+
+  const { hideSidebar } = useDashboardLayoutContext();
 
   const isActive = pathname == rest.href;
 
@@ -23,6 +25,9 @@ export default function SideBarLink({ children, className, icon, ...rest }: Side
         className,
       )}
       {...rest}
+      onClick={() => {
+        hideSidebar();
+      }}
     >
       <span className="h-5 w-5">{icon}</span>
 

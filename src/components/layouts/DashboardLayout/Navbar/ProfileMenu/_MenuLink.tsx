@@ -1,14 +1,9 @@
-import React from "react";
-
 type MenuLinkProps = {
   href: string;
   title: string;
 };
 
-export default function MenuLink({
-  href,
-  title,
-}: MenuLinkProps) {
+export default function MenuLink({ href, title }: MenuLinkProps) {
   return (
     <a
       href={href}

@@ -1,6 +1,4 @@
 import dayjs from "dayjs";
-import Image from "next/image";
-import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 
 export default function Footer({
@@ -16,9 +14,7 @@ export default function Footer({
       )}
       {...rest}
     >
-      <p className="text-xs text-gray-500">
-        Open Social Care® {dayjs().year()}
-      </p>
+      <p className="text-xs text-gray-500">Open Social Care® {dayjs().year()}</p>
     </div>
   );
 }

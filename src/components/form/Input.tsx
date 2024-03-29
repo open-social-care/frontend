@@ -1,4 +1,3 @@
-import React from "react";
 import { twMerge } from "tailwind-merge";
 
 type InputProps = {
@@ -16,12 +15,7 @@ export default function Input({
   ...rest
 }: InputProps) {
   return (
-    <div
-      className={twMerge(
-        "mt-4 w-full",
-        className,
-      )}
-    >
+    <div className={twMerge("mt-4 w-full", className)}>
       {label && (
         <label
           className="text-gray-700"
@@ -30,11 +24,7 @@ export default function Input({
         >
           {label}
 
-          {withAsterisk && (
-            <span className="ml-1 text-sm text-red-400">
-              *
-            </span>
-          )}
+          {withAsterisk && <span className="ml-1 text-sm text-red-400">*</span>}
         </label>
       )}
 
