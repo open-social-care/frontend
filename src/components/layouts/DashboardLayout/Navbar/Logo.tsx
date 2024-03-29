@@ -9,6 +9,7 @@ export default function Logo({ href }: LogoProps) {
   return (
     <Link href={href}>
       <Image
+        className="w-36 sm:w-[200px]"
         draggable={false}
         src="/images/logo.png"
         alt="logo"

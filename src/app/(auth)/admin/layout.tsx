@@ -15,7 +15,7 @@ export default function layout({ children }: PropsWithChildren) {
       <DashboardLayout.Content>
         <AdminSideBar />
 
-        {children}
+        <DashboardLayout.Main>{children}</DashboardLayout.Main>
       </DashboardLayout.Content>
 
       <DashboardLayout.Footer />
