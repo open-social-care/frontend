@@ -1,4 +1,4 @@
-import i18n from "@/lang";
+import { t } from "@/lang";
 import Image from "next/image";
 
 import { Paper } from "@/components/containers";
@@ -6,7 +6,7 @@ import { Paper } from "@/components/containers";
 import LoginForm from "./_form";
 
 export const metadata = {
-  title: i18n.t("auth.login"),
+  title: t("auth.login"),
 };
 
 export default function page() {
