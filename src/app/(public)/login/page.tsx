@@ -1,7 +1,7 @@
 import i18n from "@/lang";
 import Image from "next/image";
 
-import { Paper } from "@/components/layouts/Containers";
+import { Paper } from "@/components/containers";
 
 import LoginForm from "./_form";
 

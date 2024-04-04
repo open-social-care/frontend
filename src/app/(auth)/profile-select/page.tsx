@@ -1,4 +1,4 @@
-import { HBox } from "@/components/layouts/Containers";
+import { HBox } from "@/components/containers";
 import Link from "next/link";
 
 export default function page() {

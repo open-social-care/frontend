@@ -5,10 +5,7 @@ import { ApiResponse } from "@/schemas";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-export async function loginAction(
-  prevState: any,
-  formData: FormData,
-): Promise<ApiResponse> {
+export async function loginAction(prevState: any, formData: FormData): Promise<ApiResponse> {
   const response = await api("/login", {
     method: "POST",
     body: JSON.stringify({

@@ -7,10 +7,7 @@ import { loginAction } from "./_actions";
 import { testIDs } from "@/e2e/_testIDs";
 
 export default function LoginForm() {
-  const [state, formAction] = useFormState(
-    loginAction,
-    undefined,
-  );
+  const [state, formAction] = useFormState(loginAction, undefined);
 
   return (
     <>

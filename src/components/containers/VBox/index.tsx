@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import HBox from "./HBox";
+import HBox from "../HBox";
 
 export default function VBox({
   children,
