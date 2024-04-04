@@ -31,12 +31,12 @@ export default function SideBarLink({ children, className, icon, ...rest }: Side
     >
       <span className="h-5 w-5">{icon}</span>
 
-      <label
+      <p
         className="text-md mx-2 font-normal"
         data-testid="label"
       >
         {children}
-      </label>
+      </p>
     </Link>
   );
 }
