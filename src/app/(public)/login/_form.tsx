@@ -1,16 +1,13 @@
 "use client";
 
 import Form from "@/components/form";
-import i18n from "@/lang";
+import { t } from "@/lang";
 import { useFormState } from "react-dom";
 import { loginAction } from "./_actions";
 import { testIDs } from "@/e2e/_testIDs";
 
 export default function LoginForm() {
-  const [state, formAction] = useFormState(
-    loginAction,
-    undefined,
-  );
+  const [state, formAction] = useFormState(loginAction, undefined);
 
   return (
     <>
@@ -24,7 +21,7 @@ export default function LoginForm() {
 
         <Form.Input
           name="email"
-          label={i18n.t("auth.email")}
+          label={t("auth.email")}
           placeholder="your@email.com"
           withAsterisk
           errors={state?.errors?.["email"]}
@@ -32,7 +29,7 @@ export default function LoginForm() {
 
         <Form.Input
           name="password"
-          label={i18n.t("auth.password")}
+          label={t("auth.password")}
           type="password"
           placeholder="********"
           withAsterisk
@@ -43,7 +40,7 @@ export default function LoginForm() {
           className="self-center"
           data-testid={testIDs.SUBMIT_BUTTON}
         >
-          {i18n.t("auth.login")}
+          {t("auth.login")}
         </Form.Button>
       </Form>
     </>
