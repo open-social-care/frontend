@@ -11,13 +11,10 @@ export const tokenFromCookie = () => {
 const userFromCookie = () => {
   const cookieStore = cookies();
 
-  const cookieData =
-    cookieStore.get("auth-user")?.value;
+  const cookieData = cookieStore.get("auth-user")?.value;
 
   if (cookieData) {
-    const user = User.parse(
-      JSON.parse(cookieData),
-    );
+    const user = User.parse(JSON.parse(cookieData));
 
     return user;
   }
@@ -27,7 +24,6 @@ export default function auth() {
   const user = userFromCookie();
 
   if (user) {
-    console.log(user);
     // ...
   } else {
     permanentRedirect("/login");
