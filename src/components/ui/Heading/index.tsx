@@ -13,7 +13,7 @@ type HeadingProps = {
 export default function Heading({ order, children, className, ...rest }: HeadingProps) {
   return (
     <h1
-      className={twMerge("font-extrabold text-teal-900", variants[order || 1])}
+      className={twMerge("font-extrabold text-teal-900", variants[order || 1], className)}
       {...rest}
     >
       {children}

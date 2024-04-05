@@ -5,6 +5,7 @@ export const User = z.object({
   name: z.string(),
   email: z.string().email(),
   token: z.optional(z.string()),
+  roles: z.optional(z.string().array()),
 });
 
 export type User = z.infer<typeof User>;
