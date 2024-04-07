@@ -9,7 +9,7 @@ export default function Button({
     <a
       {...rest}
       className={twMerge(
-        "mt-4 transform rounded-lg bg-teal-500 px-6 py-2 leading-5 text-white transition-colors duration-300 hover:bg-teal-600 focus:bg-teal-600 focus:outline-none",
+        "mt-4 rounded-lg bg-teal-500 px-6 py-2 leading-5 text-white transition-colors duration-300 hover:bg-teal-600 focus:bg-teal-600 focus:outline-none",
         className,
       )}
     >

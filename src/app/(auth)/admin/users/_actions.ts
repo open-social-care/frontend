@@ -1,8 +1,8 @@
 import api from "@/api";
 import { ApiResponse } from "@/schemas";
 
-export async function fetchUsersAction(): Promise<ApiResponse> {
-  const response = await api("/admin/users", {
+export async function fetchUsersAction(props: { page?: number }): Promise<ApiResponse> {
+  const response = await api(`/admin/users?page=${props?.page || 1}`, {
     method: "GET",
   });
 

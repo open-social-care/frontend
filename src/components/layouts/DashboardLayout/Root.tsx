@@ -11,7 +11,7 @@ export default function Root({
   return (
     <DashboardLayoutContextProvider>
       <div
-        className={twMerge("flex h-screen flex-col", className)}
+        className={twMerge("flex min-h-screen flex-col  bg-gray-50", className)}
         {...rest}
       >
         {children}
