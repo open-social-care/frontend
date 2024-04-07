@@ -1,8 +1,11 @@
 import api from "@/api";
 import { ApiResponse } from "@/schemas";
 
-export async function fetchUsersAction(props: { page?: number }): Promise<ApiResponse> {
-  const response = await api(`/admin/users?page=${props?.page || 1}`, {
+export async function fetchUsersAction(props: {
+  query?: string;
+  page?: number;
+}): Promise<ApiResponse> {
+  const response = await api(`/admin/users?page=${props?.page || 1}&q=${props?.query || ""}`, {
     method: "GET",
   });
 

@@ -1,20 +1,24 @@
 import { HBox, VBox } from "@/components/containers";
-import Input from "@/components/form/Input";
 import { Text } from "@/components/ui";
 import Button from "@/components/ui/Button";
 import { AiOutlineUser } from "react-icons/ai";
 
+import Pagination from "@/components/ui/Pagination";
 import { User } from "@/schemas";
+import { fetchUsersAction } from "./_actions";
 
-interface UsersContainerProps {
-  users: User[];
+interface UsersProps {
+  query?: string;
+  page?: number;
 }
 
-export default function UsersContainer({ users }: UsersContainerProps) {
+export default async function Users(props: UsersProps) {
+  const { data, pagination } = await fetchUsersAction(props);
+
+  const users = User.array().parse(data);
+
   return (
     <>
-      <Input placeholder="Pesquisar"></Input>
-
       {users.map((user) => (
         <HBox
           key={user.id}
@@ -39,6 +43,8 @@ export default function UsersContainer({ users }: UsersContainerProps) {
           <hr />
         </HBox>
       ))}
+
+      <Pagination paginationInfo={pagination} />
     </>
   );
 }

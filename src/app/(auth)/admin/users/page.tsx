@@ -1,22 +1,18 @@
 import { Paper, VBox } from "@/components/containers";
 import { Heading } from "@/components/ui";
 import Button from "@/components/ui/Button";
-import Pagination from "@/components/ui/Pagination";
-import { User } from "@/schemas";
-import { fetchUsersAction } from "./_actions";
-import UsersContainer from "./users-container";
+import { Suspense } from "react";
+import Search from "@/components/ui/Search";
+import Users from "./_users";
 
 interface PageProps {
   searchParams: {
     page: number;
+    query: string;
   };
 }
 
-export default async function page({ searchParams }: PageProps) {
-  const { data, pagination } = await fetchUsersAction({ page: searchParams.page });
-
-  const users = User.array().parse(data);
-
+export default function page({ searchParams }: PageProps) {
   return (
     <>
       <VBox className="justify-between">
@@ -31,12 +27,11 @@ export default async function page({ searchParams }: PageProps) {
       </VBox>
 
       <Paper className="mt-4">
-        <UsersContainer users={users} />
+        <Search />
 
-        <Pagination
-          url="/admin/users"
-          paginationInfo={pagination}
-        />
+        <Suspense fallback={<>Carregando...</>}>
+          <Users {...searchParams} />
+        </Suspense>
       </Paper>
     </>
   );

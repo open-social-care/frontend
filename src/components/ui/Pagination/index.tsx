@@ -1,24 +1,43 @@
 "use client";
 
 import { PaginationInfo } from "@/schemas";
-import Link from "next/link";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { twMerge } from "tailwind-merge";
 
 type PaginationProps = {
-  url: string;
   paginationInfo?: PaginationInfo;
 } & React.ComponentPropsWithoutRef<"div">;
 
+const pageLinkDefaultClasses =
+  "mx-1 flex transform items-center justify-center rounded-lg border bg-white px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 rtl:-scale-x-100";
+
+const pageLinkDisabledClasses = "pointer-events-none border-none text-gray-400";
+
 export default function Pagination({
-  url,
   paginationInfo,
   children,
   className,
   ...rest
 }: PaginationProps) {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+
   if (!paginationInfo) {
     return <></>;
+  }
+
+  function handlePaginate(page: number) {
+    const params = new URLSearchParams(searchParams);
+
+    if (page) {
+      params.set("page", page.toString());
+    } else {
+      params.delete("page");
+    }
+
+    replace(`${pathname}?${params.toString()}`);
   }
 
   const prevPage = paginationInfo.current_page - 1;
@@ -33,16 +52,18 @@ export default function Pagination({
     const active = paginationInfo.current_page == pageIndex;
 
     return (
-      <Link
+      <a
         key={index}
-        href={`${url}?page=${pageIndex}`}
         className={twMerge(
           "mx-1 hidden transform rounded-lg border bg-white px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 sm:inline",
           active && "pointer-events-none border-none bg-teal-100 text-teal-600",
         )}
+        onClick={() => {
+          handlePaginate(pageIndex);
+        }}
       >
-        {index + 1}
-      </Link>
+        {pageIndex}
+      </a>
     );
   });
 
@@ -51,29 +72,25 @@ export default function Pagination({
       className={twMerge("mt-10 flex justify-end", className)}
       {...rest}
     >
-      <Link
-        href={prevPageDisabled ? "#" : `${url}?page=${prevPage}`}
-        className={twMerge(
-          "mx-1 flex transform items-center justify-center rounded-lg border bg-white px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 rtl:-scale-x-100",
-          prevPageDisabled && "pointer-events-none border-none text-gray-400",
-        )}
-        scroll={!prevPageDisabled}
+      <a
+        className={twMerge(pageLinkDefaultClasses, prevPageDisabled && pageLinkDisabledClasses)}
+        onClick={() => {
+          handlePaginate(prevPage);
+        }}
       >
         <LuChevronLeft />
-      </Link>
+      </a>
 
       {pages}
 
-      <Link
-        href={nextPageDisabled ? "#" : `${url}?page=${nextPage}`}
-        className={twMerge(
-          "mx-1 flex transform items-center justify-center rounded-lg border bg-white px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 rtl:-scale-x-100",
-          nextPageDisabled && "pointer-events-none border-none text-gray-400",
-        )}
-        scroll={!nextPageDisabled}
+      <a
+        className={twMerge(pageLinkDefaultClasses, nextPageDisabled && pageLinkDisabledClasses)}
+        onClick={() => {
+          handlePaginate(nextPage);
+        }}
       >
         <LuChevronRight />
-      </Link>
+      </a>
     </div>
   );
 }
