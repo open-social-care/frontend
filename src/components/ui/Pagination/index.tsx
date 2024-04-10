@@ -6,25 +6,20 @@ import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { twMerge } from "tailwind-merge";
 
 type PaginationProps = {
-  paginationInfo?: PaginationInfo;
+  paginate?: PaginationInfo;
 } & React.ComponentPropsWithoutRef<"div">;
 
 const pageLinkDefaultClasses =
-  "mx-1 flex transform items-center justify-center rounded-lg border bg-white px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 rtl:-scale-x-100";
+  "mx-1 flex transform shadow-md items-center justify-center rounded-lg border bg-white px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 rtl:-scale-x-100 cursor-pointer";
 
-const pageLinkDisabledClasses = "pointer-events-none border-none text-gray-400";
+const pageLinkDisabledClasses = "pointer-events-none bg-gray-200 text-gray-400";
 
-export default function Pagination({
-  paginationInfo,
-  children,
-  className,
-  ...rest
-}: PaginationProps) {
+export default function Pagination({ paginate, children, className, ...rest }: PaginationProps) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  if (!paginationInfo) {
+  if (!paginate) {
     return <></>;
   }
 
@@ -40,23 +35,23 @@ export default function Pagination({
     replace(`${pathname}?${params.toString()}`);
   }
 
-  const prevPage = paginationInfo.current_page - 1;
-  const nextPage = paginationInfo.current_page + 1;
+  const prevPage = paginate.current_page - 1;
+  const nextPage = paginate.current_page + 1;
 
-  const prevPageDisabled = paginationInfo.current_page == 1;
-  const nextPageDisabled = paginationInfo.last_page == paginationInfo.current_page;
+  const prevPageDisabled = paginate.current_page == 1;
+  const nextPageDisabled = paginate.last_page == paginate.current_page;
 
-  const pages = Array.from({ length: paginationInfo.last_page }).map((_, index) => {
+  const pages = Array.from({ length: paginate.last_page }).map((_, index) => {
     const pageIndex = index + 1;
 
-    const active = paginationInfo.current_page == pageIndex;
+    const active = paginate.current_page == pageIndex;
 
     return (
       <a
         key={index}
         className={twMerge(
-          "mx-1 hidden transform rounded-lg border bg-white px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 sm:inline",
-          active && "pointer-events-none border-none bg-teal-100 text-teal-600",
+          "mx-1 hidden  transform cursor-pointer rounded-lg border bg-white px-4 py-2 text-gray-600 shadow-md transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 sm:inline",
+          active && "pointer-events-none bg-teal-100 text-teal-600",
         )}
         onClick={() => {
           handlePaginate(pageIndex);
@@ -69,11 +64,15 @@ export default function Pagination({
 
   return (
     <div
-      className={twMerge("mt-10 flex justify-end", className)}
+      className={twMerge("mt-2 flex justify-end", className)}
       {...rest}
     >
       <a
-        className={twMerge(pageLinkDefaultClasses, prevPageDisabled && pageLinkDisabledClasses)}
+        className={twMerge(
+          pageLinkDefaultClasses,
+          prevPageDisabled && pageLinkDisabledClasses,
+          "ml-0",
+        )}
         onClick={() => {
           handlePaginate(prevPage);
         }}
@@ -84,7 +83,11 @@ export default function Pagination({
       {pages}
 
       <a
-        className={twMerge(pageLinkDefaultClasses, nextPageDisabled && pageLinkDisabledClasses)}
+        className={twMerge(
+          pageLinkDefaultClasses,
+          nextPageDisabled && pageLinkDisabledClasses,
+          "mr-0",
+        )}
         onClick={() => {
           handlePaginate(nextPage);
         }}

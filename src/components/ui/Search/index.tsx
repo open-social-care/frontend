@@ -22,7 +22,7 @@ export default function Search({ className }: React.ComponentPropsWithoutRef<"in
   return (
     <input
       className={twMerge(
-        "peer block w-full rounded-lg border border-gray-200 py-[9px] pl-5 text-sm outline-2 placeholder:text-gray-500",
+        "peer block w-full rounded-lg border py-[9px] pl-5 text-sm shadow-md outline-2 placeholder:text-gray-500",
         className,
       )}
       placeholder="Pesquisar"

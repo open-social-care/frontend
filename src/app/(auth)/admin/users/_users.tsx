@@ -1,5 +1,4 @@
-import { HBox, VBox } from "@/components/containers";
-import { Text } from "@/components/ui";
+import { Paper, VBox } from "@/components/containers";
 import Button from "@/components/ui/Button";
 import { AiOutlineUser } from "react-icons/ai";
 
@@ -20,31 +19,36 @@ export default async function Users(props: UsersProps) {
   return (
     <>
       {users.map((user) => (
-        <HBox
+        <Paper
+          className="mt-1"
           key={user.id}
-          className="mt-10"
         >
-          <div>
-            <Text className="font-semibold">
-              <AiOutlineUser className="mr-2 inline-flex align-text-top" />
-              {user.name}
-            </Text>
+          <div className="flex">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full object-cover">
+              <AiOutlineUser size={22} />
+            </div>
 
-            <Text>{user.email}</Text>
-
-            <Text>Perfis: {user.roles}</Text>
+            <div className="min-w-40 text-start">
+              <p className="truncate text-sm font-semibold">{user.name}</p>
+              <p className="truncate text-sm text-gray-600">{user.email}</p>
+            </div>
           </div>
 
-          <VBox>
-            <Button>Ver</Button>
-            <Button>Editar</Button>
-          </VBox>
+          <div className="mt-2">
+            {user.roles?.map((role) => (
+              <span className="rounded-xl bg-teal-100 p-1 px-2 font-semibold text-teal-900">
+                {role}
+              </span>
+            ))}
+          </div>
 
-          <hr />
-        </HBox>
+          <VBox className="mt-4">
+            <a href="#">Editar</a>
+          </VBox>
+        </Paper>
       ))}
 
-      <Pagination paginationInfo={pagination} />
+      <Pagination paginate={pagination} />
     </>
   );
 }
