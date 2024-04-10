@@ -36,7 +36,10 @@ export default async function Users(props: UsersProps) {
 
           <div className="mt-2">
             {user.roles?.map((role) => (
-              <span className="rounded-xl bg-teal-100 p-1 px-2 font-semibold text-teal-900">
+              <span
+                key={role}
+                className="rounded-xl bg-teal-100 p-1 px-2 font-semibold text-teal-900"
+              >
                 {role}
               </span>
             ))}

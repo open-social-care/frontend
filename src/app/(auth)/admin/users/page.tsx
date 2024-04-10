@@ -4,6 +4,7 @@ import Button from "@/components/ui/Button";
 import Search from "@/components/ui/Search";
 import { Suspense } from "react";
 import Users from "./_users";
+import Skeletons from "./_skeletons";
 
 interface PageProps {
   searchParams: {
@@ -24,7 +25,7 @@ export default function page({ searchParams }: PageProps) {
       <HBox className="mt-5">
         <Search />
 
-        <Suspense fallback={<>Carregando...</>}>
+        <Suspense fallback={<Skeletons />}>
           <Users {...searchParams} />
         </Suspense>
       </HBox>
