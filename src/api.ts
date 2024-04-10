@@ -1,9 +1,7 @@
+import { redirect } from "next/navigation";
 import { tokenFromCookie } from "./auth";
 
-const api = async (
-  input: RequestInfo | URL,
-  init?: RequestInit,
-) => {
+const api = async (input: RequestInfo | URL, init?: RequestInit) => {
   const config: RequestInit = {
     headers: {
       "Content-Type": "application/json",
@@ -13,10 +11,13 @@ const api = async (
     ...init,
   };
 
-  return await fetch(
-    `${process.env.API_BASE_URL}api${input}`,
-    config,
-  );
+  const res = await fetch(`${process.env.API_BASE_URL}api${input}`, config);
+
+  if (res.status === 401) {
+    redirect("/login");
+  }
+
+  return res;
 };
 
 export default api;

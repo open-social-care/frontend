@@ -2,13 +2,7 @@ import { User } from "@/schemas";
 import { cookies } from "next/headers";
 import { permanentRedirect } from "next/navigation";
 
-export const tokenFromCookie = () => {
-  const user = userFromCookie();
-
-  return user?.token;
-};
-
-const userFromCookie = () => {
+const authDataFromCookie = () => {
   const cookieStore = cookies();
 
   const cookieData = cookieStore.get("auth-user")?.value;
@@ -20,14 +14,27 @@ const userFromCookie = () => {
   }
 };
 
+export const tokenFromCookie = () => {
+  const user = authDataFromCookie();
+
+  return user?.token;
+};
+
+const userFromCookie = () => {
+  const user = authDataFromCookie();
+
+  if (user) {
+    // remove token info for non server components
+    return { ...user, token: null };
+  }
+};
+
 export default function auth() {
   const user = userFromCookie();
 
   if (user) {
-    // ...
-  } else {
-    permanentRedirect("/login");
+    return { user };
   }
 
-  return { user };
+  permanentRedirect("/login");
 }
