@@ -5,6 +5,7 @@ import Search from "@/components/ui/Search";
 import { Suspense } from "react";
 import Users from "./_users";
 import Skeletons from "./_skeletons";
+import { t } from "@/lang";
 
 interface PageProps {
   searchParams: {
@@ -17,7 +18,7 @@ export default function page({ searchParams }: PageProps) {
   return (
     <>
       <VBox className="justify-between">
-        <Heading>Usuários</Heading>
+        <Heading>{t("page_titles.users")}</Heading>
 
         <Button href="/admin/users/create">Cadastrar</Button>
       </VBox>

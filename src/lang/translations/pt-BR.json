@@ -3,7 +3,21 @@
     "auth": {
       "login": "Login",
       "email": "Email",
-      "password": "Senha"
+      "password": "Senha",
+      "password_confirmation": "Confirmação de senha"
+    },
+
+    "page_titles": {
+      "users": "Usuários",
+      "create_user": "Cadastrar usuário",
+      "edit_user": "Editar usuário"
+    },
+
+    "general_actions": {
+      "create": "Cadastrar",
+      "edit": "Editar",
+      "update": "Atualizar",
+      "remove": "Remover"
     }
   }
 }

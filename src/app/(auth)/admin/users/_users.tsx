@@ -1,18 +1,17 @@
 import { Paper, VBox } from "@/components/containers";
-import Button from "@/components/ui/Button";
 import { AiOutlineUser } from "react-icons/ai";
 
 import Pagination from "@/components/ui/Pagination";
 import { User } from "@/schemas";
 import { fetchUsersAction } from "./_actions";
 
-interface UsersProps {
+interface UserListProps {
   query?: string;
   page?: number;
 }
 
-export default async function Users(props: UsersProps) {
-  const { data, pagination } = await fetchUsersAction(props);
+export default async function Users({ query, page }: UserListProps) {
+  const { data, pagination } = await fetchUsersAction(query, page);
 
   const users = User.array().parse(data);
 
@@ -46,7 +45,7 @@ export default async function Users(props: UsersProps) {
           </div>
 
           <VBox className="mt-4">
-            <a href="#">Editar</a>
+            <a href={`/admin/users/${user.id}/edit`}>Editar</a>
           </VBox>
         </Paper>
       ))}

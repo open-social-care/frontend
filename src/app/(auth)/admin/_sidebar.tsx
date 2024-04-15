@@ -1,4 +1,5 @@
 import { DashboardLayout } from "@/components/layouts";
+import { t } from "@/lang";
 
 import { AiOutlineHome, AiOutlineTeam } from "react-icons/ai";
 import { BsHouseHeart } from "react-icons/bs";
@@ -29,7 +30,7 @@ export default function AdminSideBar() {
           href="/admin/users"
           icon={<AiOutlineTeam />}
         >
-          Usuários
+          {t("page_titles.users")}
         </DashboardLayout.SideBar.Link>
       </DashboardLayout.SideBar.LinkGroup>
     </DashboardLayout.SideBar.Root>

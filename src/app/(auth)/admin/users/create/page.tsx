@@ -1,11 +1,12 @@
 import { Paper } from "@/components/containers";
 import { Heading } from "@/components/ui";
-import CreateUserForm from "./_form";
+import { CreateUserForm } from "../_form-upsert-user";
+import { t } from "@/lang";
 
 export default function page() {
   return (
     <>
-      <Heading>Cadastrar usuário</Heading>
+      <Heading>{t("page_titles.create_user")}</Heading>
 
       <Paper className="mt-4">
         <CreateUserForm />

@@ -2,12 +2,33 @@
 
 import Form from "@/components/form";
 import { testIDs } from "@/e2e/_testIDs";
-import { useFormState } from "react-dom";
-import { createUserAction } from "./_actions";
 import { t } from "@/lang";
+import { User } from "@/schemas";
+import { useFormState } from "react-dom";
+import { updateUserAction } from "./[userId]/edit/_actions";
+import { createUserAction } from "./create/_actions";
 
-export default function CreateUserForm() {
-  const [state, formAction] = useFormState(createUserAction, undefined);
+interface UpsertUserFormProps {
+  user?: User;
+}
+
+interface UpdateUserFormProps {
+  user: User;
+}
+
+export function CreateUserForm() {
+  return UpsertUserForm({});
+}
+
+export function UpdateUserForm(props: UpdateUserFormProps) {
+  return UpsertUserForm(props);
+}
+
+function UpsertUserForm({ user }: UpsertUserFormProps) {
+  const [state, formAction] = useFormState(
+    user ? updateUserAction.bind(null, user.id) : createUserAction,
+    undefined,
+  );
 
   return (
     <>
@@ -25,6 +46,7 @@ export default function CreateUserForm() {
           placeholder="Nome"
           withAsterisk
           errors={state?.errors?.["name"]}
+          defaultValue={user?.name}
         />
 
         <Form.Input
@@ -33,6 +55,7 @@ export default function CreateUserForm() {
           placeholder="user@email.com"
           withAsterisk
           errors={state?.errors?.["email"]}
+          defaultValue={user?.email}
         />
 
         <Form.Input
@@ -46,7 +69,7 @@ export default function CreateUserForm() {
 
         <Form.Input
           name="password_confirmation"
-          label={t("auth.password") + " confirmação"}
+          label={t("auth.password_confirmation")}
           type="password"
           placeholder="********"
           withAsterisk
@@ -57,7 +80,7 @@ export default function CreateUserForm() {
           className="self-end"
           data-testid={testIDs.SUBMIT_BUTTON}
         >
-          Cadastrar
+          {t(`general_actions.${user ? "edit" : "create"}`)}
         </Form.Button>
       </Form>
     </>
