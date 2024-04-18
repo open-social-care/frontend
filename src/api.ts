@@ -1,7 +1,9 @@
 import { redirect } from "next/navigation";
 import { tokenFromCookie } from "./auth";
 
-const api = async (input: RequestInfo | URL, init?: RequestInit) => {
+type ApiProps = { input: RequestInfo | URL; init?: RequestInit; redirectSuccessPath?: string };
+
+const api = async ({ input, init, redirectSuccessPath }: ApiProps) => {
   const config: RequestInit = {
     headers: {
       "Content-Type": "application/json",
@@ -15,6 +17,10 @@ const api = async (input: RequestInfo | URL, init?: RequestInit) => {
 
   if (res.status === 401) {
     redirect("/login");
+  }
+
+  if (res.ok && redirectSuccessPath) {
+    redirect(redirectSuccessPath);
   }
 
   return res;
