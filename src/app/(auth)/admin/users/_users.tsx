@@ -1,9 +1,11 @@
 import { Paper, VBox } from "@/components/containers";
 import { AiOutlineUser } from "react-icons/ai";
 
-import Pagination from "@/components/ui/Pagination";
+import { t } from "@/lang";
 import { User } from "@/schemas";
+
 import { fetchUsersAction } from "./_actions";
+import Pagination from "@/components/ui/Pagination";
 
 interface UserListProps {
   query?: string;
@@ -45,7 +47,7 @@ export default async function Users({ query, page }: UserListProps) {
           </div>
 
           <VBox className="mt-4">
-            <a href={`/admin/users/${user.id}/edit`}>Editar</a>
+            <a href={`/admin/users/${user.id}/edit`}>{t("general_actions.edit")}</a>
           </VBox>
         </Paper>
       ))}

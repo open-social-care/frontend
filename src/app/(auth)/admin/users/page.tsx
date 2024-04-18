@@ -20,7 +20,7 @@ export default function page({ searchParams }: PageProps) {
       <VBox className="justify-between">
         <Heading>{t("page_titles.users")}</Heading>
 
-        <Button href="/admin/users/create">Cadastrar</Button>
+        <Button href="/admin/users/create">{t("general_actions.create")}</Button>
       </VBox>
 
       <HBox className="mt-5">
