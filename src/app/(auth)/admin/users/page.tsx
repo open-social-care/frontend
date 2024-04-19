@@ -2,10 +2,9 @@ import { HBox, VBox } from "@/components/containers";
 import { Heading } from "@/components/ui";
 import Button from "@/components/ui/Button";
 import Search from "@/components/ui/Search";
-import { Suspense } from "react";
-import Users from "./_users";
-import Skeletons from "./_skeletons";
+import Skeleton from "@/components/ui/Skeleton";
 import { t } from "@/lang";
+import Users from "./_users";
 
 interface PageProps {
   searchParams: {
@@ -26,9 +25,12 @@ export default function page({ searchParams }: PageProps) {
       <HBox className="mt-5">
         <Search />
 
-        <Suspense fallback={<Skeletons />}>
+        <Skeleton
+          className="h-28"
+          length={5}
+        >
           <Users {...searchParams} />
-        </Suspense>
+        </Skeleton>
       </HBox>
     </>
   );
