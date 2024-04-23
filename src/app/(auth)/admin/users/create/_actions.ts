@@ -2,6 +2,7 @@
 
 import api from "@/api";
 import { ApiResponse } from "@/schemas";
+import { redirect } from "next/navigation";
 
 export async function createUserAction(prevState: any, formData: FormData): Promise<ApiResponse> {
   const response = await api({
@@ -16,6 +17,10 @@ export async function createUserAction(prevState: any, formData: FormData): Prom
       }),
     },
   });
+
+  if (response.ok) {
+    redirect("/admin/users");
+  }
 
   const json = await response.json();
 

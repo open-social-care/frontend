@@ -2,7 +2,7 @@ import { Paper } from "@/components/containers";
 import { Heading } from "@/components/ui";
 import { t } from "@/lang";
 import { User } from "@/schemas";
-import { UpdateUserForm } from "../../_form-upsert-user";
+import { UpdateUserForm } from "./_form";
 import { fetchUserAction } from "./_actions";
 
 interface PageProps {

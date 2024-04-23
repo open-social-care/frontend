@@ -3,32 +3,12 @@
 import Form from "@/components/form";
 import { testIDs } from "@/e2e/_testIDs";
 import { t } from "@/lang";
-import { User } from "@/schemas";
 import { useFormState } from "react-dom";
-import { updateUserAction } from "./[userId]/edit/_actions";
-import { createUserAction } from "./create/_actions";
 
-interface UpsertUserFormProps {
-  user?: User;
-}
-
-interface UpdateUserFormProps {
-  user: User;
-}
+import { createUserAction } from "./_actions";
 
 export function CreateUserForm() {
-  return UpsertUserForm({});
-}
-
-export function UpdateUserForm(props: UpdateUserFormProps) {
-  return UpsertUserForm(props);
-}
-
-function UpsertUserForm({ user }: UpsertUserFormProps) {
-  const [state, formAction] = useFormState(
-    user ? updateUserAction.bind(null, user.id) : createUserAction,
-    undefined,
-  );
+  const [state, formAction] = useFormState(createUserAction, undefined);
 
   return (
     <>
@@ -46,7 +26,6 @@ function UpsertUserForm({ user }: UpsertUserFormProps) {
           placeholder="Nome"
           withAsterisk
           errors={state?.errors?.["name"]}
-          defaultValue={user?.name}
         />
 
         <Form.Input
@@ -55,7 +34,6 @@ function UpsertUserForm({ user }: UpsertUserFormProps) {
           placeholder="user@email.com"
           withAsterisk
           errors={state?.errors?.["email"]}
-          defaultValue={user?.email}
         />
 
         <Form.Input
@@ -80,7 +58,7 @@ function UpsertUserForm({ user }: UpsertUserFormProps) {
           className="self-end"
           data-testid={testIDs.SUBMIT_BUTTON}
         >
-          {t(`general_actions.${user ? "edit" : "create"}`)}
+          {t(`general_actions.create`)}
         </Form.Button>
       </Form>
     </>

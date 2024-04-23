@@ -2,6 +2,7 @@
 
 import api from "@/api";
 import { ApiResponse } from "@/schemas";
+import { redirect } from "next/navigation";
 
 export async function fetchUserAction(userId: number): Promise<ApiResponse> {
   const response = await api({
@@ -32,8 +33,11 @@ export async function updateUserAction(
         password_confirmation: formData.get("password_confirmation"),
       }),
     },
-    redirectSuccessPath: "/admin/users",
   });
+
+  if (response.ok) {
+    redirect("/admin/users");
+  }
 
   const json = await response.json();
 
