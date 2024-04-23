@@ -2,7 +2,7 @@ import { User } from "@/schemas";
 import { cookies } from "next/headers";
 import { permanentRedirect } from "next/navigation";
 
-const authDataFromCookie = () => {
+const getAuthDataFromCookie = () => {
   const cookieStore = cookies();
 
   const cookieData = cookieStore.get("auth-user")?.value;
@@ -14,14 +14,14 @@ const authDataFromCookie = () => {
   }
 };
 
-export const tokenFromCookie = () => {
-  const user = authDataFromCookie();
+export const getTokenFromCookie = () => {
+  const user = getAuthDataFromCookie();
 
   return user?.token;
 };
 
-const userFromCookie = () => {
-  const user = authDataFromCookie();
+const getUserFromCookie = () => {
+  const user = getAuthDataFromCookie();
 
   if (user) {
     // remove token info for non server components
@@ -30,7 +30,7 @@ const userFromCookie = () => {
 };
 
 export default function auth() {
-  const user = userFromCookie();
+  const user = getUserFromCookie();
 
   if (user) {
     return { user };

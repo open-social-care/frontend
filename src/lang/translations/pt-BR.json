@@ -18,6 +18,11 @@
       "edit": "Editar",
       "update": "Atualizar",
       "remove": "Remover"
+    },
+
+    "errors": {
+      "generic_next_error": "Ops... algo deu errado!",
+      "generic_next_error_try_again": "Tentar novamente"
     }
   }
 }

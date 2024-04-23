@@ -13,14 +13,6 @@ interface UserListProps {
 }
 
 export default async function Users({ query, page }: UserListProps) {
-  // -------------TODO: remove this, only for testing
-  async function timeout(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-  //await timeout(10000);
-  await timeout(0);
-  // -------------
-
   const { data, pagination } = await fetchUsersAction(query, page);
 
   const users = User.array().parse(data);

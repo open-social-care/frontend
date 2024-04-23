@@ -1,29 +1,23 @@
-import { redirect } from "next/navigation";
-import { tokenFromCookie } from "./auth";
+import { getTokenFromCookie } from "./auth";
 
-type ApiProps = { input: RequestInfo | URL; init?: RequestInit; redirectSuccessPath?: string };
+type ApiProps = { input: RequestInfo | URL; init?: RequestInit };
 
-const api = async ({ input, init, redirectSuccessPath }: ApiProps) => {
+// normalize baseUrl by removing last slash if exists
+const baseUrl = process.env.API_BASE_URL?.endsWith("/")
+  ? process.env.API_BASE_URL.slice(0, -1)
+  : process.env.API_BASE_URL;
+
+const api = async ({ input, init }: ApiProps) => {
   const config: RequestInit = {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: `Bearer ${tokenFromCookie()}`,
+      Authorization: `Bearer ${getTokenFromCookie()}`,
     },
     ...init,
   };
 
-  const res = await fetch(`${process.env.API_BASE_URL}api${input}`, config);
-
-  if (res.status === 401) {
-    redirect("/login");
-  }
-
-  if (res.ok && redirectSuccessPath) {
-    redirect(redirectSuccessPath);
-  }
-
-  return res;
+  return await fetch(`${baseUrl}${input}`, config);
 };
 
 export default api;
