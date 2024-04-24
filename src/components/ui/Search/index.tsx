@@ -1,5 +1,6 @@
 "use client";
 
+import { t } from "@/lang";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 
@@ -25,7 +26,7 @@ export default function Search({ className }: React.ComponentPropsWithoutRef<"in
         "peer block w-full rounded-lg border py-[9px] pl-5 text-sm shadow-md outline-2 placeholder:text-gray-500",
         className,
       )}
-      placeholder="Pesquisar"
+      placeholder={t("general_actions.search")}
       onChange={(e) => {
         handleSearch(e.target.value);
       }}

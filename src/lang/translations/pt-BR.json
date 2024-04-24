@@ -17,7 +17,8 @@
       "create": "Cadastrar",
       "edit": "Editar",
       "update": "Atualizar",
-      "remove": "Remover"
+      "remove": "Remover",
+      "search": "Pesquisar"
     },
 
     "errors": {
