@@ -1,11 +1,14 @@
-import { Paper, VBox } from "@/components/containers";
-import { AiOutlineUser } from "react-icons/ai";
+import { HBox, Paper, VBox } from "@/components/containers";
+import { AiOutlineEdit } from "react-icons/ai";
 
 import { t } from "@/lang";
 import { User } from "@/schemas";
 
-import { fetchUsersAction } from "./_actions";
+import { Text } from "@/components/ui";
+import Badge from "@/components/ui/Badge";
+import CardAction from "@/components/ui/CardAction";
 import Pagination from "@/components/ui/Pagination";
+import { fetchUsersAction } from "./_actions";
 
 interface UserListProps {
   query?: string;
@@ -24,30 +27,17 @@ export default async function Users({ query, page }: UserListProps) {
           className="mt-1"
           key={user.id}
         >
-          <div className="flex">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full object-cover">
-              <AiOutlineUser size={22} />
-            </div>
+          <Text className="font-semibold">{user.name}</Text>
+          <Text className="text-sm">{user.email}</Text>
 
-            <div className="min-w-40 text-start">
-              <p className="truncate text-sm font-semibold">{user.name}</p>
-              <p className="truncate text-sm text-gray-600">{user.email}</p>
-            </div>
-          </div>
+          <HBox className="mt-2 gap-4">{user.roles?.map((role) => <Badge>{role}</Badge>)}</HBox>
 
-          <div className="mt-2">
-            {user.roles?.map((role) => (
-              <span
-                key={role}
-                className="rounded-xl bg-teal-100 p-1 px-2 font-semibold text-teal-900"
-              >
-                {role}
-              </span>
-            ))}
-          </div>
-
-          <VBox className="mt-4">
-            <a href={`/admin/users/${user.id}/edit`}>{t("general_actions.edit")}</a>
+          <VBox className="mt-4 justify-end gap-4">
+            <CardAction
+              title={t("general_actions.edit")}
+              href={`/admin/users/${user.id}/edit`}
+              icon={<AiOutlineEdit />}
+            />
           </VBox>
         </Paper>
       ))}
