@@ -16,13 +16,13 @@ interface PageProps {
 export default function page({ searchParams }: PageProps) {
   return (
     <>
-      <VBox className="justify-between">
+      <HBox className="justify-between">
         <Heading>{t("page_titles.users")}</Heading>
 
         <Button href="/admin/users/create">{t("general_actions.create")}</Button>
-      </VBox>
+      </HBox>
 
-      <HBox className="mt-5">
+      <VBox className="mt-5">
         <Search />
 
         <Skeleton
@@ -31,7 +31,7 @@ export default function page({ searchParams }: PageProps) {
         >
           <Users {...searchParams} />
         </Skeleton>
-      </HBox>
+      </VBox>
     </>
   );
 }

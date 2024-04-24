@@ -1,4 +1,4 @@
-import { HBox, Paper, VBox } from "@/components/containers";
+import { HBox, Paper } from "@/components/containers";
 import { AiOutlineEdit } from "react-icons/ai";
 
 import { t } from "@/lang";
@@ -32,13 +32,13 @@ export default async function Users({ query, page }: UserListProps) {
 
           <HBox className="mt-2 gap-4">{user.roles?.map((role) => <Badge>{role}</Badge>)}</HBox>
 
-          <VBox className="mt-4 justify-end gap-4">
+          <HBox className="mt-4 justify-end gap-4">
             <CardAction
               title={t("general_actions.edit")}
               href={`/admin/users/${user.id}/edit`}
               icon={<AiOutlineEdit />}
             />
-          </VBox>
+          </HBox>
         </Paper>
       ))}
 

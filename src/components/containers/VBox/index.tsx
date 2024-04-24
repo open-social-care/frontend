@@ -8,7 +8,7 @@ export default function VBox({
 }: React.ComponentPropsWithoutRef<"div">) {
   return (
     <HBox
-      className={twMerge("flex-row", className)}
+      className={twMerge("flex-col", className)}
       {...rest}
     >
       {children}
