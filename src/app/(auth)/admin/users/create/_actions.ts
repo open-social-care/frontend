@@ -1,5 +1,6 @@
 "use server";
 
+import { actionFlash } from "@/action-flash";
 import api from "@/api";
 import { ApiResponse } from "@/schemas";
 import { redirect } from "next/navigation";
@@ -18,11 +19,12 @@ export async function createUserAction(prevState: any, formData: FormData): Prom
     },
   });
 
+  const json = await response.json();
+
   if (response.ok) {
+    actionFlash("success", json.message);
     redirect("/admin/users");
   }
-
-  const json = await response.json();
 
   return ApiResponse.parse(json);
 }

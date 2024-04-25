@@ -5,6 +5,7 @@ import Search from "@/components/ui/Search";
 import Skeleton from "@/components/ui/Skeleton";
 import { t } from "@/lang";
 import Users from "./_users";
+import { ActionFlashes } from "@/action-flash/ActionFlashes";
 
 interface PageProps {
   searchParams: {
@@ -16,6 +17,8 @@ interface PageProps {
 export default function page({ searchParams }: PageProps) {
   return (
     <>
+      <ActionFlashes />
+
       <HBox className="justify-between">
         <Heading>{t("page_titles.users")}</Heading>
 
