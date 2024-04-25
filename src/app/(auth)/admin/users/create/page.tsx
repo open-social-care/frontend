@@ -6,7 +6,7 @@ import { t } from "@/lang";
 export default function page() {
   return (
     <>
-      <Heading>{t("page_titles.create_user")}</Heading>
+      <Heading h1>{t("page_titles.create_user")}</Heading>
 
       <Paper className="mt-4">
         <CreateUserForm />

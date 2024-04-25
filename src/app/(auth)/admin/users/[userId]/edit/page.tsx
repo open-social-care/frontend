@@ -18,7 +18,7 @@ export default async function page({ params }: PageProps) {
 
   return (
     <>
-      <Heading>{t("page_titles.edit_user")}</Heading>
+      <Heading h1>{t("page_titles.edit_user")}</Heading>
 
       <Paper className="mt-4">
         <UpdateUserForm user={user} />

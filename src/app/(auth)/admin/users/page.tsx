@@ -20,7 +20,7 @@ export default function page({ searchParams }: PageProps) {
       <ActionFlashes />
 
       <HBox className="justify-between">
-        <Heading>{t("page_titles.users")}</Heading>
+        <Heading h1>{t("page_titles.users")}</Heading>
 
         <Button href="/admin/users/create">{t("general_actions.create")}</Button>
       </HBox>

@@ -30,7 +30,9 @@ export default async function Users({ query, page }: UserListProps) {
           <Text className="font-semibold">{user.name}</Text>
           <Text className="text-sm">{user.email}</Text>
 
-          <HBox className="mt-2 gap-4">{user.roles?.map((role) => <Badge>{role}</Badge>)}</HBox>
+          <HBox className="mt-2 gap-4">
+            {user.roles?.map((role, index) => <Badge key={index}>{role}</Badge>)}
+          </HBox>
 
           <HBox className="mt-4 justify-end gap-4">
             <CardAction
