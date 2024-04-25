@@ -7,10 +7,7 @@ export default function Content({
 }: React.ComponentPropsWithoutRef<"div">) {
   return (
     <div
-      className={twMerge(
-        "flex min-h-screen pb-4 pt-16",
-        className,
-      )}
+      className={twMerge("mb-5 flex pb-4 pt-16", className)}
       {...rest}
     >
       {children}

@@ -6,12 +6,15 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export async function loginAction(prevState: any, formData: FormData): Promise<ApiResponse> {
-  const response = await api("/login", {
-    method: "POST",
-    body: JSON.stringify({
-      email: formData.get("email"),
-      password: formData.get("password"),
-    }),
+  const response = await api({
+    input: "/login",
+    init: {
+      method: "POST",
+      body: JSON.stringify({
+        email: formData.get("email"),
+        password: formData.get("password"),
+      }),
+    },
   });
 
   const json = await response.json();

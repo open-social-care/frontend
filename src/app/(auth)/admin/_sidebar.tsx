@@ -1,8 +1,9 @@
 import { DashboardLayout } from "@/components/layouts";
+import { t } from "@/lang";
 
-import { AiOutlineHome, AiOutlineUsergroupAdd } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineTeam } from "react-icons/ai";
 import { BsHouseHeart } from "react-icons/bs";
-import { FaUserSecret, FaUsers } from "react-icons/fa";
+import { FaUserSecret } from "react-icons/fa";
 
 export default function AdminSideBar() {
   return (
@@ -24,17 +25,12 @@ export default function AdminSideBar() {
         >
           Organizações
         </DashboardLayout.SideBar.Link>
-      </DashboardLayout.SideBar.LinkGroup>
 
-      <DashboardLayout.SideBar.LinkGroup
-        title="Usuários"
-        icon={<FaUsers />}
-      >
         <DashboardLayout.SideBar.Link
-          href="/admin/managers"
-          icon={<AiOutlineUsergroupAdd />}
+          href="/admin/users"
+          icon={<AiOutlineTeam />}
         >
-          Gestores
+          {t("page_titles.users")}
         </DashboardLayout.SideBar.Link>
       </DashboardLayout.SideBar.LinkGroup>
     </DashboardLayout.SideBar.Root>

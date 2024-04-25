@@ -1,22 +1,23 @@
-import { tokenFromCookie } from "./auth";
+import { getTokenFromCookie } from "./auth";
 
-const api = async (
-  input: RequestInfo | URL,
-  init?: RequestInit,
-) => {
+type ApiProps = { input: RequestInfo | URL; init?: RequestInit };
+
+// normalize baseUrl by removing last slash if exists
+const baseUrl = process.env.API_BASE_URL?.endsWith("/")
+  ? process.env.API_BASE_URL.slice(0, -1)
+  : process.env.API_BASE_URL;
+
+const api = async ({ input, init }: ApiProps) => {
   const config: RequestInit = {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: `Bearer ${tokenFromCookie()}`,
+      Authorization: `Bearer ${getTokenFromCookie()}`,
     },
     ...init,
   };
 
-  return await fetch(
-    `${process.env.API_BASE_URL}api${input}`,
-    config,
-  );
+  return await fetch(`${baseUrl}${input}`, config);
 };
 
 export default api;

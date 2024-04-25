@@ -7,7 +7,7 @@ export default function HBox({
 }: React.ComponentPropsWithoutRef<"div">) {
   return (
     <div
-      className={twMerge("flex flex-col gap-2", className)}
+      className={twMerge("flex flex-row gap-2", className)}
       {...rest}
     >
       {children}

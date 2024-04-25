@@ -7,7 +7,7 @@ export default function Main({
 }: React.ComponentPropsWithoutRef<"main">) {
   return (
     <main
-      className={twMerge("w-full bg-gray-50 px-4 pt-4 md:ml-64 md:px-6", className)}
+      className={twMerge("w-full px-4 pt-4 md:ml-64 md:px-6", className)}
       {...rest}
     >
       {children}
