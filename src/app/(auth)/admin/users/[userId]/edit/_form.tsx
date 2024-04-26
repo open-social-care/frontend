@@ -29,7 +29,7 @@ export function UpdateUserForm({ user }: UpdateUserFormProps) {
         placeholder={t("labels.name")}
         withAsterisk
         errors={state?.errors?.["name"]}
-        defaultValue={user?.name}
+        defaultValue={user.name}
       />
 
       <Form.Input
@@ -38,7 +38,7 @@ export function UpdateUserForm({ user }: UpdateUserFormProps) {
         placeholder="user@email.com"
         withAsterisk
         errors={state?.errors?.["email"]}
-        defaultValue={user?.email}
+        defaultValue={user.email}
       />
 
       <Form.Input
@@ -63,7 +63,7 @@ export function UpdateUserForm({ user }: UpdateUserFormProps) {
         className="self-end"
         data-testid={testIDs.SUBMIT_BUTTON}
       >
-        {t(`general_actions.${user ? "edit" : "create"}`)}
+        {t(`general_actions.update`)}
       </Form.Button>
     </Form>
   );

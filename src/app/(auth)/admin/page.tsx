@@ -1,4 +1,4 @@
-import { Paper, VBox } from "@/components/containers";
+import { Paper } from "@/components/containers";
 import { Heading } from "@/components/ui";
 
 export default function page() {

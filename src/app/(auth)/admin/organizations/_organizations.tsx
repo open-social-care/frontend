@@ -27,9 +27,16 @@ export default async function Organizations({ query, page }: OrganizationListPro
           key={organization.id}
         >
           <Text className="font-semibold">{organization.name}</Text>
+
           <Text className="text-sm">
             {t(`document_types.${organization.document_type}`)}: {organization.document}
           </Text>
+
+          {organization.phone && (
+            <Text className="text-sm">
+              {t("labels.phone")}: {organization.phone}
+            </Text>
+          )}
 
           <HBox className="mt-4 justify-end gap-4">
             <CardAction
