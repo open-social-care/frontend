@@ -10,7 +10,9 @@
     "page_titles": {
       "users": "Usuários",
       "create_user": "Cadastrar usuário",
-      "edit_user": "Editar usuário"
+      "edit_user": "Editar usuário",
+
+      "organizations": "Organizações"
     },
 
     "general_actions": {
