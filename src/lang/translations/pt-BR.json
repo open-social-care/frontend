@@ -12,7 +12,8 @@
       "create_user": "Cadastrar usuário",
       "edit_user": "Editar usuário",
 
-      "organizations": "Organizações"
+      "organizations": "Organizações",
+      "create_organization": "Cadastrar organização"
     },
 
     "general_actions": {
@@ -21,6 +22,18 @@
       "update": "Atualizar",
       "remove": "Remover",
       "search": "Pesquisar"
+    },
+
+    "labels": {
+      "name": "Nome",
+      "phone": "Telefone",
+      "document": "Documento",
+      "document_type": "Tipo de documento"
+    },
+
+    "document_types": {
+      "cpf": "CPF",
+      "cnpj": "CNPJ"
     },
 
     "errors": {

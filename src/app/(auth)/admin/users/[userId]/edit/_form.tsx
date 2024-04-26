@@ -25,8 +25,8 @@ export function UpdateUserForm({ user }: UpdateUserFormProps) {
 
       <Form.Input
         name="name"
-        label="Nome"
-        placeholder="Nome"
+        label={t("labels.name")}
+        placeholder={t("labels.name")}
         withAsterisk
         errors={state?.errors?.["name"]}
         defaultValue={user?.name}

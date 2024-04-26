@@ -23,7 +23,7 @@ export default function AdminSideBar() {
           href="/admin/organizations"
           icon={<BsHouseHeart />}
         >
-          Organizações
+          {t("page_titles.organizations")}
         </DashboardLayout.SideBar.Link>
 
         <DashboardLayout.SideBar.Link

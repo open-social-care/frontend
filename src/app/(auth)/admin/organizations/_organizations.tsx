@@ -28,7 +28,7 @@ export default async function Organizations({ query, page }: OrganizationListPro
         >
           <Text className="font-semibold">{organization.name}</Text>
           <Text className="text-sm">
-            {organization.document_type}: {organization.document}
+            {t(`document_types.${organization.document_type}`)}: {organization.document}
           </Text>
 
           <HBox className="mt-4 justify-end gap-4">

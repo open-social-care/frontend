@@ -1,9 +1,11 @@
 import { z } from "zod";
 
+export const document_types = ["cpf", "cnpj"] as const;
+
 export const Organization = z.object({
   id: z.number(),
   name: z.string(),
-  document_type: z.string(),
+  document_type: z.enum(document_types),
   document: z.string(),
 });
 
