@@ -2,8 +2,8 @@ import { Paper } from "@/components/containers";
 import { Heading } from "@/components/ui";
 import { t } from "@/lang";
 import { UpdateOrganizationForm } from "./_form";
-import { fetchOrganizationAction } from "./_actions";
 import { Organization } from "@/schemas";
+import { fetchOrganizationAction } from "../_actions";
 
 interface PageProps {
   params: {

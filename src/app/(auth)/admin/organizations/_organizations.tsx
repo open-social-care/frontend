@@ -1,5 +1,5 @@
 import { HBox, Paper } from "@/components/containers";
-import { AiOutlineEdit } from "react-icons/ai";
+import { AiOutlineEdit, AiOutlineSetting } from "react-icons/ai";
 
 import { t } from "@/lang";
 import { Organization } from "@/schemas";
@@ -39,6 +39,12 @@ export default async function Organizations({ query, page }: OrganizationListPro
           )}
 
           <HBox className="mt-4 justify-end gap-4">
+            <CardAction
+              title={t("general_actions.manage")}
+              href={`/admin/organizations/${organization.id}`}
+              icon={<AiOutlineSetting />}
+            />
+
             <CardAction
               title={t("general_actions.edit")}
               href={`/admin/organizations/${organization.id}/edit`}
