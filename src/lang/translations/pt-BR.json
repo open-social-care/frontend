@@ -20,6 +20,7 @@
     "general_actions": {
       "create": "Cadastrar",
       "edit": "Editar",
+      "add": "Adicionar",
       "manage": "Gerenciar",
       "update": "Atualizar",
       "remove": "Remover",

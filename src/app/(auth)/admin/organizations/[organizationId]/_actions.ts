@@ -1,3 +1,5 @@
+"use server";
+
 import api from "@/api";
 import { ApiResponse } from "@/schemas";
 
@@ -24,6 +26,25 @@ export async function fetchUsersByRole(
     input: `/admin/organizations/${organizationId}/get-users-by-role/${role}?page=${page || 1}&q=${query || ""}`,
     init: {
       method: "GET",
+    },
+  });
+
+  const json = await response.json();
+
+  return ApiResponse.parse(json);
+}
+
+export async function associateUserAction(
+  organizationId: number,
+  roleId: number,
+  prevState: any,
+  formData: FormData,
+): Promise<ApiResponse> {
+  const response = await api({
+    input: `/admin/organizations/${organizationId}/associate-users`,
+    init: {
+      method: "POST",
+      body: JSON.stringify({ user_id: formData.get("user_id"), role_id: roleId }),
     },
   });
 
