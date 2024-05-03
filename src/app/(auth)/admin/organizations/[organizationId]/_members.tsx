@@ -1,13 +1,14 @@
 import { User } from "@/schemas";
 
+import { HBox, VBox } from "@/components/containers";
 import { Text } from "@/components/ui";
 import Pagination from "@/components/ui/Pagination";
 import { fetchUsersByRole } from "./_actions";
-import { HBox } from "@/components/containers";
+import DissociateAction from "./_dissociate-action";
 
 interface OrganizationMembersProps {
   organizationId: number;
-  role: string;
+  roleId: number;
   pageQueryName: string;
   query?: string;
   page?: number;
@@ -15,12 +16,12 @@ interface OrganizationMembersProps {
 
 export default async function OrganizationMembers({
   organizationId,
-  role,
+  roleId,
   pageQueryName,
   query,
   page,
 }: OrganizationMembersProps) {
-  const { data, pagination } = await fetchUsersByRole(organizationId, role, query, page);
+  const { data, pagination } = await fetchUsersByRole(organizationId, roleId, query, page);
 
   const users = User.array().parse(data);
 
@@ -29,12 +30,23 @@ export default async function OrganizationMembers({
   }
 
   return (
-    <>
+    <div className="mt-4">
       {users.map((user) => (
-        <HBox key={user.id}>
-          <Text className="font-semibold">{user.name}</Text>
+        <HBox
+          key={user.id}
+          className="justify-between rounded-lg px-4 py-2 hover:bg-gray-50"
+        >
+          <VBox>
+            <Text className="font-semibold">{user.name}</Text>
 
-          <Text className="text-sm">{user.email}</Text>
+            <Text className="text-sm">{user.email}</Text>
+          </VBox>
+
+          <DissociateAction
+            organizationId={organizationId}
+            roleId={roleId}
+            userId={user.id}
+          />
         </HBox>
       ))}
 
@@ -42,6 +54,6 @@ export default async function OrganizationMembers({
         paginate={pagination}
         queryName={pageQueryName}
       />
-    </>
+    </div>
   );
 }

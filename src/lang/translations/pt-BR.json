@@ -7,6 +7,13 @@
       "password_confirmation": "Confirmação de senha"
     },
 
+    "roles": {
+      "manager": "Gestor",
+      "managers": "Gestores",
+      "social_assistant": "Assistente social",
+      "social_assistants": "Assistentes sociais"
+    },
+
     "page_titles": {
       "users": "Usuários",
       "create_user": "Cadastrar usuário",
@@ -21,6 +28,7 @@
       "create": "Cadastrar",
       "edit": "Editar",
       "add": "Adicionar",
+      "dissociate": "Dissociar",
       "manage": "Gerenciar",
       "update": "Atualizar",
       "remove": "Remover",

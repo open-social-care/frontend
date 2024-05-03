@@ -1,10 +1,11 @@
 import { Paper } from "@/components/containers";
 import { Heading } from "@/components/ui";
+import { roles } from "@/enums/roles";
+import { t } from "@/lang";
 import { User } from "@/schemas";
 import { fetchUsersAction } from "../../users/_actions";
 import FormAddMembers from "./_form-add-members";
-import OrganizationUsers from "./_members";
-import { roles } from "@/enums/roles";
+import OrganizationMembers from "./_members";
 
 interface PageProps {
   params: {
@@ -12,6 +13,7 @@ interface PageProps {
   };
   searchParams: {
     managersPage: number;
+    socialAssistantsPage: number;
   };
 }
 
@@ -29,7 +31,7 @@ export default async function page({ params, searchParams }: PageProps) {
       <Heading h1>Organização</Heading>
 
       <Paper className="mt-4">
-        <Heading h2>Gestores</Heading>
+        <Heading h2>{t("roles.manager")}</Heading>
 
         <FormAddMembers
           organizationId={params.organizationId}
@@ -37,15 +39,16 @@ export default async function page({ params, searchParams }: PageProps) {
           roleId={roles.MANAGER}
         />
 
-        <OrganizationUsers
+        <OrganizationMembers
           organizationId={params.organizationId}
-          role="manager"
+          roleId={roles.MANAGER}
           pageQueryName="managersPage"
+          page={searchParams.managersPage}
         />
       </Paper>
 
       <Paper className="mt-4">
-        <Heading h2>Assistentes sociais</Heading>
+        <Heading h2>{t("roles.social_assistants")}</Heading>
 
         <FormAddMembers
           organizationId={params.organizationId}
@@ -53,10 +56,11 @@ export default async function page({ params, searchParams }: PageProps) {
           roleId={roles.SOCIAL_ASSISTANT}
         />
 
-        <OrganizationUsers
+        <OrganizationMembers
           organizationId={params.organizationId}
-          role="social-assistant"
+          roleId={roles.SOCIAL_ASSISTANT}
           pageQueryName="socialAssistantsPage"
+          page={searchParams.socialAssistantsPage}
         />
       </Paper>
     </>

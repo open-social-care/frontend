@@ -28,7 +28,10 @@ export default function CardAction({
     <a
       href={href}
       onClick={onClick}
-      className={twMerge("flex flex-row items-center gap-2", className)}
+      className={twMerge(
+        "flex cursor-pointer flex-row items-center gap-2 disabled:cursor-not-allowed",
+        className,
+      )}
       {...rest}
     >
       {icon}
