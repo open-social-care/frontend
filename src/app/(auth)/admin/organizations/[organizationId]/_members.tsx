@@ -8,6 +8,7 @@ import { HBox } from "@/components/containers";
 interface OrganizationMembersProps {
   organizationId: number;
   role: string;
+  pageQueryName: string;
   query?: string;
   page?: number;
 }
@@ -15,6 +16,7 @@ interface OrganizationMembersProps {
 export default async function OrganizationMembers({
   organizationId,
   role,
+  pageQueryName,
   query,
   page,
 }: OrganizationMembersProps) {
@@ -36,7 +38,10 @@ export default async function OrganizationMembers({
         </HBox>
       ))}
 
-      <Pagination paginate={pagination} />
+      <Pagination
+        paginate={pagination}
+        queryName={pageQueryName}
+      />
     </>
   );
 }

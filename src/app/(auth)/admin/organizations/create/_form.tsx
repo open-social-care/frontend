@@ -6,7 +6,7 @@ import { t } from "@/lang";
 import { useFormState } from "react-dom";
 
 import { createOrganizationAction } from "./_actions";
-import i18nEntriesToSelect from "@/helpers/i18nEntriesToSelect";
+import documentTypesToSelect from "@/helpers/documentTypesToSelect";
 
 export function CreateOrganizationForm() {
   const [state, formAction] = useFormState(createOrganizationAction, undefined);
@@ -40,7 +40,7 @@ export function CreateOrganizationForm() {
       <Form.Select
         name="document_type"
         label={t("labels.document_type")}
-        data={i18nEntriesToSelect("document_types")}
+        data={documentTypesToSelect()}
         withAsterisk
         errors={state?.errors?.["document_type"]}
       />

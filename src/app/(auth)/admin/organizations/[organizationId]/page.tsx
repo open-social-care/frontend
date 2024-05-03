@@ -4,14 +4,18 @@ import { User } from "@/schemas";
 import { fetchUsersAction } from "../../users/_actions";
 import FormAddMembers from "./_form-add-members";
 import OrganizationUsers from "./_members";
+import { roles } from "@/enums/roles";
 
 interface PageProps {
   params: {
     organizationId: number;
   };
+  searchParams: {
+    managersPage: number;
+  };
 }
 
-export default async function page({ params }: PageProps) {
+export default async function page({ params, searchParams }: PageProps) {
   //const { data } = await fetchOrganizationAction(params.organizationId);
 
   //const organization = Organization.parse(data);
@@ -30,12 +34,13 @@ export default async function page({ params }: PageProps) {
         <FormAddMembers
           organizationId={params.organizationId}
           users={users}
-          roleId={1}
+          roleId={roles.MANAGER}
         />
 
         <OrganizationUsers
           organizationId={params.organizationId}
           role="manager"
+          pageQueryName="managersPage"
         />
       </Paper>
 
@@ -45,12 +50,13 @@ export default async function page({ params }: PageProps) {
         <FormAddMembers
           organizationId={params.organizationId}
           users={users}
-          roleId={2}
+          roleId={roles.SOCIAL_ASSISTANT}
         />
 
         <OrganizationUsers
           organizationId={params.organizationId}
           role="social-assistant"
+          pageQueryName="socialAssistantsPage"
         />
       </Paper>
     </>

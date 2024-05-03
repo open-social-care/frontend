@@ -5,9 +5,9 @@ import { testIDs } from "@/e2e/_testIDs";
 import { t } from "@/lang";
 import { useFormState } from "react-dom";
 
-import i18nEntriesToSelect from "@/helpers/i18nEntriesToSelect";
-import { updateOrganizationAction } from "./_actions";
 import { Organization } from "@/schemas";
+import { updateOrganizationAction } from "./_actions";
+import documentTypesToSelect from "@/helpers/documentTypesToSelect";
 
 interface UpdateOrganizationFormProps {
   organization: Organization;
@@ -50,7 +50,7 @@ export function UpdateOrganizationForm({ organization }: UpdateOrganizationFormP
       <Form.Select
         name="document_type"
         label={t("labels.document_type")}
-        data={i18nEntriesToSelect("document_types")}
+        data={documentTypesToSelect()}
         withAsterisk
         errors={state?.errors?.["document_type"]}
         defaultValue={organization.document_type}

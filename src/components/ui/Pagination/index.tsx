@@ -10,9 +10,16 @@ import PaginationButton from "./PaginationButton";
 
 type PaginationProps = {
   paginate?: PaginationInfo;
+  queryName?: string;
 } & React.ComponentPropsWithoutRef<"div">;
 
-export default function Pagination({ paginate, children, className, ...rest }: PaginationProps) {
+export default function Pagination({
+  paginate,
+  queryName,
+  children,
+  className,
+  ...rest
+}: PaginationProps) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -22,10 +29,12 @@ export default function Pagination({ paginate, children, className, ...rest }: P
   function handlePaginate(page: number) {
     const params = new URLSearchParams(searchParams);
 
+    const qName = queryName || "page";
+
     if (page) {
-      params.set("page", page.toString());
+      params.set(qName, page.toString());
     } else {
-      params.delete("page");
+      params.delete(qName);
     }
 
     replace(`${pathname}?${params.toString()}`);
