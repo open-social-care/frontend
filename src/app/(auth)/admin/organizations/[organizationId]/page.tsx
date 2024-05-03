@@ -28,6 +28,8 @@ export default async function page({ params, searchParams }: PageProps) {
 
   return (
     <>
+      {/* <Heading h1>{organization.name}</Heading> */}
+
       <Heading h1>Organização</Heading>
 
       <Paper className="mt-4">
