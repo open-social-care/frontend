@@ -5,12 +5,13 @@ import Search from "@/components/ui/Search";
 import Skeleton from "@/components/ui/Skeleton";
 import { t } from "@/lang";
 import { ActionFlashes } from "@/action-flash/ActionFlashes";
-import Organizations from "./_organizations";
+import OrganizationList from "@/components/pages/OrganizationList";
+import { profiles } from "@/enums/profiles";
 
 interface PageProps {
   searchParams: {
     page: number;
-    query: string;
+    search: string;
   };
 }
 
@@ -32,7 +33,10 @@ export default function page({ searchParams }: PageProps) {
           className="h-28"
           length={5}
         >
-          <Organizations {...searchParams} />
+          <OrganizationList
+            profile={profiles.ADMIN}
+            {...searchParams}
+          />
         </Skeleton>
       </VBox>
     </>

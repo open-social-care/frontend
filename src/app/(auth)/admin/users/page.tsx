@@ -10,7 +10,7 @@ import { ActionFlashes } from "@/action-flash/ActionFlashes";
 interface PageProps {
   searchParams: {
     page: number;
-    query: string;
+    search: string;
   };
 }
 

@@ -5,7 +5,8 @@ import { t } from "@/lang";
 import { User } from "@/schemas";
 import { fetchUsersAction } from "../../users/_actions";
 import FormAddMembers from "./_form-add-members";
-import OrganizationMembers from "./_members";
+import OrganizationMembers from "@/components/pages/OrganizationMembers";
+import { profiles } from "@/enums/profiles";
 
 interface PageProps {
   params: {
@@ -42,6 +43,7 @@ export default async function page({ params, searchParams }: PageProps) {
         />
 
         <OrganizationMembers
+          profile={profiles.ADMIN}
           organizationId={params.organizationId}
           roleId={roles.MANAGER}
           pageQueryName="managersPage"
@@ -59,6 +61,7 @@ export default async function page({ params, searchParams }: PageProps) {
         />
 
         <OrganizationMembers
+          profile={profiles.ADMIN}
           organizationId={params.organizationId}
           roleId={roles.SOCIAL_ASSISTANT}
           pageQueryName="socialAssistantsPage"

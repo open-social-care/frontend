@@ -11,12 +11,12 @@ import Pagination from "@/components/ui/Pagination";
 import { fetchUsersAction } from "./_actions";
 
 interface UserListProps {
-  query?: string;
+  search?: string;
   page?: number;
 }
 
-export default async function Users({ query, page }: UserListProps) {
-  const { data, pagination } = await fetchUsersAction(query, page);
+export default async function Users({ search, page }: UserListProps) {
+  const { data, pagination } = await fetchUsersAction(search, page);
 
   const users = User.array().parse(data);
 
