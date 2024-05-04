@@ -1,4 +1,5 @@
 import { DashboardLayout } from "@/components/layouts";
+import { t } from "@/lang";
 
 import { AiOutlineHome, AiOutlineUsergroupAdd } from "react-icons/ai";
 import { BsHouseHeart, BsPersonFillGear } from "react-icons/bs";
@@ -22,7 +23,7 @@ export default function ManagerSideBar() {
           href="/manager/organizations"
           icon={<BsHouseHeart />}
         >
-          Organizações
+          {t("page_titles.organizations")}
         </DashboardLayout.SideBar.Link>
       </DashboardLayout.SideBar.LinkGroup>
 
