@@ -53,7 +53,6 @@ export default async function OrganizationMembers({
           {profile == "admin" && (
             <HBox className="justify-end">
               <DissociateAction
-                profile={profile}
                 organizationId={organizationId}
                 roleId={roleId}
                 userId={user.id}

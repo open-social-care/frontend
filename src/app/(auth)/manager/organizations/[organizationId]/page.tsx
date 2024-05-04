@@ -1,8 +1,7 @@
 import { Paper } from "@/components/containers";
 import OrganizationMembers from "@/components/pages/OrganizationMembers";
 import { Heading } from "@/components/ui";
-import { profiles } from "@/enums/profiles";
-import { roles } from "@/enums/roles";
+import { roleNames, roles } from "@/enums/roles";
 import { t } from "@/lang";
 
 interface PageProps {
@@ -30,9 +29,11 @@ export default async function page({ params, searchParams }: PageProps) {
         <Heading h2>{t("roles.manager")}</Heading>
 
         <OrganizationMembers
-          profile={profiles.MANAGER}
+          profile={roleNames.MANAGER}
+          //
           organizationId={params.organizationId}
           roleId={roles.MANAGER}
+          //
           pageQueryName="managersPage"
           page={searchParams.managersPage}
         />
@@ -42,9 +43,11 @@ export default async function page({ params, searchParams }: PageProps) {
         <Heading h2>{t("roles.social_assistants")}</Heading>
 
         <OrganizationMembers
-          profile={profiles.MANAGER}
+          profile={roleNames.MANAGER}
+          //
           organizationId={params.organizationId}
           roleId={roles.SOCIAL_ASSISTANT}
+          //
           pageQueryName="socialAssistantsPage"
           page={searchParams.socialAssistantsPage}
         />

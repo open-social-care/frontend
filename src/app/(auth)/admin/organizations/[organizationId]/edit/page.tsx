@@ -4,7 +4,7 @@ import { t } from "@/lang";
 import { Organization } from "@/schemas";
 import { fetchOrganizationAction } from "../_actions";
 import { OrganizationUpdateForm } from "@/components/pages/OrganizationUpdateForm";
-import { profiles } from "@/enums/profiles";
+import { roleNames } from "@/enums/roles";
 
 interface PageProps {
   params: {
@@ -23,7 +23,7 @@ export default async function page({ params }: PageProps) {
 
       <Paper className="mt-4">
         <OrganizationUpdateForm
-          profile={profiles.ADMIN}
+          profile={roleNames.ADMIN}
           organization={organization}
         />
       </Paper>

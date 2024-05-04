@@ -1,12 +1,11 @@
 import { Paper } from "@/components/containers";
 import { Heading } from "@/components/ui";
-import { roles } from "@/enums/roles";
+import { roleNames, roles } from "@/enums/roles";
 import { t } from "@/lang";
 import { User } from "@/schemas";
 import { fetchUsersAction } from "../../users/_actions";
 import FormAddMembers from "./_form-add-members";
 import OrganizationMembers from "@/components/pages/OrganizationMembers";
-import { profiles } from "@/enums/profiles";
 
 interface PageProps {
   params: {
@@ -37,15 +36,17 @@ export default async function page({ params, searchParams }: PageProps) {
         <Heading h2>{t("roles.manager")}</Heading>
 
         <FormAddMembers
-          organizationId={params.organizationId}
           users={users}
+          organizationId={params.organizationId}
           roleId={roles.MANAGER}
         />
 
         <OrganizationMembers
-          profile={profiles.ADMIN}
+          profile={roleNames.ADMIN}
+          //
           organizationId={params.organizationId}
           roleId={roles.MANAGER}
+          //
           pageQueryName="managersPage"
           page={searchParams.managersPage}
         />
@@ -55,15 +56,17 @@ export default async function page({ params, searchParams }: PageProps) {
         <Heading h2>{t("roles.social_assistants")}</Heading>
 
         <FormAddMembers
-          organizationId={params.organizationId}
           users={users}
+          organizationId={params.organizationId}
           roleId={roles.SOCIAL_ASSISTANT}
         />
 
         <OrganizationMembers
-          profile={profiles.ADMIN}
+          profile={roleNames.ADMIN}
+          //
           organizationId={params.organizationId}
           roleId={roles.SOCIAL_ASSISTANT}
+          //
           pageQueryName="socialAssistantsPage"
           page={searchParams.socialAssistantsPage}
         />

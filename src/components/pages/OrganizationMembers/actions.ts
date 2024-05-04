@@ -1,24 +1,21 @@
 "use server";
 
 import api from "@/api";
-import { roles } from "@/enums/roles";
+import { roleNames } from "@/enums/roles";
+import { getRole } from "@/helpers/getRole";
 import { ApiResponse, Profile } from "@/schemas";
+import { RoleId } from "@/schemas/Role";
 import { revalidateTag } from "next/cache";
-
-const roleNames = {
-  2: "manager",
-  3: "social-assistant",
-};
 
 export async function fetchUsersByRole(
   profile: Profile,
   organizationId: number,
-  roleId: roles.MANAGER | roles.SOCIAL_ASSISTANT,
+  roleId: RoleId,
   search?: string,
   page?: number,
 ): Promise<ApiResponse> {
   const response = await api({
-    input: `/${profile}/organizations/${organizationId}/get-users-by-role/${roleNames[roleId]}?page=${page || 1}&q=${search || ""}`,
+    input: `/${profile}/organizations/${organizationId}/get-users-by-role/${getRole(roleId).name}?page=${page || 1}&q=${search || ""}`,
     init: {
       method: "GET",
       next: {
@@ -33,20 +30,18 @@ export async function fetchUsersByRole(
 }
 
 export interface DissociateUserActionValues {
-  profile: string;
   organizationId: number;
-  roleId: number;
+  roleId: RoleId;
   userId: number;
 }
 
 export async function dissociateUserAction({
-  profile,
   organizationId,
   roleId,
   userId,
 }: DissociateUserActionValues): Promise<ApiResponse> {
   const response = await api({
-    input: `/${profile}/organizations/${organizationId}/disassociate-users`,
+    input: `/admin/organizations/${organizationId}/disassociate-users`,
     init: {
       method: "POST",
       body: JSON.stringify({ data: [{ user_id: userId, role_id: roleId }] }),

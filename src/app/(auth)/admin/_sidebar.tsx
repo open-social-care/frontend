@@ -1,4 +1,5 @@
 import { DashboardLayout } from "@/components/layouts";
+import { roleNames } from "@/enums/roles";
 import { t } from "@/lang";
 
 import { AiOutlineHome, AiOutlineTeam } from "react-icons/ai";
@@ -13,7 +14,7 @@ export default function AdminSideBar() {
         icon={<FaUserSecret />}
       >
         <DashboardLayout.SideBar.Link
-          href="/admin"
+          href={`/${roleNames.ADMIN}`}
           icon={<AiOutlineHome />}
         >
           Início

@@ -2,6 +2,7 @@
 
 import api from "@/api";
 import { ApiResponse } from "@/schemas";
+import { RoleId } from "@/schemas/Role";
 import { revalidateTag } from "next/cache";
 
 export async function fetchOrganizationAction(organizationId: number): Promise<ApiResponse> {
@@ -19,7 +20,7 @@ export async function fetchOrganizationAction(organizationId: number): Promise<A
 
 export async function associateUserAction(
   organizationId: number,
-  roleId: number,
+  roleId: RoleId,
   prevState: any,
   formData: FormData,
 ): Promise<ApiResponse> {

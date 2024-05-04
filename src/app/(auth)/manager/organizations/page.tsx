@@ -4,7 +4,7 @@ import OrganizationList from "@/components/pages/OrganizationList";
 import { Heading } from "@/components/ui";
 import Search from "@/components/ui/Search";
 import Skeleton from "@/components/ui/Skeleton";
-import { profiles } from "@/enums/profiles";
+import { roleNames } from "@/enums/roles";
 import { t } from "@/lang";
 
 interface PageProps {
@@ -29,7 +29,7 @@ export default function page({ searchParams }: PageProps) {
           length={5}
         >
           <OrganizationList
-            profile={profiles.MANAGER}
+            profile={roleNames.MANAGER}
             {...searchParams}
           />
         </Skeleton>
