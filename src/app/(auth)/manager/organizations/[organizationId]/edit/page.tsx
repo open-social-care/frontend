@@ -1,9 +1,10 @@
 import { Paper } from "@/components/containers";
 import { Heading } from "@/components/ui";
 import { t } from "@/lang";
-import { UpdateOrganizationForm } from "./_form";
 import { Organization } from "@/schemas";
 import { fetchOrganizationAction } from "../_actions";
+import { OrganizationUpdateForm } from "@/components/pages/OrganizationUpdateForm";
+import { profiles } from "@/enums/profiles";
 
 interface PageProps {
   params: {
@@ -21,7 +22,10 @@ export default async function page({ params }: PageProps) {
       <Heading h1>{t("page_titles.edit_organization")}</Heading>
 
       <Paper className="mt-4">
-        <UpdateOrganizationForm organization={organization} />
+        <OrganizationUpdateForm
+          profile={profiles.MANAGER}
+          organization={organization}
+        />
       </Paper>
     </>
   );

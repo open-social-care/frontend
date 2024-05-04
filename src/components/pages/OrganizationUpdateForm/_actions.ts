@@ -2,16 +2,17 @@
 
 import { actionFlash } from "@/action-flash";
 import api from "@/api";
-import { ApiResponse } from "@/schemas";
+import { ApiResponse, Profile } from "@/schemas";
 import { redirect } from "next/navigation";
 
 export async function updateOrganizationAction(
+  profile: Profile,
   organizationId: number,
   prevState: any,
   formData: FormData,
 ): Promise<ApiResponse> {
   const response = await api({
-    input: `/admin/organizations/${organizationId}`,
+    input: `/${profile}/organizations/${organizationId}`,
     init: {
       method: "PUT",
       body: JSON.stringify({
@@ -27,7 +28,7 @@ export async function updateOrganizationAction(
 
   if (response.ok) {
     actionFlash("success", json.message);
-    redirect("/admin/organizations");
+    redirect(`/${profile}/organizations`);
   }
 
   return ApiResponse.parse(json);

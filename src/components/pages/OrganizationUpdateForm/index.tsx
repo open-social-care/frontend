@@ -5,17 +5,18 @@ import { testIDs } from "@/e2e/_testIDs";
 import { t } from "@/lang";
 import { useFormState } from "react-dom";
 
-import { Organization } from "@/schemas";
+import { Organization, Profile } from "@/schemas";
 import { updateOrganizationAction } from "./_actions";
 import documentTypesToSelect from "@/helpers/documentTypesToSelect";
 
-interface UpdateOrganizationFormProps {
+interface OrganizationUpdateFormProps {
+  profile: Profile;
   organization: Organization;
 }
 
-export function UpdateOrganizationForm({ organization }: UpdateOrganizationFormProps) {
+export function OrganizationUpdateForm({ profile, organization }: OrganizationUpdateFormProps) {
   const [state, formAction] = useFormState(
-    updateOrganizationAction.bind(null, organization.id),
+    updateOrganizationAction.bind(null, profile, organization.id),
     undefined,
   );
 
