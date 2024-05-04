@@ -12,10 +12,10 @@ export default function Search({ className }: React.ComponentPropsWithoutRef<"in
   function handleSearch(term: string) {
     const params = new URLSearchParams(searchParams);
     if (term) {
-      params.set("query", term);
+      params.set("search", term);
       params.delete("page");
     } else {
-      params.delete("query");
+      params.delete("search");
     }
     replace(`${pathname}?${params.toString()}`);
   }
@@ -30,7 +30,7 @@ export default function Search({ className }: React.ComponentPropsWithoutRef<"in
       onChange={(e) => {
         handleSearch(e.target.value);
       }}
-      defaultValue={searchParams.get("query")?.toString()}
+      defaultValue={searchParams.get("search")?.toString()}
     />
   );
 }

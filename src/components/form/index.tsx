@@ -1,7 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
 import Button from "./Button";
-import Container from "./Container";
 import FlashMessage from "./FlashMessage";
 import Input from "./Input";
 import Select from "./Select";
@@ -21,7 +20,6 @@ export default function Form({
   );
 }
 
-Form.Container = Container;
 Form.FlashMessage = FlashMessage;
 Form.Input = Input;
 Form.Button = Button;

@@ -2,19 +2,21 @@ import React, { ReactNode } from "react";
 import Text from "../Text";
 import { twMerge } from "tailwind-merge";
 
-type CardActionProps =
-  | {
-      onClick: () => void;
-      href?: never;
-      title: string;
-      icon?: ReactNode;
-    }
-  | {
-      onClick?: never;
-      href: string;
-      title: string;
-      icon?: ReactNode;
-    };
+type CardActionProps = React.ComponentPropsWithoutRef<"a"> &
+  (
+    | {
+        onClick: () => void;
+        href?: never;
+        title: string;
+        icon?: ReactNode;
+      }
+    | {
+        onClick?: never;
+        href: string;
+        title: string;
+        icon?: ReactNode;
+      }
+  );
 
 export default function CardAction({
   onClick,
@@ -23,7 +25,7 @@ export default function CardAction({
   icon,
   className,
   ...rest
-}: CardActionProps & React.ComponentPropsWithoutRef<"a">) {
+}: CardActionProps) {
   return (
     <a
       href={href}

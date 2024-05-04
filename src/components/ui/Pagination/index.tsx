@@ -1,7 +1,7 @@
 "use client";
 
 import { HBox } from "@/components/containers";
-import { PaginationInfo } from "@/schemas";
+import { Paginate } from "@/schemas";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { LuChevronLeft, LuChevronRight, LuChevronsLeft, LuChevronsRight } from "react-icons/lu";
 import { twMerge } from "tailwind-merge";
@@ -9,7 +9,7 @@ import Text from "../Text";
 import PaginationButton from "./PaginationButton";
 
 type PaginationProps = {
-  paginate?: PaginationInfo;
+  paginate?: Paginate;
   queryName?: string;
 } & React.ComponentPropsWithoutRef<"div">;
 
