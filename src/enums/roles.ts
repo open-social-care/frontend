@@ -7,5 +7,5 @@ export enum roles {
 export enum roleNames {
   ADMIN = "admin",
   MANAGER = "manager",
-  SOCIAL_ASSISTANT = "social-assistant",
+  SOCIAL_ASSISTANT = "social_assistant",
 }

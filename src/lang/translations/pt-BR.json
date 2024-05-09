@@ -17,8 +17,8 @@
     "page_titles": {
       "users": "Usuários",
       "create_user": "Cadastrar usuário",
+      "create_social_assistant": "Cadastrar assistente social",
       "edit_user": "Editar usuário",
-
       "organizations": "Organizações",
       "create_organization": "Cadastrar organização",
       "edit_organization": "Editar organização"
@@ -40,6 +40,10 @@
       "phone": "Telefone",
       "document": "Documento",
       "document_type": "Tipo de documento"
+    },
+
+    "informations": {
+      "users_not_found": "Nenhum usuário cadastrado."
     },
 
     "document_types": {

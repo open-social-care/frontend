@@ -5,6 +5,7 @@ import { Text } from "@/components/ui";
 import Pagination from "@/components/ui/Pagination";
 import DissociateAction from "./_dissociate-action";
 import { fetchUsersByRole } from "./actions";
+import { t } from "@/lang";
 
 interface OrganizationMembersProps {
   profile: Profile;
@@ -34,7 +35,7 @@ export default async function OrganizationMembers({
   const users = User.array().parse(data);
 
   if (users.length == 0) {
-    return;
+    return <Text className="mt-4">{t("informations.users_not_found")}</Text>;
   }
 
   return (

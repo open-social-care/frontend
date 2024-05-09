@@ -24,7 +24,9 @@ export default function Pagination({
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  if (!paginate) return;
+  if (!paginate || paginate.last_page == 1) {
+    return;
+  }
 
   function handlePaginate(page: number) {
     const params = new URLSearchParams(searchParams);

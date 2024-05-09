@@ -15,7 +15,7 @@ export default function Skeleton({ length, className, children, ...rest }: Skele
             <div
               key={index}
               className={twMerge(
-                "mx-auto mt-1 h-96 w-full animate-pulse overflow-hidden rounded-lg border bg-white shadow-md",
+                "mx-auto mt-1 h-96 w-full animate-pulse overflow-hidden rounded-lg bg-white shadow-md",
                 className,
               )}
               {...rest}

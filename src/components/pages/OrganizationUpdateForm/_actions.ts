@@ -28,7 +28,7 @@ export async function updateOrganizationAction(
 
   if (response.ok) {
     actionFlash("success", json.message);
-    redirect(`/${profile}/organizations`);
+    redirect(`/${profile}/organizations/${organizationId}`);
   }
 
   return ApiResponse.parse(json);
