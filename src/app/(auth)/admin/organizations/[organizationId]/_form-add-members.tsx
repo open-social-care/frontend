@@ -37,10 +37,9 @@ export default function FormAddMembers({ organizationId, roleId, users }: FormAd
 
       <Form.Select
         name="user_id"
-        label={"Adicionar"}
+        label={t("general_actions.add")}
         placeholder={t("page_titles.users")}
         data={usersForSelect}
-        withAsterisk
         errors={state?.errors?.["user_id"]}
       />
 

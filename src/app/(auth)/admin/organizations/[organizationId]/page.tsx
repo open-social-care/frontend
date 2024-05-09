@@ -1,11 +1,11 @@
 import { Paper } from "@/components/containers";
+import OrganizationMembers from "@/components/pages/OrganizationMembers";
 import { Heading } from "@/components/ui";
 import { roleNames, roles } from "@/enums/roles";
 import { t } from "@/lang";
-import { User } from "@/schemas";
-import { fetchUsersAction } from "../../users/_actions";
+import { Organization, User } from "@/schemas";
+import { fetchNonMembersAction, fetchOrganizationAction } from "./_actions";
 import FormAddMembers from "./_form-add-members";
-import OrganizationMembers from "@/components/pages/OrganizationMembers";
 
 interface PageProps {
   params: {
@@ -18,25 +18,34 @@ interface PageProps {
 }
 
 export default async function page({ params, searchParams }: PageProps) {
-  //const { data } = await fetchOrganizationAction(params.organizationId);
+  const { data: organizationData } = await fetchOrganizationAction(params.organizationId);
 
-  //const organization = Organization.parse(data);
+  console.log(organizationData);
+  const organization = Organization.parse(organizationData);
 
-  const { data } = await fetchUsersAction();
+  const { data: nonManagersData } = await fetchNonMembersAction(
+    params.organizationId,
+    roles.MANAGER,
+  );
 
-  const users = User.array().parse(data);
+  const nonManagers = User.array().parse(nonManagersData);
+
+  const { data: nonSocialAssistantsData } = await fetchNonMembersAction(
+    params.organizationId,
+    roles.SOCIAL_ASSISTANT,
+  );
+
+  const nonSocialAssistants = User.array().parse(nonSocialAssistantsData);
 
   return (
     <>
-      {/* <Heading h1>{organization.name}</Heading> */}
-
-      <Heading h1>Organização</Heading>
+      <Heading h1>{organization.name}</Heading>
 
       <Paper className="mt-4">
-        <Heading h2>{t("roles.manager")}</Heading>
+        <Heading h2>{t("roles.managers")}</Heading>
 
         <FormAddMembers
-          users={users}
+          users={nonManagers}
           organizationId={params.organizationId}
           roleId={roles.MANAGER}
         />
@@ -56,7 +65,7 @@ export default async function page({ params, searchParams }: PageProps) {
         <Heading h2>{t("roles.social_assistants")}</Heading>
 
         <FormAddMembers
-          users={users}
+          users={nonSocialAssistants}
           organizationId={params.organizationId}
           roleId={roles.SOCIAL_ASSISTANT}
         />
