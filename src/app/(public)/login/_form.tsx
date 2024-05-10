@@ -1,10 +1,10 @@
 "use client";
 
 import Form from "@/components/form";
+import { testIDs } from "@/e2e/_testIDs";
 import { t } from "@/lang";
 import { useFormState } from "react-dom";
 import { loginAction } from "./_actions";
-import { testIDs } from "@/e2e/_testIDs";
 
 export default function LoginForm() {
   const [state, formAction] = useFormState(loginAction, undefined);

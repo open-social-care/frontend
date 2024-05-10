@@ -7,18 +7,49 @@
       "password_confirmation": "Confirmação de senha"
     },
 
+    "roles": {
+      "manager": "Gestor",
+      "managers": "Gestores",
+      "social_assistant": "Assistente social",
+      "social_assistants": "Assistentes sociais"
+    },
+
     "page_titles": {
       "users": "Usuários",
       "create_user": "Cadastrar usuário",
-      "edit_user": "Editar usuário"
+      "create_social_assistant": "Cadastrar assistente social",
+      "edit_user": "Editar usuário",
+      "organizations": "Organizações",
+      "create_organization": "Cadastrar organização",
+      "edit_organization": "Editar organização"
     },
 
     "general_actions": {
       "create": "Cadastrar",
       "edit": "Editar",
+      "add": "Adicionar",
+      "dissociate": "Dissociar",
+      "manage": "Gerenciar",
       "update": "Atualizar",
       "remove": "Remover",
       "search": "Pesquisar"
+    },
+
+    "labels": {
+      "name": "Nome",
+      "phone": "Telefone",
+      "document": "Documento",
+      "document_type": "Tipo de documento"
+    },
+
+    "informations": {
+      "users_not_found": "Nenhum usuário cadastrado.",
+      "organization_not_found": "Nenhuma organização encontrada."
+    },
+
+    "document_types": {
+      "cpf": "CPF",
+      "cnpj": "CNPJ"
     },
 
     "errors": {

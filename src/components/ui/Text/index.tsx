@@ -7,7 +7,7 @@ export default function Text({
 }: React.ComponentPropsWithoutRef<"p">) {
   return (
     <p
-      className={twMerge("text-gray-700", className)}
+      className={twMerge("truncate text-gray-700", className)}
       {...rest}
     >
       {children}

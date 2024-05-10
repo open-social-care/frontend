@@ -1,7 +1,7 @@
 import { DashboardLayout } from "@/components/layouts";
 import type { Metadata } from "next";
-import SocialAssistantSideBar from "./_sidebar";
 import { PropsWithChildren } from "react";
+import SocialAssistantSideBar from "./_sidebar";
 
 export const metadata: Metadata = {
   title: "Social Assistant",

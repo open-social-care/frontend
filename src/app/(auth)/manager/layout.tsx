@@ -1,10 +1,11 @@
 import { DashboardLayout } from "@/components/layouts";
+import { t } from "@/lang";
 import type { Metadata } from "next";
-import ManagerSideBar from "./_sidebar";
 import { PropsWithChildren } from "react";
+import ManagerSideBar from "./_sidebar";
 
 export const metadata: Metadata = {
-  title: "Manager",
+  title: t("roles.manager"),
 };
 
 export default function layout({ children }: PropsWithChildren) {

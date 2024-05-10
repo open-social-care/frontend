@@ -1,20 +1,22 @@
 import React, { ReactNode } from "react";
-import Text from "../Text";
 import { twMerge } from "tailwind-merge";
+import Text from "../Text";
 
-type CardActionProps =
-  | {
-      onClick: () => void;
-      href?: never;
-      title: string;
-      icon?: ReactNode;
-    }
-  | {
-      onClick?: never;
-      href: string;
-      title: string;
-      icon?: ReactNode;
-    };
+type CardActionProps = React.ComponentPropsWithoutRef<"a"> &
+  (
+    | {
+        onClick: () => void;
+        href?: never;
+        title: string;
+        icon?: ReactNode;
+      }
+    | {
+        onClick?: never;
+        href: string;
+        title: string;
+        icon?: ReactNode;
+      }
+  );
 
 export default function CardAction({
   onClick,
@@ -23,12 +25,15 @@ export default function CardAction({
   icon,
   className,
   ...rest
-}: CardActionProps & React.ComponentPropsWithoutRef<"a">) {
+}: CardActionProps) {
   return (
     <a
       href={href}
       onClick={onClick}
-      className={twMerge("flex flex-row items-center gap-2", className)}
+      className={twMerge(
+        "flex cursor-pointer flex-row items-center gap-2 disabled:cursor-not-allowed",
+        className,
+      )}
       {...rest}
     >
       {icon}

@@ -1,10 +1,12 @@
 import { twMerge } from "tailwind-merge";
 
+import { IMaskInput, IMaskInputProps } from "react-imask";
+
 type InputProps = {
   label?: string;
   errors?: string[];
   withAsterisk?: boolean;
-} & React.ComponentPropsWithoutRef<"input">;
+} & IMaskInputProps<HTMLInputElement>;
 
 export default function Input({
   label,
@@ -28,9 +30,9 @@ export default function Input({
         </label>
       )}
 
-      <input
+      <IMaskInput
         name={name}
-        className="mt-1 block w-full rounded-lg border border-gray-200 bg-white px-4 py-1.5 text-gray-700"
+        className="mt-1 block w-full rounded-lg border border-gray-200 bg-white px-4 py-1.5 text-gray-700 focus:border-teal-500 focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-40"
         {...rest}
       />
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { t } from "@/lang";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 
 export default function Search({ className }: React.ComponentPropsWithoutRef<"input">) {
@@ -12,10 +12,10 @@ export default function Search({ className }: React.ComponentPropsWithoutRef<"in
   function handleSearch(term: string) {
     const params = new URLSearchParams(searchParams);
     if (term) {
-      params.set("query", term);
+      params.set("search", term);
       params.delete("page");
     } else {
-      params.delete("query");
+      params.delete("search");
     }
     replace(`${pathname}?${params.toString()}`);
   }
@@ -23,14 +23,14 @@ export default function Search({ className }: React.ComponentPropsWithoutRef<"in
   return (
     <input
       className={twMerge(
-        "peer block w-full rounded-lg border py-[9px] pl-5 text-sm shadow-md outline-2 placeholder:text-gray-500",
+        "peer block w-full rounded-lg border py-[9px] pl-5 text-sm shadow-md outline-2 placeholder:text-gray-500 focus:border-teal-500 focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-40",
         className,
       )}
       placeholder={t("general_actions.search")}
       onChange={(e) => {
         handleSearch(e.target.value);
       }}
-      defaultValue={searchParams.get("query")?.toString()}
+      defaultValue={searchParams.get("search")?.toString()}
     />
   );
 }

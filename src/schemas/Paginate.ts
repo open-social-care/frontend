@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const PaginationInfo = z.object({
+export const Paginate = z.object({
   total: z.number(),
   per_page: z.number(),
   current_page: z.number(),
@@ -9,4 +9,4 @@ export const PaginationInfo = z.object({
   to: z.number().nullish(),
 });
 
-export type PaginationInfo = z.infer<typeof PaginationInfo>;
+export type Paginate = z.infer<typeof Paginate>;
