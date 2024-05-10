@@ -5,12 +5,12 @@ import { testIDs } from "@/e2e/_testIDs";
 import { t } from "@/lang";
 import { useFormState } from "react-dom";
 
-import { Organization, Profile } from "@/schemas";
-import { updateOrganizationAction } from "./_actions";
 import documentTypesToSelect from "@/helpers/documentTypesToSelect";
+import { Organization, Role } from "@/schemas";
+import { updateOrganizationAction } from "./_actions";
 
 interface OrganizationUpdateFormProps {
-  profile: Profile;
+  profile: Role;
   organization: Organization;
 }
 

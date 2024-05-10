@@ -3,19 +3,19 @@
 import Form from "@/components/form";
 import { testIDs } from "@/e2e/_testIDs";
 import { t } from "@/lang";
-import { User } from "@/schemas";
+import { Role, User } from "@/schemas";
 import { useFormState } from "react-dom";
 import { associateUserAction } from "./_actions";
 
 interface FormAddMembersProps {
   organizationId: number;
-  roleId: number;
+  role: Role;
   users: User[];
 }
 
-export default function FormAddMembers({ organizationId, roleId, users }: FormAddMembersProps) {
+export default function FormAddMembers({ organizationId, role, users }: FormAddMembersProps) {
   const [state, formAction] = useFormState(
-    associateUserAction.bind(null, organizationId, roleId),
+    associateUserAction.bind(null, organizationId, role),
     undefined,
   );
 

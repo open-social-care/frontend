@@ -1,9 +1,6 @@
-import { roles } from "@/enums/roles";
+import { Roles } from "@/enums/Roles";
 import { z } from "zod";
-import { Profile } from "./Profile";
 
-export const RoleId = z.nativeEnum(roles);
-export type RoleId = z.infer<typeof RoleId>;
+export const Role = z.nativeEnum(Roles);
 
-export const Role = z.object({ id: RoleId, name: Profile });
 export type Role = z.infer<typeof Role>;

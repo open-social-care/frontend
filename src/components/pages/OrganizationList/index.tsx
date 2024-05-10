@@ -2,7 +2,7 @@ import { HBox, Paper } from "@/components/containers";
 import { AiOutlineEdit, AiOutlineSetting } from "react-icons/ai";
 
 import { t } from "@/lang";
-import { Organization, Profile } from "@/schemas";
+import { Organization, Role } from "@/schemas";
 
 import { Text } from "@/components/ui";
 import CardAction from "@/components/ui/CardAction";
@@ -10,7 +10,7 @@ import Pagination from "@/components/ui/Pagination";
 import { fetchOrganizationsAction } from "./_actions";
 
 interface OrganizationListProps {
-  profile: Profile;
+  profile: Role;
   search?: string;
   page?: number;
 }
@@ -19,6 +19,10 @@ export default async function OrganizationList({ profile, search, page }: Organi
   const { data, pagination } = await fetchOrganizationsAction(profile, search, page);
 
   const organizations = Organization.array().parse(data);
+
+  if (organizations.length == 0) {
+    return <Text>{t("informations.organization_not_found")}</Text>;
+  }
 
   return (
     <>
@@ -42,13 +46,13 @@ export default async function OrganizationList({ profile, search, page }: Organi
           <HBox className="mt-4 justify-end gap-4">
             <CardAction
               title={t("general_actions.manage")}
-              href={`/admin/organizations/${organization.id}`}
+              href={`/${profile}/organizations/${organization.id}`}
               icon={<AiOutlineSetting />}
             />
 
             <CardAction
               title={t("general_actions.edit")}
-              href={`/admin/organizations/${organization.id}/edit`}
+              href={`/${profile}/organizations/${organization.id}/edit`}
               icon={<AiOutlineEdit />}
             />
           </HBox>

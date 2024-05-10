@@ -1,5 +1,7 @@
 {
-  "editor.codeActionsOnSave": {},
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always"
+  },
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   // config to match any attribute ending with Classes, e.g.: componentClasses, containerClasses, etc.

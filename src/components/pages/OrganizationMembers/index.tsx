@@ -1,16 +1,16 @@
-import { Profile, User } from "@/schemas";
+import { Role, User } from "@/schemas";
 
 import { HBox, VBox } from "@/components/containers";
 import { Text } from "@/components/ui";
 import Pagination from "@/components/ui/Pagination";
+import { t } from "@/lang";
 import DissociateAction from "./_dissociate-action";
 import { fetchUsersByRole } from "./actions";
-import { t } from "@/lang";
 
 interface OrganizationMembersProps {
-  profile: Profile;
+  profile: Role;
   organizationId: number;
-  roleId: number;
+  role: Role;
   search?: string;
   page?: number;
   pageQueryName: string;
@@ -19,18 +19,12 @@ interface OrganizationMembersProps {
 export default async function OrganizationMembers({
   profile,
   organizationId,
-  roleId,
+  role,
   search,
   page,
   pageQueryName,
 }: OrganizationMembersProps) {
-  const { data, pagination } = await fetchUsersByRole(
-    profile,
-    organizationId,
-    roleId,
-    search,
-    page,
-  );
+  const { data, pagination } = await fetchUsersByRole(profile, organizationId, role, search, page);
 
   const users = User.array().parse(data);
 
@@ -55,7 +49,7 @@ export default async function OrganizationMembers({
             <HBox className="justify-end">
               <DissociateAction
                 organizationId={organizationId}
-                roleId={roleId}
+                role={role}
                 userId={user.id}
               />
             </HBox>

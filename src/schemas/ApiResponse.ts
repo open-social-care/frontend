@@ -1,9 +1,9 @@
 import { z } from "zod";
 import { Paginate } from "./Paginate";
-import { flashMessageTypes } from "@/enums/flashMessageTypes";
+import { FlashMessageTypes } from "@/enums/FlashMessageTypes";
 
 export const ApiResponse = z.object({
-  type: z.nativeEnum(flashMessageTypes),
+  type: z.nativeEnum(FlashMessageTypes),
   message: z.string(),
   errors: z.optional(z.record(z.string(), z.array(z.string()))),
   data: z.optional(z.any()),

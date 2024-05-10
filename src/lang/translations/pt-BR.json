@@ -43,7 +43,8 @@
     },
 
     "informations": {
-      "users_not_found": "Nenhum usuário cadastrado."
+      "users_not_found": "Nenhum usuário cadastrado.",
+      "organization_not_found": "Nenhuma organização encontrada."
     },
 
     "document_types": {

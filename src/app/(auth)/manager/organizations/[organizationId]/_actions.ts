@@ -2,7 +2,6 @@
 
 import api from "@/api";
 import { ApiResponse } from "@/schemas";
-import { revalidateTag } from "next/cache";
 
 export async function fetchOrganizationAction(organizationId: number): Promise<ApiResponse> {
   const response = await api({

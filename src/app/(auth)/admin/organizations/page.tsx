@@ -6,7 +6,7 @@ import Skeleton from "@/components/ui/Skeleton";
 import { t } from "@/lang";
 import { ActionFlashes } from "@/action-flash/ActionFlashes";
 import OrganizationList from "@/components/pages/OrganizationList";
-import { roleNames } from "@/enums/roles";
+import { Roles } from "@/enums/Roles";
 
 interface PageProps {
   searchParams: {
@@ -34,7 +34,7 @@ export default function page({ searchParams }: PageProps) {
           length={5}
         >
           <OrganizationList
-            profile={roleNames.ADMIN}
+            profile={Roles.ADMIN}
             {...searchParams}
           />
         </Skeleton>

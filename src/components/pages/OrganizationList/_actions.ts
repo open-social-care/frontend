@@ -1,8 +1,8 @@
 import api from "@/api";
-import { ApiResponse, Profile } from "@/schemas";
+import { ApiResponse, Role } from "@/schemas";
 
 export async function fetchOrganizationsAction(
-  profile: Profile,
+  profile: Role,
   search?: string,
   page?: number,
 ): Promise<ApiResponse> {

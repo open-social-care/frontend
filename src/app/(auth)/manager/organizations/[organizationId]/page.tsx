@@ -1,11 +1,11 @@
 import { HBox, Paper } from "@/components/containers";
 import OrganizationMembers from "@/components/pages/OrganizationMembers";
 import { Button, CardAction, Heading, Text } from "@/components/ui";
-import { roleNames, roles } from "@/enums/roles";
+import { Roles } from "@/enums/Roles";
 import { t } from "@/lang";
 import { Organization } from "@/schemas";
-import { fetchOrganizationAction } from "./_actions";
 import { AiOutlineEdit } from "react-icons/ai";
+import { fetchOrganizationAction } from "./_actions";
 
 interface PageProps {
   params: {
@@ -27,33 +27,13 @@ export default async function page({ params, searchParams }: PageProps) {
       <Heading h1>{organization.name}</Heading>
 
       <Paper className="mt-4">
-        <Text className="text-sm">
-          {t(`document_types.${organization.document_type}`)}: {organization.document}
-        </Text>
-
-        {organization.phone && (
-          <Text className="text-sm">
-            {t("labels.phone")}: {organization.phone}
-          </Text>
-        )}
-
-        <HBox className="mt-4 justify-end gap-4">
-          <CardAction
-            title={t("general_actions.edit")}
-            href={`/manager/organizations/${organization.id}/edit`}
-            icon={<AiOutlineEdit />}
-          />
-        </HBox>
-      </Paper>
-
-      <Paper className="mt-4">
         <Heading h2>{t("roles.managers")}</Heading>
 
         <OrganizationMembers
-          profile={roleNames.MANAGER}
+          profile={Roles.MANAGER}
           //
           organizationId={params.organizationId}
-          roleId={roles.MANAGER}
+          role={Roles.MANAGER}
           //
           pageQueryName="managersPage"
           page={searchParams.managersPage}
@@ -73,10 +53,10 @@ export default async function page({ params, searchParams }: PageProps) {
         </HBox>
 
         <OrganizationMembers
-          profile={roleNames.MANAGER}
+          profile={Roles.MANAGER}
           //
           organizationId={params.organizationId}
-          roleId={roles.SOCIAL_ASSISTANT}
+          role={Roles.SOCIAL_ASSISTANT}
           //
           pageQueryName="socialAssistantsPage"
           page={searchParams.socialAssistantsPage}

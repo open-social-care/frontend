@@ -2,11 +2,11 @@
 
 import { actionFlash } from "@/action-flash";
 import api from "@/api";
-import { ApiResponse, Profile } from "@/schemas";
+import { ApiResponse, Role } from "@/schemas";
 import { redirect } from "next/navigation";
 
 export async function updateOrganizationAction(
-  profile: Profile,
+  profile: Role,
   organizationId: number,
   prevState: any,
   formData: FormData,

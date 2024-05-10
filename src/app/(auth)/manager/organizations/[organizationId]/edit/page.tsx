@@ -1,10 +1,10 @@
 import { Paper } from "@/components/containers";
+import { OrganizationUpdateForm } from "@/components/pages/OrganizationUpdateForm";
 import { Heading } from "@/components/ui";
+import { Roles } from "@/enums/Roles";
 import { t } from "@/lang";
 import { Organization } from "@/schemas";
 import { fetchOrganizationAction } from "../_actions";
-import { OrganizationUpdateForm } from "@/components/pages/OrganizationUpdateForm";
-import { roleNames } from "@/enums/roles";
 
 interface PageProps {
   params: {
@@ -23,7 +23,7 @@ export default async function page({ params }: PageProps) {
 
       <Paper className="mt-4">
         <OrganizationUpdateForm
-          profile={roleNames.MANAGER}
+          profile={Roles.MANAGER}
           organization={organization}
         />
       </Paper>

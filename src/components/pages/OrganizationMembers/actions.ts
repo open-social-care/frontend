@@ -1,25 +1,23 @@
 "use server";
 
 import api from "@/api";
-import { roleNames } from "@/enums/roles";
-import { getRole } from "@/helpers/getRole";
-import { ApiResponse, Profile } from "@/schemas";
-import { RoleId } from "@/schemas/Role";
+import { ApiResponse } from "@/schemas";
+import { Role } from "@/schemas/Role";
 import { revalidateTag } from "next/cache";
 
 export async function fetchUsersByRole(
-  profile: Profile,
+  profile: Role,
   organizationId: number,
-  roleId: RoleId,
+  role: Role,
   search?: string,
   page?: number,
 ): Promise<ApiResponse> {
   const response = await api({
-    input: `/${profile}/organizations/${organizationId}/get-users-by-role/${getRole(roleId).name}?page=${page || 1}&q=${search || ""}`,
+    input: `/${profile}/organizations/${organizationId}/get-users-by-role/${role}?page=${page || 1}&q=${search || ""}`,
     init: {
       method: "GET",
       next: {
-        tags: [`members.${roleId}`],
+        tags: [`members.${role}`],
       },
     },
   });
@@ -31,27 +29,27 @@ export async function fetchUsersByRole(
 
 export interface DissociateUserActionValues {
   organizationId: number;
-  roleId: RoleId;
+  role: Role;
   userId: number;
 }
 
 export async function dissociateUserAction({
   organizationId,
-  roleId,
+  role,
   userId,
 }: DissociateUserActionValues): Promise<ApiResponse> {
   const response = await api({
     input: `/admin/organizations/${organizationId}/disassociate-users`,
     init: {
       method: "POST",
-      body: JSON.stringify({ data: [{ user_id: userId, role_id: roleId }] }),
+      body: JSON.stringify({ data: [{ user_id: userId, role: role }] }),
     },
   });
 
   const json = await response.json();
 
   if (response.ok) {
-    revalidateTag(`members.${roleId}`);
+    revalidateTag(`members.${role}`);
   }
 
   return ApiResponse.parse(json);

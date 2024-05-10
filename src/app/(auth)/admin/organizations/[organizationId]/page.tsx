@@ -1,7 +1,7 @@
 import { Paper } from "@/components/containers";
 import OrganizationMembers from "@/components/pages/OrganizationMembers";
 import { Heading } from "@/components/ui";
-import { roleNames, roles } from "@/enums/roles";
+import { Roles } from "@/enums/Roles";
 import { t } from "@/lang";
 import { Organization, User } from "@/schemas";
 import { fetchNonMembersAction, fetchOrganizationAction } from "./_actions";
@@ -20,19 +20,18 @@ interface PageProps {
 export default async function page({ params, searchParams }: PageProps) {
   const { data: organizationData } = await fetchOrganizationAction(params.organizationId);
 
-  console.log(organizationData);
   const organization = Organization.parse(organizationData);
 
   const { data: nonManagersData } = await fetchNonMembersAction(
     params.organizationId,
-    roles.MANAGER,
+    Roles.MANAGER,
   );
 
   const nonManagers = User.array().parse(nonManagersData);
 
   const { data: nonSocialAssistantsData } = await fetchNonMembersAction(
     params.organizationId,
-    roles.SOCIAL_ASSISTANT,
+    Roles.SOCIAL_ASSISTANT,
   );
 
   const nonSocialAssistants = User.array().parse(nonSocialAssistantsData);
@@ -47,14 +46,14 @@ export default async function page({ params, searchParams }: PageProps) {
         <FormAddMembers
           users={nonManagers}
           organizationId={params.organizationId}
-          roleId={roles.MANAGER}
+          role={Roles.MANAGER}
         />
 
         <OrganizationMembers
-          profile={roleNames.ADMIN}
+          profile={Roles.ADMIN}
           //
           organizationId={params.organizationId}
-          roleId={roles.MANAGER}
+          role={Roles.MANAGER}
           //
           pageQueryName="managersPage"
           page={searchParams.managersPage}
@@ -67,14 +66,14 @@ export default async function page({ params, searchParams }: PageProps) {
         <FormAddMembers
           users={nonSocialAssistants}
           organizationId={params.organizationId}
-          roleId={roles.SOCIAL_ASSISTANT}
+          role={Roles.SOCIAL_ASSISTANT}
         />
 
         <OrganizationMembers
-          profile={roleNames.ADMIN}
+          profile={Roles.ADMIN}
           //
           organizationId={params.organizationId}
-          roleId={roles.SOCIAL_ASSISTANT}
+          role={Roles.SOCIAL_ASSISTANT}
           //
           pageQueryName="socialAssistantsPage"
           page={searchParams.socialAssistantsPage}
