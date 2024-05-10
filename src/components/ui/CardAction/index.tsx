@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
-import Text from "../Text";
 import { twMerge } from "tailwind-merge";
+import Text from "../Text";
 
 type CardActionProps = React.ComponentPropsWithoutRef<"a"> &
   (

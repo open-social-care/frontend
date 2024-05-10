@@ -1,6 +1,6 @@
 import { TranslateOptions } from "i18n-js";
-import translations from "./translations/pt-BR.json";
 import i18n from "./i18n";
+import translations from "./translations/pt-BR.json";
 
 //------------------ Custom typing scopes (from method 2 of https://stackoverflow.com/a/58308279)
 

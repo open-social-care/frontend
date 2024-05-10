@@ -1,7 +1,7 @@
 "use client";
 
 import { t } from "@/lang";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 
 export default function Search({ className }: React.ComponentPropsWithoutRef<"input">) {

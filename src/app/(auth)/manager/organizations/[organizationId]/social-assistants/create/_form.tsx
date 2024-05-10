@@ -5,8 +5,8 @@ import { testIDs } from "@/e2e/_testIDs";
 import { t } from "@/lang";
 import { useFormState } from "react-dom";
 
-import { createUserAction } from "./_actions";
 import { useParams } from "next/navigation";
+import { createUserAction } from "./_actions";
 
 export function CreateUserForm() {
   const params = useParams<{ organizationId: string }>();

@@ -10,12 +10,7 @@ const variants = {
   errorClasses: "bg-red-500",
 };
 
-export default function FlashMessage({
-  type,
-  message,
-  className,
-  ...rest
-}: FlashMessageProps) {
+export default function FlashMessage({ type, message, className, ...rest }: FlashMessageProps) {
   if (!type || !message) return <div />;
 
   return (

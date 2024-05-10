@@ -1,12 +1,12 @@
+import { ActionFlashes } from "@/action-flash/ActionFlashes";
 import { HBox, VBox } from "@/components/containers";
+import OrganizationList from "@/components/pages/OrganizationList";
 import { Heading } from "@/components/ui";
 import Button from "@/components/ui/Button";
 import Search from "@/components/ui/Search";
 import Skeleton from "@/components/ui/Skeleton";
-import { t } from "@/lang";
-import { ActionFlashes } from "@/action-flash/ActionFlashes";
-import OrganizationList from "@/components/pages/OrganizationList";
 import { Roles } from "@/enums/Roles";
+import { t } from "@/lang";
 
 interface PageProps {
   searchParams: {

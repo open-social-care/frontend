@@ -5,8 +5,8 @@ import { testIDs } from "@/e2e/_testIDs";
 import { t } from "@/lang";
 import { useFormState } from "react-dom";
 
-import { createOrganizationAction } from "./_actions";
 import documentTypesToSelect from "@/helpers/documentTypesToSelect";
+import { createOrganizationAction } from "./_actions";
 
 export function CreateOrganizationForm() {
   const [state, formAction] = useFormState(createOrganizationAction, undefined);

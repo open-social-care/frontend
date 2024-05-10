@@ -5,13 +5,13 @@ import { User } from "@/schemas";
 import { AiOutlineUser } from "react-icons/ai";
 import { FaChevronDown } from "react-icons/fa";
 
-import { twMerge } from "tailwind-merge";
 import useOnclickOutside from "react-cool-onclickoutside";
+import { twMerge } from "tailwind-merge";
 
+import { useRef } from "react";
+import { useDashboardLayoutContext } from "../../_context";
 import MenuLink from "./_MenuLink";
 import UserIndicator from "./_UserIndicator";
-import { useDashboardLayoutContext } from "../../_context";
-import { useRef } from "react";
 
 type ProfileProps = {
   user: User;

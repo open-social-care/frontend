@@ -1,4 +1,4 @@
-import { HBox, VBox } from "@/components/containers";
+import { VBox } from "@/components/containers";
 import { Suspense } from "react";
 import { twMerge } from "tailwind-merge";
 

@@ -1,6 +1,6 @@
+import Root from "./Root";
 import SideBarLink from "./SideBarLink";
 import SideBarLinkGroup from "./SideBarLinkGroup";
-import Root from "./Root";
 
 const SideBar = {
   Root: Root,

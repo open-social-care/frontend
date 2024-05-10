@@ -1,3 +1,4 @@
+import { ActionFlashes } from "@/action-flash/ActionFlashes";
 import { HBox, VBox } from "@/components/containers";
 import { Heading } from "@/components/ui";
 import Button from "@/components/ui/Button";
@@ -5,7 +6,6 @@ import Search from "@/components/ui/Search";
 import Skeleton from "@/components/ui/Skeleton";
 import { t } from "@/lang";
 import Users from "./_users";
-import { ActionFlashes } from "@/action-flash/ActionFlashes";
 
 interface PageProps {
   searchParams: {

@@ -1,7 +1,7 @@
 import { Paper } from "@/components/containers";
 import { Heading } from "@/components/ui";
-import { CreateUserForm } from "./_form";
 import { t } from "@/lang";
+import { CreateUserForm } from "./_form";
 
 export default function page() {
   return (

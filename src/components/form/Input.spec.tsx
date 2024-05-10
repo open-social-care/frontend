@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/experimental-ct-react";
+import { expect, test } from "@playwright/experimental-ct-react";
 import Input from "./Input";
 
 test("input should be rendered without label", async ({ mount }) => {

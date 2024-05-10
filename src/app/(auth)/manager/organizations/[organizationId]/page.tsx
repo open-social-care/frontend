@@ -1,10 +1,9 @@
 import { HBox, Paper } from "@/components/containers";
 import OrganizationMembers from "@/components/pages/OrganizationMembers";
-import { Button, CardAction, Heading, Text } from "@/components/ui";
+import { Button, Heading } from "@/components/ui";
 import { Roles } from "@/enums/Roles";
 import { t } from "@/lang";
 import { Organization } from "@/schemas";
-import { AiOutlineEdit } from "react-icons/ai";
 import { fetchOrganizationAction } from "./_actions";
 
 interface PageProps {

@@ -4,12 +4,7 @@ type RootProps = {
   centered?: boolean;
 } & React.ComponentPropsWithoutRef<"div">;
 
-export default function Root({
-  children,
-  className,
-  centered,
-  ...rest
-}: RootProps) {
+export default function Root({ children, className, centered, ...rest }: RootProps) {
   return (
     <div
       className={twMerge(

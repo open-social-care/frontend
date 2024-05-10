@@ -1,12 +1,7 @@
-import {
-  test,
-  expect,
-} from "@playwright/experimental-ct-react";
+import { expect, test } from "@playwright/experimental-ct-react";
 import FlashMessage from "./FlashMessage";
 
-test("error flash message should be rendered in red", async ({
-  mount,
-}) => {
+test("error flash message should be rendered in red", async ({ mount }) => {
   const message = "This is a error message.";
 
   const component = await mount(
@@ -18,14 +13,10 @@ test("error flash message should be rendered in red", async ({
 
   await expect(component).toContainText(message);
 
-  await expect(component).toHaveClass(
-    /bg-red-500/,
-  );
+  await expect(component).toHaveClass(/bg-red-500/);
 });
 
-test("success flash message should be rendered in green", async ({
-  mount,
-}) => {
+test("success flash message should be rendered in green", async ({ mount }) => {
   const message = "This is a success message.";
 
   const component = await mount(
@@ -37,7 +28,5 @@ test("success flash message should be rendered in green", async ({
 
   await expect(component).toContainText(message);
 
-  await expect(component).toHaveClass(
-    /bg-emerald-500/,
-  );
+  await expect(component).toHaveClass(/bg-emerald-500/);
 });

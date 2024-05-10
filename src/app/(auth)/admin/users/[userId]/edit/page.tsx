@@ -2,8 +2,8 @@ import { Paper } from "@/components/containers";
 import { Heading } from "@/components/ui";
 import { t } from "@/lang";
 import { User } from "@/schemas";
-import { UpdateUserForm } from "./_form";
 import { fetchUserAction } from "./_actions";
+import { UpdateUserForm } from "./_form";
 
 interface PageProps {
   params: {
