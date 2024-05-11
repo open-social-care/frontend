@@ -2,10 +2,10 @@ import { HBox, Paper } from "@/components/containers";
 
 import { t } from "@/lang";
 
-import { CardAction, Text } from "@/components/ui";
+import { Text } from "@/components/ui";
 import { Question } from "@/schemas";
-import { AiOutlineDelete } from "react-icons/ai";
 import { fetchQuestionsAction } from "./_actions";
+import RemoveQuestionAction from "./_remove-question";
 
 interface QuestionListProps {
   templateId: number;
@@ -38,10 +38,9 @@ export default async function QuestionList({ templateId }: QuestionListProps) {
           </Text>
 
           <HBox className="mt-4 justify-end gap-4">
-            <CardAction
-              title={t("general_actions.remove")}
-              href=""
-              icon={<AiOutlineDelete />}
+            <RemoveQuestionAction
+              templateId={templateId}
+              questionId={question.id}
             />
           </HBox>
         </Paper>
