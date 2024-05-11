@@ -21,7 +21,8 @@
       "edit_user": "Editar usuário",
       "organizations": "Organizações",
       "create_organization": "Cadastrar organização",
-      "edit_organization": "Editar organização"
+      "edit_organization": "Editar organização",
+      "create_form_template": "Cadastrar template"
     },
 
     "general_actions": {
@@ -39,7 +40,8 @@
       "name": "Nome",
       "phone": "Telefone",
       "document": "Documento",
-      "document_type": "Tipo de documento"
+      "document_type": "Tipo de documento",
+      "description": "Descrição"
     },
 
     "informations": {
