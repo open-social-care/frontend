@@ -22,7 +22,8 @@
       "organizations": "Organizações",
       "create_organization": "Cadastrar organização",
       "edit_organization": "Editar organização",
-      "create_form_template": "Cadastrar template"
+      "form_templates": "Templates de formulário",
+      "create_form_template": "Cadastrar template de formulário"
     },
 
     "general_actions": {
@@ -45,8 +46,9 @@
     },
 
     "informations": {
-      "users_not_found": "Nenhum usuário cadastrado.",
-      "organization_not_found": "Nenhuma organização encontrada."
+      "users_not_found": "Nenhum usuário encontrado.",
+      "organization_not_found": "Nenhuma organização encontrada.",
+      "form_templates_not_found": "Nenhum template encontrado."
     },
 
     "document_types": {
