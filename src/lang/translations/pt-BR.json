@@ -42,13 +42,15 @@
       "phone": "Telefone",
       "document": "Documento",
       "document_type": "Tipo de documento",
-      "description": "Descrição"
+      "description": "Descrição",
+      "answer_required": "Questão obrigatória"
     },
 
     "informations": {
       "users_not_found": "Nenhum usuário encontrado.",
       "organization_not_found": "Nenhuma organização encontrada.",
-      "form_templates_not_found": "Nenhum template encontrado."
+      "form_templates_not_found": "Nenhum template encontrado.",
+      "questions_not_found": "Nenhuma questão encontrada."
     },
 
     "document_types": {
