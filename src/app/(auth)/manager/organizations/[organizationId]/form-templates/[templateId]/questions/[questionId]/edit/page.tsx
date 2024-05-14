@@ -16,6 +16,7 @@ export default async function page({ params }: PageProps) {
   const { data } = await fetchQuestionAction(params.templateId, params.questionId);
 
   const question = Question.parse(data);
+
   return (
     <>
       <Heading h1>Editar questão</Heading>

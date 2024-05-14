@@ -23,13 +23,15 @@
       "create_organization": "Cadastrar organização",
       "edit_organization": "Editar organização",
       "form_templates": "Templates de formulário",
-      "create_form_template": "Cadastrar template de formulário"
+      "create_form_template": "Cadastrar template de formulário",
+      "edit_form_template": "Editar template de formulário"
     },
 
     "general_actions": {
       "create": "Cadastrar",
       "edit": "Editar",
       "add": "Adicionar",
+      "cancel": "Cancelar",
       "dissociate": "Dissociar",
       "manage": "Gerenciar",
       "update": "Atualizar",

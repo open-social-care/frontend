@@ -7,24 +7,17 @@ import { useFormState } from "react-dom";
 
 import { HBox } from "@/components/containers";
 import { CardAction } from "@/components/ui";
-import { Question } from "@/schemas";
-import { updateQuestionAction } from "./_actions";
+import { FormTemplate } from "@/schemas";
+import { updateFormTemplateAction } from "./_actions";
 
-interface FormUpdateQuestionProps {
-  question: Question;
+interface UpdateFormTemplateFormProps {
+  template: FormTemplate;
   organizationId: number;
-  templateId: number;
-  questionId: number;
 }
 
-export function FormUpdateQuestion({
-  question,
-  organizationId,
-  templateId,
-  questionId,
-}: FormUpdateQuestionProps) {
+export function UpdateFormTemplateForm({ template, organizationId }: UpdateFormTemplateFormProps) {
   const [state, formAction] = useFormState(
-    updateQuestionAction.bind(null, organizationId, templateId, questionId),
+    updateFormTemplateAction.bind(null, organizationId, template.id),
     undefined,
   );
 
@@ -38,25 +31,28 @@ export function FormUpdateQuestion({
       )}
 
       <Form.Input
+        name="title"
+        label={t("labels.name")}
+        placeholder={t("labels.name")}
+        withAsterisk
+        errors={state?.errors?.["title"]}
+        defaultValue={template.title}
+      />
+
+      <Form.Input
         name="description"
         label={t("labels.description")}
         placeholder={t("labels.description")}
         withAsterisk
         errors={state?.errors?.["description"]}
-        defaultValue={question.description}
-      />
-
-      <Form.Switch
-        name="answer_required"
-        label={t("labels.answer_required")}
-        defaultChecked={question.answer_required}
+        defaultValue={template.description}
       />
 
       <HBox className="mt-4 justify-end gap-8">
         <CardAction
           className="mt-4"
           title={t("general_actions.cancel")}
-          href={`/manager/organizations/${organizationId}/form-templates/${templateId}/questions`}
+          href={`/manager/organizations/${organizationId}/form-templates`}
         />
 
         <Form.Button data-testid={testIDs.SUBMIT_BUTTON}>{t(`general_actions.update`)}</Form.Button>
