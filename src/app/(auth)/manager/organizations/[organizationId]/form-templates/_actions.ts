@@ -7,7 +7,7 @@ export async function fetchFormTemplatesAction(
   page?: number,
 ): Promise<ApiResponse> {
   const response = await api({
-    input: `/manager/form-templates?page=${page || 1}&q=${search || ""}`,
+    input: `/manager/form-templates/${organizationId}?page=${page || 1}&q=${search || ""}`,
     init: {
       method: "GET",
     },

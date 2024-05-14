@@ -8,6 +8,7 @@ import QuestionList from "./_questions";
 
 interface PageProps {
   params: {
+    organizationId: number;
     templateId: number;
   };
 }
@@ -28,7 +29,7 @@ export default async function page({ params }: PageProps) {
           className="h-28"
           length={5}
         >
-          <QuestionList templateId={params.templateId} />
+          <QuestionList {...params} />
         </Skeleton>
       </VBox>
 

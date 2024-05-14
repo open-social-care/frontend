@@ -3,7 +3,7 @@ import { ApiResponse } from "@/schemas";
 
 export async function fetchFormTemplateAction(templateId: number): Promise<ApiResponse> {
   const response = await api({
-    input: `/manager/form-templates/${templateId}`,
+    input: `/manager/form-templates/show/${templateId}`,
     init: {
       method: "GET",
     },

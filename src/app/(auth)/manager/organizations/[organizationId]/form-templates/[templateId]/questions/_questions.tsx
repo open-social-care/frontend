@@ -2,22 +2,21 @@ import { HBox, Paper } from "@/components/containers";
 
 import { t } from "@/lang";
 
-import { Text } from "@/components/ui";
+import { CardAction, Text } from "@/components/ui";
 import { Question } from "@/schemas";
+import { AiOutlineEdit } from "react-icons/ai";
 import { fetchQuestionsAction } from "./_actions";
 import RemoveQuestionAction from "./_remove-question";
 
 interface QuestionListProps {
   templateId: number;
+  organizationId: number;
 }
 
-export default async function QuestionList({ templateId }: QuestionListProps) {
+export default async function QuestionList({ templateId, organizationId }: QuestionListProps) {
   const { data } = await fetchQuestionsAction(templateId);
-  const questions = Question.array().parse(data);
 
-  if (questions.length == 0) {
-    return <Text>{t("informations.questions_not_found")}</Text>;
-  }
+  const questions = Question.array().parse(data);
 
   return (
     <>
@@ -38,6 +37,12 @@ export default async function QuestionList({ templateId }: QuestionListProps) {
           </Text>
 
           <HBox className="mt-4 justify-end gap-4">
+            <CardAction
+              icon={<AiOutlineEdit />}
+              title={t("general_actions.edit")}
+              href={`/manager/organizations/${organizationId}/form-templates/${templateId}/questions/${question.id}/edit`}
+            />
+
             <RemoveQuestionAction
               templateId={templateId}
               questionId={question.id}

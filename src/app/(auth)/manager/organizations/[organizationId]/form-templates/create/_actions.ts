@@ -11,7 +11,7 @@ export async function createFormTemplateAction(
   formData: FormData,
 ): Promise<ApiResponse> {
   const response = await api({
-    input: "/manager/form-templates",
+    input: `/manager/form-templates/${organizationId}`,
     init: {
       method: "POST",
       body: JSON.stringify({
