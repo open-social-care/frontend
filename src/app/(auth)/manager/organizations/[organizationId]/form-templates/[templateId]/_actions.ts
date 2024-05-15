@@ -1,13 +1,9 @@
-"use server";
-
 import api from "@/api";
 import { ApiResponse } from "@/schemas";
 
-export async function fetchOrganizationAction(
-  organizationId: number | string,
-): Promise<ApiResponse> {
+export async function fetchFormTemplateAction(templateId: number): Promise<ApiResponse> {
   const response = await api({
-    input: `/manager/organizations/${organizationId}`,
+    input: `/manager/form-templates/show/${templateId}`,
     init: {
       method: "GET",
     },

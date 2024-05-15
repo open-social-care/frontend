@@ -21,13 +21,17 @@
       "edit_user": "Editar usuário",
       "organizations": "Organizações",
       "create_organization": "Cadastrar organização",
-      "edit_organization": "Editar organização"
+      "edit_organization": "Editar organização",
+      "form_templates": "Templates de formulário",
+      "create_form_template": "Cadastrar template de formulário",
+      "edit_form_template": "Editar template de formulário"
     },
 
     "general_actions": {
       "create": "Cadastrar",
       "edit": "Editar",
       "add": "Adicionar",
+      "cancel": "Cancelar",
       "dissociate": "Dissociar",
       "manage": "Gerenciar",
       "update": "Atualizar",
@@ -38,13 +42,20 @@
     "labels": {
       "name": "Nome",
       "phone": "Telefone",
+      "organization": "Organização",
+      "templates": "Templates",
       "document": "Documento",
-      "document_type": "Tipo de documento"
+      "document_type": "Tipo de documento",
+      "description": "Descrição",
+      "add_question": "Adicionar questão",
+      "answer_required": "Questão obrigatória"
     },
 
     "informations": {
-      "users_not_found": "Nenhum usuário cadastrado.",
-      "organization_not_found": "Nenhuma organização encontrada."
+      "users_not_found": "Nenhum usuário encontrado.",
+      "organization_not_found": "Nenhuma organização encontrada.",
+      "form_templates_not_found": "Nenhum template encontrado.",
+      "questions_not_found": "Nenhuma questão encontrada."
     },
 
     "document_types": {

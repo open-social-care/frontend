@@ -8,8 +8,8 @@ type NavbarProps = {
   withoutSidebarToggle?: boolean;
 };
 
-export default function Navbar({ withoutSidebarToggle }: NavbarProps) {
-  const { user } = auth();
+export default async function Navbar({ withoutSidebarToggle }: NavbarProps) {
+  const { user } = await auth();
 
   return (
     <Root>

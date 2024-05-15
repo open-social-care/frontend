@@ -1,3 +1,4 @@
+import { ActionFlashes } from "@/action-flash/ActionFlashes";
 import { Paper } from "@/components/containers";
 import OrganizationMembers from "@/components/pages/OrganizationMembers";
 import { Heading } from "@/components/ui";
@@ -38,6 +39,8 @@ export default async function page({ params, searchParams }: PageProps) {
 
   return (
     <>
+      <ActionFlashes />
+
       <Heading h1>{organization.name}</Heading>
 
       <Paper className="mt-4">
