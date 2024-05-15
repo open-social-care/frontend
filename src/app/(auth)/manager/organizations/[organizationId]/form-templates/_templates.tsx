@@ -8,6 +8,7 @@ import CardAction from "@/components/ui/CardAction";
 import Pagination from "@/components/ui/Pagination";
 import { FormTemplate } from "@/schemas/FormTemplate";
 import { fetchFormTemplatesAction } from "./_actions";
+import RemoveTemplateAction from "./_remove-template";
 
 interface TemplateListProps {
   organizationId: number;
@@ -40,6 +41,8 @@ export default async function TemplateList({ organizationId, search, page }: Tem
               href={`/manager/organizations/${organizationId}/form-templates/${formTemplate.id}/edit`}
               icon={<AiOutlineEdit />}
             />
+
+            <RemoveTemplateAction templateId={formTemplate.id} />
           </HBox>
         </Paper>
       ))}
