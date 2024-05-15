@@ -1,10 +1,10 @@
 import { ActionFlashes } from "@/action-flash/ActionFlashes";
-import { VBox } from "@/components/containers";
-import { Heading, Skeleton } from "@/components/ui";
+import { HBox, VBox } from "@/components/containers";
+import { Button, Heading, Skeleton } from "@/components/ui";
+import { t } from "@/lang";
 import { FormTemplate } from "@/schemas";
-import { fetchFormTemplateAction } from "../_actions";
-import { FormAddQuestion } from "./_form-add-question";
-import QuestionList from "./_questions";
+import { fetchFormTemplateAction } from "./_actions";
+import QuestionList from "./questions/_questions";
 
 interface PageProps {
   params: {
@@ -22,7 +22,15 @@ export default async function page({ params }: PageProps) {
     <>
       <ActionFlashes />
 
-      <Heading h1>{formTemplate.title}</Heading>
+      <HBox className="justify-between">
+        <Heading h1>{formTemplate.title}</Heading>
+
+        <Button
+          href={`/manager/organizations/${params.organizationId}/form-templates/${formTemplate.id}/edit`}
+        >
+          {t("general_actions.edit")}
+        </Button>
+      </HBox>
 
       <VBox className="mt-5">
         <Skeleton
@@ -32,8 +40,6 @@ export default async function page({ params }: PageProps) {
           <QuestionList {...params} />
         </Skeleton>
       </VBox>
-
-      <FormAddQuestion />
     </>
   );
 }

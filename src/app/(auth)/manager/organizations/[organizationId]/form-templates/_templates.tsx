@@ -1,5 +1,5 @@
 import { HBox, Paper } from "@/components/containers";
-import { AiOutlineEdit } from "react-icons/ai";
+import { AiOutlineSetting } from "react-icons/ai";
 
 import { t } from "@/lang";
 
@@ -37,9 +37,9 @@ export default async function TemplateList({ organizationId, search, page }: Tem
 
           <HBox className="mt-4 justify-end gap-4">
             <CardAction
-              title={t("general_actions.edit")}
-              href={`/manager/organizations/${organizationId}/form-templates/${formTemplate.id}/edit`}
-              icon={<AiOutlineEdit />}
+              title={t("general_actions.manage")}
+              href={`/manager/organizations/${organizationId}/form-templates/${formTemplate.id}`}
+              icon={<AiOutlineSetting />}
             />
 
             <RemoveTemplateAction templateId={formTemplate.id} />

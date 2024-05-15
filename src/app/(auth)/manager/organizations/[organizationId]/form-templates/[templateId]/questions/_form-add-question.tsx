@@ -19,8 +19,8 @@ export function FormAddQuestion() {
   );
 
   return (
-    <Paper className="mt-4">
-      <Heading h2>Adicionar questão</Heading>
+    <Paper className="mt-1">
+      <Heading h2>{t("labels.add_question")}</Heading>
 
       <Form action={formAction}>
         <Form.Input

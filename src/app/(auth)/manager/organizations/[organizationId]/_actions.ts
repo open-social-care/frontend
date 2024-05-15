@@ -3,7 +3,9 @@
 import api from "@/api";
 import { ApiResponse } from "@/schemas";
 
-export async function fetchOrganizationAction(organizationId: number): Promise<ApiResponse> {
+export async function fetchOrganizationAction(
+  organizationId: number | string,
+): Promise<ApiResponse> {
   const response = await api({
     input: `/manager/organizations/${organizationId}`,
     init: {

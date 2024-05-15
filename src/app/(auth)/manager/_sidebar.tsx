@@ -3,8 +3,9 @@ import { t } from "@/lang";
 
 import { AiOutlineHome } from "react-icons/ai";
 import { BsHouseHeart, BsPersonFillGear } from "react-icons/bs";
+import OrganizationLinks from "./_organization-links";
 
-export default function ManagerSideBar() {
+export default async function ManagerSideBar() {
   return (
     <DashboardLayout.SideBar.Root>
       <DashboardLayout.SideBar.LinkGroup
@@ -25,6 +26,8 @@ export default function ManagerSideBar() {
           {t("page_titles.organizations")}
         </DashboardLayout.SideBar.Link>
       </DashboardLayout.SideBar.LinkGroup>
+
+      <OrganizationLinks />
     </DashboardLayout.SideBar.Root>
   );
 }

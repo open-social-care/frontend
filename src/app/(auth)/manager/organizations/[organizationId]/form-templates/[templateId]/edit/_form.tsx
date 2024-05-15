@@ -52,7 +52,7 @@ export function UpdateFormTemplateForm({ template, organizationId }: UpdateFormT
         <CardAction
           className="mt-4"
           title={t("general_actions.cancel")}
-          href={`/manager/organizations/${organizationId}/form-templates`}
+          href={`/manager/organizations/${organizationId}/form-templates/${template.id}`}
         />
 
         <Form.Button data-testid={testIDs.SUBMIT_BUTTON}>{t(`general_actions.update`)}</Form.Button>

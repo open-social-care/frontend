@@ -56,7 +56,7 @@ export function FormUpdateQuestion({
         <CardAction
           className="mt-4"
           title={t("general_actions.cancel")}
-          href={`/manager/organizations/${organizationId}/form-templates/${templateId}/questions`}
+          href={`/manager/organizations/${organizationId}/form-templates/${templateId}`}
         />
 
         <Form.Button data-testid={testIDs.SUBMIT_BUTTON}>{t(`general_actions.update`)}</Form.Button>

@@ -42,9 +42,12 @@
     "labels": {
       "name": "Nome",
       "phone": "Telefone",
+      "organization": "Organização",
+      "templates": "Templates",
       "document": "Documento",
       "document_type": "Tipo de documento",
       "description": "Descrição",
+      "add_question": "Adicionar questão",
       "answer_required": "Questão obrigatória"
     },
 

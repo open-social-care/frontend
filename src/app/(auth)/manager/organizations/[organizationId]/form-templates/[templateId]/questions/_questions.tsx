@@ -6,6 +6,7 @@ import { CardAction, Text } from "@/components/ui";
 import { Question } from "@/schemas";
 import { AiOutlineEdit } from "react-icons/ai";
 import { fetchQuestionsAction } from "./_actions";
+import { FormAddQuestion } from "./_form-add-question";
 import RemoveQuestionAction from "./_remove-question";
 
 interface QuestionListProps {
@@ -50,6 +51,8 @@ export default async function QuestionList({ templateId, organizationId }: Quest
           </HBox>
         </Paper>
       ))}
+
+      <FormAddQuestion />
     </>
   );
 }

@@ -1,3 +1,5 @@
+"use server";
+
 import { User } from "@/schemas";
 import { cookies } from "next/headers";
 import { permanentRedirect } from "next/navigation";
@@ -29,7 +31,7 @@ const getUserFromCookie = () => {
   }
 };
 
-export default function auth() {
+export default async function auth() {
   const user = getUserFromCookie();
 
   if (user) {
