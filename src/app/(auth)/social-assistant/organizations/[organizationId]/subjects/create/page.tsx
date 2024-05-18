@@ -8,15 +8,12 @@ import { fetchCitiesByState, fetchFormInfo } from "../_actions";
 import { CreateSubjectForm } from "./_form";
 
 interface PageProps {
-  params: {
-    organizationId: number;
-  };
   searchParams: {
     state: number;
   };
 }
 
-export default async function page({ params, searchParams }: PageProps) {
+export default async function page({ searchParams }: PageProps) {
   const { data: formInfo } = await fetchFormInfo();
   const { data: citiesData } = await fetchCitiesByState(searchParams.state);
 
@@ -26,7 +23,7 @@ export default async function page({ params, searchParams }: PageProps) {
 
   return (
     <>
-      <Heading h1>{t("page_titles.create_subjects")}</Heading>
+      <Heading h1>{t("page_titles.create_subject")}</Heading>
 
       <Paper className="mt-4">
         <CreateSubjectForm

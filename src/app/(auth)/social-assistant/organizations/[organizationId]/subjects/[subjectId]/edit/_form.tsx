@@ -7,25 +7,28 @@ import { useFormState } from "react-dom";
 
 import { Heading } from "@/components/ui";
 import { DocumentTypes } from "@/enums/DocumentTypes";
-import { State } from "@/schemas";
+import { State, SubjectDetails } from "@/schemas";
 import { City } from "@/schemas/City";
 import { SkinColor } from "@/schemas/SkinColor";
 import { useParams } from "next/navigation";
-import { createSubjectAction } from "./_actions";
+import { updateSubjectAction } from "./_actions";
 
-interface CreateSubjectFormProps {
+interface UpdateSubjectFormProps {
+  subject: SubjectDetails;
   skinColors: SkinColor[];
   states: State[];
   cities: City[];
 }
 
-export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectFormProps) {
-  const params = useParams<{ organizationId: string }>();
+export function UpdateSubjectForm({ subject, skinColors, states, cities }: UpdateSubjectFormProps) {
+  const { organizationId } = useParams<{ organizationId: string }>();
 
   const [state, formAction] = useFormState(
-    createSubjectAction.bind(null, params.organizationId),
+    updateSubjectAction.bind(null, organizationId, subject.id),
     undefined,
   );
+
+  const address = subject.addresses.findLast((a) => a);
 
   return (
     <Form action={formAction}>
@@ -49,6 +52,7 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         placeholder={t("labels.name")}
         withAsterisk
         errors={state?.errors?.["name"]}
+        defaultValue={subject.name}
       />
 
       <Form.Input
@@ -57,6 +61,7 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         placeholder="00/00/0000"
         withAsterisk
         errors={state?.errors?.["birth_date"]}
+        defaultValue={subject.birth_date}
       />
 
       <Form.Input
@@ -64,14 +69,16 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         label={t("labels.nationality")}
         placeholder={t("labels.nationality")}
         errors={state?.errors?.["nationality"]}
+        defaultValue={subject.nationality!}
       />
 
       <Form.Input
         name="phone"
         label={t("labels.phone")}
-        placeholder="(00) 00000-0000"
+        placeholder="(00) 0000-0000"
         mask={[{ mask: "(00) 0000-0000" }, { mask: "(00) 00000-0000" }]}
         errors={state?.errors?.["phone"]}
+        defaultValue={subject.phone!}
       />
 
       <Form.Input
@@ -80,6 +87,7 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         placeholder="000.000.000-00"
         mask="000.000.000-00"
         errors={state?.errors?.["cpf"]}
+        defaultValue={subject.cpf!}
       />
 
       <Form.Input
@@ -87,6 +95,7 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         label="RG"
         placeholder="RG"
         errors={state?.errors?.["rg"]}
+        defaultValue={subject.rg!}
       />
 
       <Form.Select
@@ -98,6 +107,7 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
           value: skinColor.id.toString(),
         }))}
         errors={state?.errors?.["skink_color"]}
+        defaultValue={subject.skin_color!}
       />
 
       <Heading
@@ -112,6 +122,7 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         label={t("labels.father_name")}
         placeholder={t("labels.father_name")}
         errors={state?.errors?.["father_name"]}
+        defaultValue={subject.father_name!}
       />
 
       <Form.Input
@@ -119,6 +130,7 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         label={t("labels.mother_name")}
         placeholder={t("labels.mother_name")}
         errors={state?.errors?.["mother_name"]}
+        defaultValue={subject.mother_name!}
       />
 
       <Form.Input
@@ -126,6 +138,7 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         label={t("labels.relative_relation")}
         placeholder={t("labels.name")}
         errors={state?.errors?.["relative_name"]}
+        defaultValue={subject.relative_name!}
       />
 
       <Form.Input
@@ -133,6 +146,7 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         label={t("labels.relative_relation_type")}
         placeholder={t("labels.relative_relation_type")}
         errors={state?.errors?.["relative_relation_type"]}
+        defaultValue={subject.relative_relation_type!}
       />
 
       <Form.Input
@@ -141,6 +155,7 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         placeholder="(00) 0000-0000"
         mask={[{ mask: "(00) 0000-0000" }, { mask: "(00) 00000-0000" }]}
         errors={state?.errors?.["relative_phone"]}
+        defaultValue={subject.relative_phone!}
       />
 
       <Heading
@@ -158,6 +173,7 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         data={states.map((state) => ({ label: state.name, value: state.id.toString() }))}
         queryName="state"
         errors={state?.errors?.["addresses.0.state_id"]}
+        defaultValue={address?.state_id}
       />
 
       <Form.Select
@@ -168,6 +184,7 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         data={cities.map((city) => ({ label: city.name, value: city.id.toString() }))}
         disabled={cities.length == 0}
         errors={state?.errors?.["addresses.0.city_id"]}
+        defaultValue={address?.city_id}
       />
 
       <Form.Input
@@ -176,6 +193,7 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         placeholder={t("labels.street")}
         withAsterisk
         errors={state?.errors?.["addresses.0.street"]}
+        defaultValue={address?.street}
       />
 
       <Form.Input
@@ -184,6 +202,7 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         placeholder={t("labels.number")}
         withAsterisk
         errors={state?.errors?.["addresses.0.number"]}
+        defaultValue={address?.number}
       />
 
       <Form.Input
@@ -191,6 +210,7 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         label={t("labels.district")}
         placeholder={t("labels.district")}
         errors={state?.errors?.["addresses.0.district"]}
+        defaultValue={address?.district}
       />
 
       <Form.Input
@@ -198,13 +218,14 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         label={t("labels.complement")}
         placeholder={t("labels.complement")}
         errors={state?.errors?.["addresses.0.complement"]}
+        defaultValue={address?.complement}
       />
 
       <Form.Button
         className="self-end"
         data-testid={testIDs.SUBMIT_BUTTON}
       >
-        {t(`general_actions.create`)}
+        {t(`general_actions.update`)}
       </Form.Button>
     </Form>
   );

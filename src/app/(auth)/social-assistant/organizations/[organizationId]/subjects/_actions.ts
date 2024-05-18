@@ -19,7 +19,7 @@ export async function fetchFormInfo(): Promise<ApiResponse> {
   return ApiResponse.parse(json);
 }
 
-export async function fetchCitiesByState(stateId: number): Promise<ApiResponse> {
+export async function fetchCitiesByState(stateId?: number): Promise<ApiResponse> {
   const response = await api({
     input: `/${Roles.SOCIAL_ASSISTANT}/subjects/get/cities-by-state-to-select/${stateId}`,
     init: {

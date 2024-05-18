@@ -25,7 +25,8 @@
       "form_templates": "Templates de formulário",
       "create_form_template": "Cadastrar template de formulário",
       "edit_form_template": "Editar template de formulário",
-      "create_subjects": "Cadastrar {{subject_ref}}"
+      "create_subject": "Cadastrar {{subject_ref}}",
+      "edit_subject": "Editar {{subject_ref}}"
     },
 
     "general_actions": {

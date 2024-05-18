@@ -3,16 +3,16 @@ import { Address } from "./Address";
 import { Subject } from "./Subject";
 
 export const SubjectDetails = Subject.extend({
-  nationality: z.string(),
-  phone: z.string(),
-  father_name: z.string(),
-  mother_name: z.string(),
-  cpf: z.string(),
-  rg: z.string(),
-  skin_color: z.string(),
-  relative_relation_type: z.string(),
-  relative_name: z.string(),
-  relative_phone: z.string(),
+  nationality: z.string().nullish(),
+  phone: z.string().nullish(),
+  father_name: z.string().nullish(),
+  mother_name: z.string().nullish(),
+  cpf: z.string().nullish(),
+  rg: z.string().nullish(),
+  skin_color: z.string().nullish(),
+  relative_relation_type: z.string().nullish(),
+  relative_name: z.string().nullish(),
+  relative_phone: z.string().nullish(),
   addresses: Address.array(),
 });
 
