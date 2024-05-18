@@ -55,7 +55,8 @@
       "users_not_found": "Nenhum usuário encontrado.",
       "organization_not_found": "Nenhuma organização encontrada.",
       "form_templates_not_found": "Nenhum template encontrado.",
-      "questions_not_found": "Nenhuma questão encontrada."
+      "questions_not_found": "Nenhuma questão encontrada.",
+      "subjects_not_found": "Nenhum {{subject_ref}} encontrado."
     },
 
     "document_types": {

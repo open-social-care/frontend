@@ -4,4 +4,6 @@ export { Organization } from "./Organization";
 export { Paginate } from "./Paginate";
 export { Question } from "./Question";
 export { Role } from "./Role";
+export { Subject } from "./Subject";
+export { SubjectDetails } from "./SubjectDetails";
 export { User } from "./User";
