@@ -24,7 +24,8 @@
       "edit_organization": "Editar organização",
       "form_templates": "Templates de formulário",
       "create_form_template": "Cadastrar template de formulário",
-      "edit_form_template": "Editar template de formulário"
+      "edit_form_template": "Editar template de formulário",
+      "create_subjects": "Cadastrar {{subject_ref}}"
     },
 
     "general_actions": {
@@ -48,7 +49,23 @@
       "document_type": "Tipo de documento",
       "description": "Descrição",
       "add_question": "Adicionar questão",
-      "answer_required": "Questão obrigatória"
+      "answer_required": "Questão obrigatória",
+      "personal_information": "Informações pessoais",
+      "additional_information": "Informações adicionaris",
+      "birth_date": "Data de nascimento",
+      "address": "Endereço",
+      "street": "Rua",
+      "father_name": "Nome do pai",
+      "mother_name": "Nome da mãe",
+      "skin_color": "Cor de pele",
+      "nationality": "Nacionalidade",
+      "number": "Número",
+      "district": "Distrito",
+      "state": "Estado",
+      "city": "Cidade",
+      "complement": "Complemento",
+      "relative_relation": "Parente/conhecido próximo",
+      "relative_relation_type": "Tipo de relação"
     },
 
     "informations": {

@@ -33,11 +33,15 @@ export default async function SubjectList({ organizationId, search, page }: Subj
           key={subject.id}
         >
           <Text className="font-semibold">{subject.name}</Text>
-          <Text className="text-sm">{subject.birth_date}</Text>
+          <Text className="text-sm">
+            {t("labels.birth_date")}
+            {": "}
+            {subject.birth_date}
+          </Text>
 
           <HBox className="mt-4 justify-end gap-4">
             <CardAction
-              title={t("general_actions.manage")}
+              title={t("general_actions.edit")}
               href={`/${Roles.SOCIAL_ASSISTANT}/organizations/${organizationId}/subjects/${subject.id}/edit`}
               icon={<AiOutlineEdit />}
             />

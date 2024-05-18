@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { Address } from "./Address";
 import { Subject } from "./Subject";
 
 export const SubjectDetails = Subject.extend({
@@ -12,6 +13,7 @@ export const SubjectDetails = Subject.extend({
   relative_relation_type: z.string(),
   relative_name: z.string(),
   relative_phone: z.string(),
+  addresses: Address.array(),
 });
 
 export type SubjectDetails = z.infer<typeof SubjectDetails>;
