@@ -59,6 +59,7 @@ export function UpdateSubjectForm({ subject, skinColors, states, cities }: Updat
         name="birth_date"
         label={t("labels.birth_date")}
         placeholder="00/00/0000"
+        mask="00/00/0000"
         withAsterisk
         errors={state?.errors?.["birth_date"]}
         defaultValue={subject.birth_date}

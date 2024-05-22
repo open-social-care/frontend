@@ -55,6 +55,7 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         name="birth_date"
         label={t("labels.birth_date")}
         placeholder="00/00/0000"
+        mask="00/00/0000"
         withAsterisk
         errors={state?.errors?.["birth_date"]}
       />

@@ -21,7 +21,7 @@ export default function page({ params, searchParams }: PageProps) {
       <ActionFlashes />
 
       <HBox className="justify-between">
-        <Heading h1>{"subject_ref"}</Heading>
+        <Heading h1>{"subjects_ref"}</Heading>
 
         <Button
           href={`/${Roles.SOCIAL_ASSISTANT}/organizations/${params.organizationId}/subjects/create`}

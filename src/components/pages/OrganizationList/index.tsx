@@ -1,5 +1,5 @@
 import { HBox, Paper } from "@/components/containers";
-import { AiOutlineEdit, AiOutlineSetting } from "react-icons/ai";
+import { AiOutlineEdit, AiOutlineSetting, AiOutlineUsergroupAdd } from "react-icons/ai";
 
 import { t } from "@/lang";
 import { Organization, Role } from "@/schemas";
@@ -7,6 +7,7 @@ import { Organization, Role } from "@/schemas";
 import { Text } from "@/components/ui";
 import CardAction from "@/components/ui/CardAction";
 import Pagination from "@/components/ui/Pagination";
+import { Roles } from "@/enums/Roles";
 import { fetchOrganizationsAction } from "./_actions";
 
 interface OrganizationListProps {
@@ -44,11 +45,21 @@ export default async function OrganizationList({ profile, search, page }: Organi
           )}
 
           <HBox className="mt-4 justify-end gap-4">
-            <CardAction
-              title={t("general_actions.manage")}
-              href={`/${profile}/organizations/${organization.id}`}
-              icon={<AiOutlineSetting />}
-            />
+            {(profile == Roles.ADMIN || profile == Roles.MANAGER) && (
+              <CardAction
+                title={t("general_actions.manage")}
+                href={`/${profile}/organizations/${organization.id}`}
+                icon={<AiOutlineSetting />}
+              />
+            )}
+
+            {profile == Roles.SOCIAL_ASSISTANT && (
+              <CardAction
+                title={"subjects_ref"}
+                href={`/${profile}/organizations/${organization.id}/subjects`}
+                icon={<AiOutlineUsergroupAdd />}
+              />
+            )}
 
             <CardAction
               title={t("general_actions.edit")}
