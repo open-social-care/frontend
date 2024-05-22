@@ -154,7 +154,6 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         name="state_id"
         label={t("labels.state")}
         placeholder={t("labels.state")}
-        withAsterisk
         data={states.map((state) => ({ label: state.name, value: state.id.toString() }))}
         queryName="state"
         errors={state?.errors?.["addresses.0.state_id"]}
@@ -164,7 +163,6 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         name="city_id"
         label={t("labels.city")}
         placeholder={t("labels.city")}
-        withAsterisk
         data={cities.map((city) => ({ label: city.name, value: city.id.toString() }))}
         disabled={cities.length == 0}
         errors={state?.errors?.["addresses.0.city_id"]}
@@ -174,7 +172,6 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         name="street"
         label={t("labels.street")}
         placeholder={t("labels.street")}
-        withAsterisk
         errors={state?.errors?.["addresses.0.street"]}
       />
 
@@ -182,7 +179,6 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         name="number"
         label={t("labels.number")}
         placeholder={t("labels.number")}
-        withAsterisk
         errors={state?.errors?.["addresses.0.number"]}
       />
 

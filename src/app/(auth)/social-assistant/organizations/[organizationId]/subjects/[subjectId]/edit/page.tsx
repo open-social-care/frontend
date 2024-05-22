@@ -1,10 +1,11 @@
+import { fetchCitiesByState, fetchStates } from "@/app/(auth)/_actions";
 import { Paper } from "@/components/containers";
 import { Heading } from "@/components/ui";
 import { t } from "@/lang";
 import { State, SubjectDetails } from "@/schemas";
 import { City } from "@/schemas/City";
 import { SkinColor } from "@/schemas/SkinColor";
-import { fetchCitiesByState, fetchFormInfo } from "../../_actions";
+import { fetchFormInfo } from "../../_actions";
 import { fetchSubjectAction } from "./_actions";
 import { UpdateSubjectForm } from "./_form";
 
@@ -23,13 +24,14 @@ export default async function page({ params, searchParams }: PageProps) {
   const subject = SubjectDetails.parse(subjectData);
 
   const { data: formInfo } = await fetchFormInfo();
+  const { data: statesData } = await fetchStates();
   const { data: citiesData } = await fetchCitiesByState(
     searchParams.state || subject.addresses.findLast((a) => a)?.state_id,
   );
 
   const skinColors = SkinColor.array().parse(formInfo.skinColors);
-  const states = State.array().parse(formInfo.states);
-  const cities = City.array().parse(citiesData.cities);
+  const states = State.array().parse(statesData);
+  const cities = City.array().parse(citiesData);
 
   return (
     <>
