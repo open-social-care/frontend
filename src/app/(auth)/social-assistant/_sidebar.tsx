@@ -1,7 +1,9 @@
 import { DashboardLayout } from "@/components/layouts";
+import { t } from "@/lang";
 
-import { AiOutlineFileExcel, AiOutlineFileImage, AiOutlineHome } from "react-icons/ai";
-import { BsFillPersonFill, BsHouseHeartFill, BsPersonVcard } from "react-icons/bs";
+import { AiOutlineHome } from "react-icons/ai";
+import { BsFillPersonFill, BsHouseHeart } from "react-icons/bs";
+import OrganizationLinks from "./_organization-links";
 
 export default function SocialAssistantSideBar() {
   return (
@@ -18,31 +20,14 @@ export default function SocialAssistantSideBar() {
         </DashboardLayout.SideBar.Link>
 
         <DashboardLayout.SideBar.Link
-          href="/social-assistant/subjects"
-          icon={<BsPersonVcard />}
+          href="/social-assistant/organizations"
+          icon={<BsHouseHeart />}
         >
-          Sujeitos
+          {t("page_titles.organizations")}
         </DashboardLayout.SideBar.Link>
       </DashboardLayout.SideBar.LinkGroup>
 
-      <DashboardLayout.SideBar.LinkGroup
-        title="Conselho"
-        icon={<BsHouseHeartFill />}
-      >
-        <DashboardLayout.SideBar.Link
-          href="/social-assistant/documents-example"
-          icon={<AiOutlineFileExcel />}
-        >
-          Documentos
-        </DashboardLayout.SideBar.Link>
-
-        <DashboardLayout.SideBar.Link
-          href="/social-assistant/images-example"
-          icon={<AiOutlineFileImage />}
-        >
-          Imagens
-        </DashboardLayout.SideBar.Link>
-      </DashboardLayout.SideBar.LinkGroup>
+      <OrganizationLinks />
     </DashboardLayout.SideBar.Root>
   );
 }
