@@ -1,32 +1,38 @@
-import { expect, test } from "@playwright/experimental-ct-react";
+import "@testing-library/jest-dom";
+import { render } from "@testing-library/react";
 import FlashMessage from "./FlashMessage";
 
-test("error flash message should be rendered in red", async ({ mount }) => {
+test("error flash message should be rendered in red", async () => {
   const message = "This is a error message.";
 
-  const component = await mount(
+  const { container } = render(
     <FlashMessage
+      data-testid="fm"
       type="error"
       message={message}
     />,
   );
 
-  await expect(component).toContainText(message);
+  const { firstChild: element } = container;
 
-  await expect(component).toHaveClass(/bg-red-500/);
+  expect(element).toHaveTextContent(message);
+
+  expect(element).toHaveClass(/bg-red-500/);
 });
 
-test("success flash message should be rendered in green", async ({ mount }) => {
+test("success flash message should be rendered in green", async () => {
   const message = "This is a success message.";
 
-  const component = await mount(
+  const { container } = render(
     <FlashMessage
       type="success"
       message={message}
     />,
   );
 
-  await expect(component).toContainText(message);
+  const { firstChild: element } = container;
 
-  await expect(component).toHaveClass(/bg-emerald-500/);
+  expect(element).toHaveTextContent(message);
+
+  expect(element).toHaveClass(/bg-emerald-500/);
 });

@@ -1,4 +1,7 @@
-import { expect, test } from "@playwright/experimental-ct-react";
+import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
+
+import userEvent from "@testing-library/user-event";
 import Select, { SelectItem } from "./Select";
 
 const options: SelectItem[] = [
@@ -17,25 +20,30 @@ const optionsCount = options.length + 1;
 
 const option2 = options[1];
 
-test("options should be rendered", async ({ mount }) => {
-  const component = await mount(<Select data={options} />);
+jest.mock("next/navigation", () => ({
+  ...jest.requireActual("next/navigation"),
+  useRouter: () => ({ replace: jest.fn() }),
+}));
 
-  const rederedOptions = component.getByRole("option");
+test("options should be rendered", async () => {
+  render(<Select data={options} />);
 
-  await expect(rederedOptions).toHaveCount(optionsCount);
+  const renderedOptions = screen.getAllByRole("option");
 
-  const renderedOption2 = component.getByRole("option").nth(2);
+  expect(renderedOptions).toHaveLength(optionsCount);
 
-  await expect(renderedOption2).toContainText(option2.label);
-  await expect(renderedOption2).toHaveAttribute("value", option2.value);
+  const renderedOption2 = renderedOptions.at(2);
+
+  expect(renderedOption2).toHaveTextContent(option2.label);
+  expect(renderedOption2).toHaveAttribute("value", option2.value);
 });
 
-test("option should be selected", async ({ mount }) => {
-  const component = await mount(<Select data={options} />);
+test("option should be selected", async () => {
+  render(<Select data={options} />);
 
-  const select = component.locator("select");
+  const select = screen.getByTestId("select");
 
-  await select.selectOption(option2.label);
+  await userEvent.selectOptions(select, option2.label);
 
-  await expect(select).toHaveValue(option2.value);
+  expect(select).toHaveValue(option2.value);
 });

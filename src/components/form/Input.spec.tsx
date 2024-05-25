@@ -1,32 +1,44 @@
-import { expect, test } from "@playwright/experimental-ct-react";
+import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Input from "./Input";
 
-test("input should be rendered without label", async ({ mount }) => {
-  const component = await mount(<Input />);
+test("input should be rendered without label", async () => {
+  render(<Input />);
 
-  await expect(component.getByTestId("label")).not.toBeVisible();
+  const input = screen.getByTestId("input");
+
+  const label = screen.queryAllByTestId("label");
+
+  expect(label).toMatchObject([]);
+
+  expect(input).toBeVisible();
 });
 
-test("input should be rendered with label", async ({ mount }) => {
-  const component = await mount(<Input label="label example" />);
+test("input should be rendered with label", async () => {
+  render(<Input label="label example" />);
 
-  await expect(component.getByTestId("label")).toContainText("label example");
+  expect(screen.getByTestId("label")).toHaveTextContent("label example");
 });
 
-test("input must allow text to be written", async ({ mount }) => {
-  const component = await mount(<Input />);
+test("input must allow text to be written", async () => {
+  render(<Input />);
 
-  await component.locator("input").fill("my-text");
+  const input = screen.getByTestId("input");
 
-  await expect(component.locator("input")).toHaveValue("my-text");
+  await userEvent.type(input, "my-text");
+
+  expect(input).toHaveValue("my-text");
 });
 
-test("input must show field error", async ({ mount }) => {
+test("input must show field error", async () => {
   const fieldError = "This text is not valid.";
 
-  const component = await mount(<Input errors={[fieldError]} />);
+  render(<Input errors={[fieldError]} />);
 
-  await expect(component.getByTestId("errors")).toHaveText(fieldError);
+  const error = screen.getByTestId("errors").getElementsByTagName("p")[0];
 
-  await expect(component.getByTestId("errors").locator("p")).toHaveClass(/text-red-400/);
+  expect(error.textContent).toEqual(fieldError);
+
+  expect(error).toHaveClass(/text-red-400/);
 });
