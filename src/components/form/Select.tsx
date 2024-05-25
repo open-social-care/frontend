@@ -1,5 +1,6 @@
 "use client";
 
+import { testIDs } from "@/e2e/_testIDs";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 
@@ -61,7 +62,7 @@ export default function Select({
 
       <select
         name={rest.name}
-        data-testid="select"
+        data-testid={testIDs.SELECT}
         className="mt-1 block w-full rounded-lg border border-gray-200 bg-white px-2 py-2 text-gray-700 focus:border-teal-500 focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-40"
         onChange={(e) => handleUpdateQueryParam(e.currentTarget.value)}
         {...rest}

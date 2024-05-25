@@ -1,7 +1,8 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-
 import userEvent from "@testing-library/user-event";
+
+import { testIDs } from "@/e2e/_testIDs";
 import Select, { SelectItem } from "./Select";
 
 const options: SelectItem[] = [
@@ -41,7 +42,7 @@ test("options should be rendered", async () => {
 test("option should be selected", async () => {
   render(<Select data={options} />);
 
-  const select = screen.getByTestId("select");
+  const select = screen.getByTestId(testIDs.SELECT);
 
   await userEvent.selectOptions(select, option2.label);
 
