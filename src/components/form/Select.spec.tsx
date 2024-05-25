@@ -1,41 +1,49 @@
-// import { expect, test } from "@playwright/experimental-ct-react";
-// import Select, { SelectItem } from "./Select";
+import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
 
-// const options: SelectItem[] = [
-//   {
-//     label: "Option 1",
-//     value: "1",
-//   },
-//   {
-//     label: "Option 2",
-//     value: "2",
-//   },
-// ];
+import userEvent from "@testing-library/user-event";
+import Select, { SelectItem } from "./Select";
 
-// // incremented 1 because select contains 1 option item by default
-// const optionsCount = options.length + 1;
+const options: SelectItem[] = [
+  {
+    label: "Option 1",
+    value: "1",
+  },
+  {
+    label: "Option 2",
+    value: "2",
+  },
+];
 
-// const option2 = options[1];
+// incremented 1 because select contains 1 option item by default
+const optionsCount = options.length + 1;
 
-// test("options should be rendered", async ({ mount }) => {
-//   const component = await mount(<Select data={options} />);
+const option2 = options[1];
 
-//   const rederedOptions = component.getByRole("option");
+jest.mock("next/navigation", () => ({
+  ...jest.requireActual("next/navigation"),
+  useRouter: () => ({ replace: jest.fn() }),
+}));
 
-//   await expect(rederedOptions).toHaveCount(optionsCount);
+test("options should be rendered", async () => {
+  render(<Select data={options} />);
 
-//   const renderedOption2 = component.getByRole("option").nth(2);
+  const renderedOptions = screen.getAllByRole("option");
 
-//   await expect(renderedOption2).toContainText(option2.label);
-//   await expect(renderedOption2).toHaveAttribute("value", option2.value);
-// });
+  expect(renderedOptions).toHaveLength(optionsCount);
 
-// test("option should be selected", async ({ mount }) => {
-//   const component = await mount(<Select data={options} />);
+  const renderedOption2 = renderedOptions.at(2);
 
-//   const select = component.locator("select");
+  expect(renderedOption2).toHaveTextContent(option2.label);
+  expect(renderedOption2).toHaveAttribute("value", option2.value);
+});
 
-//   await select.selectOption(option2.label);
+test("option should be selected", async () => {
+  render(<Select data={options} />);
 
-//   await expect(select).toHaveValue(option2.value);
-// });
+  const select = screen.getByTestId("select");
+
+  await userEvent.selectOptions(select, option2.label);
+
+  expect(select).toHaveValue(option2.value);
+});

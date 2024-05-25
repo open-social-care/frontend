@@ -1,18 +1,27 @@
-// import { test } from "@playwright/experimental-ct-react";
-// import Button from "./Button";
+import { render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
-// test("button should be accept click event", async ({ mount }) => {
-//   let clicked = false;
+import Button from "./Button";
 
-//   const component = await mount(
-//     <Button
-//       onClick={() => {
-//         clicked = true;
-//       }}
-//     />,
-//   );
+jest.mock("react-dom", () => ({
+  ...jest.requireActual("react-dom"),
+  useFormStatus: () => ({ pending: false }),
+}));
 
-//   //await component.click();
+test("button should be accept click event", async () => {
+  let clicked = false;
 
-//   //expect(clicked).toBeTruthy();
-// });
+  const component = render(
+    <Button
+      onClick={() => {
+        clicked = true;
+      }}
+    />,
+  );
+
+  const btn = await component.findByTestId("button");
+
+  await userEvent.click(btn);
+
+  expect(clicked).toBeTruthy();
+});

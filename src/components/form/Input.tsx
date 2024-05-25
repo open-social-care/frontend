@@ -32,6 +32,7 @@ export default function Input({
 
       <IMaskInput
         name={name}
+        data-testid="input"
         className="mt-1 block w-full rounded-lg border border-gray-200 bg-white px-4 py-1.5 text-gray-700 focus:border-teal-500 focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-40"
         {...rest}
       />

@@ -1,32 +1,44 @@
-// import { expect, test } from "@playwright/experimental-ct-react";
-// import Input from "./Input";
+import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import Input from "./Input";
 
-// test("input should be rendered without label", async ({ mount }) => {
-//   const component = await mount(<Input />);
+test("input should be rendered without label", async () => {
+  render(<Input />);
 
-//   await expect(component.getByTestId("label")).not.toBeVisible();
-// });
+  const input = screen.getByTestId("input");
 
-// test("input should be rendered with label", async ({ mount }) => {
-//   const component = await mount(<Input label="label example" />);
+  const label = screen.queryAllByTestId("label");
 
-//   await expect(component.getByTestId("label")).toContainText("label example");
-// });
+  expect(label).toMatchObject([]);
 
-// test("input must allow text to be written", async ({ mount }) => {
-//   const component = await mount(<Input />);
+  expect(input).toBeVisible();
+});
 
-//   await component.locator("input").fill("my-text");
+test("input should be rendered with label", async () => {
+  render(<Input label="label example" />);
 
-//   await expect(component.locator("input")).toHaveValue("my-text");
-// });
+  expect(screen.getByTestId("label")).toHaveTextContent("label example");
+});
 
-// test("input must show field error", async ({ mount }) => {
-//   const fieldError = "This text is not valid.";
+test("input must allow text to be written", async () => {
+  render(<Input />);
 
-//   const component = await mount(<Input errors={[fieldError]} />);
+  const input = screen.getByTestId("input");
 
-//   await expect(component.getByTestId("errors")).toHaveText(fieldError);
+  await userEvent.type(input, "my-text");
 
-//   await expect(component.getByTestId("errors").locator("p")).toHaveClass(/text-red-400/);
-// });
+  expect(input).toHaveValue("my-text");
+});
+
+test("input must show field error", async () => {
+  const fieldError = "This text is not valid.";
+
+  render(<Input errors={[fieldError]} />);
+
+  const error = screen.getByTestId("errors").getElementsByTagName("p")[0];
+
+  expect(error.textContent).toEqual(fieldError);
+
+  expect(error).toHaveClass(/text-red-400/);
+});
