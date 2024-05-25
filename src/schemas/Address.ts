@@ -6,7 +6,7 @@ export const Address = z.object({
   street: z.string(),
   number: z.string(),
   district: z.string(),
-  complement: z.string().optional(),
+  complement: z.string().nullish(),
 });
 
 export type Address = z.infer<typeof Address>;
