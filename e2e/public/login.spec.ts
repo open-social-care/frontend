@@ -1,11 +1,11 @@
-import i18n from "@/lang";
-import { test, expect } from "@playwright/test";
+import { t } from "@/lang";
+import { expect, test } from "@playwright/test";
 import { testIDs } from "../_testIDs";
 
 test("test page title", async ({ page }) => {
   await page.goto("./login");
 
-  await expect(page).toHaveTitle(i18n.t("auth.login"));
+  await expect(page).toHaveTitle(t("auth.login"));
 });
 
 test("test successful login", async ({ page }) => {
@@ -29,7 +29,7 @@ test("test unsuccessful login", async ({ page }) => {
 
   await page
     .getByRole("button", {
-      name: i18n.t("auth.login"),
+      name: t("auth.login"),
     })
     .click();
 
