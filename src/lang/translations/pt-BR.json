@@ -15,13 +15,16 @@
     },
 
     "roles": {
+      "admin": "Administrador",
       "manager": "Gestor",
       "managers": "Gestores",
+      "social-assistant": "Assistente social",
       "social_assistant": "Assistente social",
       "social_assistants": "Assistentes sociais"
     },
 
     "page_titles": {
+      "profile_select": "Olá {{name}}, escolha o seu perfil:",
       "users": "Usuários",
       "create_user": "Cadastrar usuário",
       "create_social_assistant": "Cadastrar assistente social",
