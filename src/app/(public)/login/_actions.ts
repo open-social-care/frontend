@@ -1,9 +1,10 @@
 "use server";
 
 import api from "@/api";
-import { ApiResponse } from "@/schemas";
+import { ApiResponse, User } from "@/schemas";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { roleByRoleIds } from "./_helpers";
 
 export async function loginAction(prevState: any, formData: FormData): Promise<ApiResponse> {
   const response = await api({
@@ -19,13 +20,15 @@ export async function loginAction(prevState: any, formData: FormData): Promise<A
 
   const json = await response.json();
 
-  if (json.data && json.token) {
+  const { success: isValidUser, data: user } = User.safeParse(json.data);
+
+  if (isValidUser && json.token) {
     const cookieStore = cookies();
 
     cookieStore.set(
       "auth-user",
       JSON.stringify({
-        ...json.data,
+        ...user,
         token: json.token,
       }),
       {
@@ -34,7 +37,13 @@ export async function loginAction(prevState: any, formData: FormData): Promise<A
       },
     );
 
-    redirect("/profile-select");
+    const role = roleByRoleIds(user.roles_ids);
+
+    if (role) {
+      redirect(`/${role}/organizations`);
+    } else {
+      redirect("/profile-select");
+    }
   }
 
   return ApiResponse.parse(json);

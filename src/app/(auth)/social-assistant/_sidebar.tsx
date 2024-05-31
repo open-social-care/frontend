@@ -1,8 +1,9 @@
 import { DashboardLayout } from "@/components/layouts";
 import { t } from "@/lang";
 
-import { AiOutlineHome } from "react-icons/ai";
-import { BsFillPersonFill, BsHouseHeart } from "react-icons/bs";
+import { Roles } from "@/enums/Roles";
+import { BsHouseHeart } from "react-icons/bs";
+import { FaUserLarge } from "react-icons/fa6";
 import OrganizationLinks from "./_organization-links";
 
 export default function SocialAssistantSideBar() {
@@ -10,17 +11,17 @@ export default function SocialAssistantSideBar() {
     <DashboardLayout.SideBar.Root>
       <DashboardLayout.SideBar.LinkGroup
         title="Assistente Social"
-        icon={<BsFillPersonFill />}
+        icon={<FaUserLarge />}
       >
-        <DashboardLayout.SideBar.Link
+        {/* <DashboardLayout.SideBar.Link
           href="/social-assistant"
           icon={<AiOutlineHome />}
         >
           Início
-        </DashboardLayout.SideBar.Link>
+        </DashboardLayout.SideBar.Link> */}
 
         <DashboardLayout.SideBar.Link
-          href="/social-assistant/organizations"
+          href={`/${Roles.SOCIAL_ASSISTANT}/organizations`}
           icon={<BsHouseHeart />}
         >
           {t("page_titles.organizations")}

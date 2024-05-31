@@ -4,7 +4,8 @@ export const User = z.object({
   id: z.number(),
   name: z.string(),
   email: z.string(),
-  roles: z.optional(z.string().array()),
+  roles: z.string().array().optional(),
+  roles_ids: z.number().array().optional(),
   token: z.string().nullish(),
 });
 
