@@ -34,6 +34,7 @@
       "edit_organization": "Editar organização",
       "form_templates": "Templates de formulário",
       "create_form_template": "Cadastrar template de formulário",
+      "fill_form_template": "Preencher formulário",
       "edit_form_template": "Editar template de formulário",
       "create_subject": "Cadastrar {{subject_ref}}",
       "edit_subject": "Editar {{subject_ref}}"

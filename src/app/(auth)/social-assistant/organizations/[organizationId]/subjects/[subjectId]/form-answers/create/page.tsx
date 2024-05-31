@@ -1,5 +1,6 @@
 import { Paper } from "@/components/containers";
 import { Heading } from "@/components/ui";
+import { t } from "@/lang";
 import { FormTemplate, FormTemplateWithQuestions } from "@/schemas";
 import { fetchFormTemplate, fetchTemplates } from "./_actions";
 import AnswersForm from "./_form";
@@ -23,7 +24,7 @@ export default async function page({ params, searchParams }: PageProps) {
 
   return (
     <>
-      <Heading h1>Cadastrar atendimento</Heading>
+      <Heading h1>{t("page_titles.fill_form_template")}</Heading>
 
       <Paper className="mt-4">
         <SelecTemplate templates={templates} />
