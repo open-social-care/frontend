@@ -52,6 +52,7 @@
     },
 
     "labels": {
+      "start": "Início",
       "name": "Nome",
       "phone": "Telefone",
       "organization": "Organização",
@@ -84,6 +85,7 @@
       "organization_not_found": "Nenhuma organização encontrada.",
       "form_templates_not_found": "Nenhum template encontrado.",
       "questions_not_found": "Nenhuma questão encontrada.",
+      "role_not_found": "Nenhum perfil encontrado, contate o administrador do sistema.",
       "subjects_not_found": "Nenhum {{subject_ref}} encontrado."
     },
 

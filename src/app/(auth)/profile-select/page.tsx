@@ -1,12 +1,13 @@
 import auth from "@/auth";
 import { VBox } from "@/components/containers";
-import SideBarLink from "@/components/layouts/DashboardLayout/SideBar/SideBarLink";
-import { Heading } from "@/components/ui";
+import { Heading, Text } from "@/components/ui";
 import { Roles } from "@/enums/Roles";
 import { t } from "@/lang";
 import Image from "next/image";
+import { BsPersonFillGear } from "react-icons/bs";
 import { FaUserSecret } from "react-icons/fa";
-import { FaGear, FaUserLarge } from "react-icons/fa6";
+import { FaUserLarge } from "react-icons/fa6";
+import ProfileLink from "./_profile-link";
 
 export default async function page() {
   const { user } = await auth();
@@ -16,34 +17,38 @@ export default async function page() {
       <div className="lg:w-[50%]">
         <Heading h1>{t("page_titles.profile_select", { name: user.name })}</Heading>
 
-        <VBox className="mt-4">
-          {user.roles_ids?.includes(1) && (
-            <SideBarLink
-              icon={<FaUserSecret />}
-              href={`/${Roles.ADMIN}`}
-            >
-              {t(`roles.${Roles.ADMIN}`)}
-            </SideBarLink>
-          )}
+        {user.roles_ids?.length == 0 && <Text>{t("informations.role_not_found")}</Text>}
 
-          {user.roles_ids?.includes(2) && (
-            <SideBarLink
-              icon={<FaGear />}
-              href={`/${Roles.MANAGER}`}
-            >
-              {t(`roles.${Roles.MANAGER}`)}
-            </SideBarLink>
-          )}
+        {user.roles_ids && (
+          <VBox className="mt-4">
+            {user.roles_ids.includes(1) && (
+              <ProfileLink
+                icon={<FaUserSecret />}
+                href={`/${Roles.ADMIN}/organization`}
+              >
+                {t(`roles.${Roles.ADMIN}`)}
+              </ProfileLink>
+            )}
 
-          {user.roles_ids?.includes(3) && (
-            <SideBarLink
-              icon={<FaUserLarge />}
-              href={`/${Roles.SOCIAL_ASSISTANT}`}
-            >
-              {t(`roles.${Roles.SOCIAL_ASSISTANT}`)}
-            </SideBarLink>
-          )}
-        </VBox>
+            {user.roles_ids.includes(2) && (
+              <ProfileLink
+                icon={<BsPersonFillGear />}
+                href={`/${Roles.MANAGER}/organizations`}
+              >
+                {t(`roles.${Roles.MANAGER}`)}
+              </ProfileLink>
+            )}
+
+            {user.roles_ids.includes(3) && (
+              <ProfileLink
+                icon={<FaUserLarge />}
+                href={`/${Roles.SOCIAL_ASSISTANT}/organizations`}
+              >
+                {t(`roles.${Roles.SOCIAL_ASSISTANT}`)}
+              </ProfileLink>
+            )}
+          </VBox>
+        )}
       </div>
 
       <Image

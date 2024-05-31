@@ -40,7 +40,7 @@ export async function loginAction(prevState: any, formData: FormData): Promise<A
     const role = roleByRoleIds(user.roles_ids);
 
     if (role) {
-      redirect(`/${role}`);
+      redirect(`/${role}/organizations`);
     } else {
       redirect("/profile-select");
     }
