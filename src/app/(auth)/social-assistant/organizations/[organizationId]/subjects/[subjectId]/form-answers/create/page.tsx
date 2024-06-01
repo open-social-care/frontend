@@ -24,7 +24,7 @@ export default async function page({ params, searchParams }: PageProps) {
 
   return (
     <>
-      <Heading h1>{t("page_titles.fill_form_template")}</Heading>
+      <Heading h1>{t("page_titles.fill_forms")}</Heading>
 
       <Paper className="mt-4">
         <SelecTemplate templates={templates} />

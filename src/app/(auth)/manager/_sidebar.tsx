@@ -2,7 +2,8 @@ import { DashboardLayout } from "@/components/layouts";
 import { t } from "@/lang";
 
 import { Roles } from "@/enums/Roles";
-import { BsHouseHeart, BsPersonFillGear } from "react-icons/bs";
+import { BsHouseHeart } from "react-icons/bs";
+import { FaUserCog } from "react-icons/fa";
 import OrganizationLinks from "./_organization-links";
 
 export default async function ManagerSideBar() {
@@ -10,7 +11,7 @@ export default async function ManagerSideBar() {
     <DashboardLayout.SideBar.Root>
       <DashboardLayout.SideBar.LinkGroup
         title={t("roles.manager")}
-        icon={<BsPersonFillGear />}
+        icon={<FaUserCog />}
       >
         <DashboardLayout.SideBar.Link
           href={`/${Roles.MANAGER}/organizations`}

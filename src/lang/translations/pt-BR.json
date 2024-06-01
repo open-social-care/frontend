@@ -34,7 +34,8 @@
       "edit_organization": "Editar organização",
       "form_templates": "Templates de formulário",
       "create_form_template": "Cadastrar template de formulário",
-      "fill_form_template": "Preencher formulário",
+      "fill_forms": "Preencher formulário",
+      "filled_forms": "Formulários preenchidos",
       "edit_form_template": "Editar template de formulário",
       "create_subject": "Cadastrar {{subject_ref}}",
       "edit_subject": "Editar {{subject_ref}}"
@@ -49,7 +50,8 @@
       "manage": "Gerenciar",
       "update": "Atualizar",
       "remove": "Remover",
-      "search": "Pesquisar"
+      "search": "Pesquisar",
+      "view": "Visualizar"
     },
 
     "labels": {
@@ -58,6 +60,9 @@
       "phone": "Telefone",
       "organization": "Organização",
       "templates": "Templates",
+      "filled_by": "Preenchido por",
+      "date": "Data",
+      "last_form_answer_date": "Data do último formulário",
       "document": "Documento",
       "document_type": "Tipo de documento",
       "description": "Descrição",
