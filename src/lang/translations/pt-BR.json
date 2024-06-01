@@ -36,6 +36,7 @@
       "create_form_template": "Cadastrar template de formulário",
       "fill_forms": "Preencher formulário",
       "filled_forms": "Formulários preenchidos",
+      "view_form_answer": "Visualizar formulário preenchido",
       "edit_form_template": "Editar template de formulário",
       "create_subject": "Cadastrar {{subject_ref}}",
       "edit_subject": "Editar {{subject_ref}}"
@@ -91,6 +92,7 @@
       "organization_not_found": "Nenhuma organização encontrada.",
       "form_templates_not_found": "Nenhum template encontrado.",
       "questions_not_found": "Nenhuma questão encontrada.",
+      "question_not_filled": "Questão não preenchida.",
       "role_not_found": "Nenhum perfil encontrado, contate o administrador do sistema.",
       "subjects_not_found": "Nenhum {{subject_ref}} encontrado."
     },

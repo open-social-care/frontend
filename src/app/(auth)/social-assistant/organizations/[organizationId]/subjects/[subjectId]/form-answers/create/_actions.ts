@@ -57,7 +57,7 @@ export async function createFormAnswer(
 
   if (response.ok) {
     actionFlash("success", json.message);
-    redirect(`/${Roles.SOCIAL_ASSISTANT}/organizations/${organizationId}/subjets/6/form-answers`);
+    redirect(`/${Roles.SOCIAL_ASSISTANT}/organizations/${organizationId}/subjects/6/form-answers`);
   }
 
   console.log(json);
