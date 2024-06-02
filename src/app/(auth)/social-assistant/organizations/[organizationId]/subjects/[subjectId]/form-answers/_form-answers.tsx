@@ -2,6 +2,7 @@ import { HBox, Paper } from "@/components/containers";
 import { CardAction, Pagination, Text } from "@/components/ui";
 import { t } from "@/lang";
 import { FormAnswer } from "@/schemas";
+import dayjs from "dayjs";
 import { AiOutlineFileSearch } from "react-icons/ai";
 import { fetchFormAnswers } from "./_actions";
 
@@ -25,16 +26,12 @@ export default async function FormAnswers({ subjectId, page, search }: FormAnswe
         >
           <Text className="font-semibold">{formAnswer.form_template_title}</Text>
 
-          <Text className="text-sm">
+          <Text>{dayjs(formAnswer.created_at).format("DD/MM/YYYY HH:mm")}</Text>
+
+          <Text className="text-gray-400">
             {t("labels.filled_by")}
             {": "}
             {formAnswer.user_name}
-          </Text>
-
-          <Text className="text-sm">
-            {t("labels.date")}
-            {": "}
-            {formAnswer.created_at}
           </Text>
 
           <HBox className="mt-4 justify-end gap-4">
