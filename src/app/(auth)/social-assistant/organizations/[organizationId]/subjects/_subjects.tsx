@@ -8,6 +8,7 @@ import CardAction from "@/components/ui/CardAction";
 import Pagination from "@/components/ui/Pagination";
 import { Roles } from "@/enums/Roles";
 import { Subject } from "@/schemas";
+import dayjs from "dayjs";
 import { fetchSubjectsAction } from "./_actions";
 
 interface SubjectListProps {
@@ -34,30 +35,32 @@ export default async function SubjectList({ organizationId, search, page }: Subj
         >
           <Text className="font-semibold">{subject.name}</Text>
 
-          <Text className="text-sm">
+          <Text>
             {t("labels.birth_date")}
             {": "}
-            {subject.birth_date}
+            {dayjs(subject.birth_date).format("DD/MM/YYYY")}
           </Text>
 
-          <Text className="mt-4 text-sm">
-            {t("labels.last_form_answer_date")}
-            {": "}
-            {subject.last_form_answer_date}
-          </Text>
+          <HBox className="mt-4 flex-col justify-between gap-4 sm:flex-row">
+            <Text className="text-gray-400">
+              {t("labels.last_form_answer_date")}
+              {": "}
+              {dayjs(subject.last_form_answer_date).format("DD/MM/YYYY HH:mm")}
+            </Text>
 
-          <HBox className="mt-4 justify-end gap-4">
-            <CardAction
-              title={t("page_titles.filled_forms")}
-              href={`/${Roles.SOCIAL_ASSISTANT}/organizations/${organizationId}/subjects/${subject.id}/form-answers`}
-              icon={<AiOutlineFileDone />}
-            />
+            <HBox className="justify-end gap-4">
+              <CardAction
+                title={t("page_titles.filled_forms")}
+                href={`/${Roles.SOCIAL_ASSISTANT}/organizations/${organizationId}/subjects/${subject.id}/form-answers`}
+                icon={<AiOutlineFileDone />}
+              />
 
-            <CardAction
-              title={t("general_actions.edit")}
-              href={`/${Roles.SOCIAL_ASSISTANT}/organizations/${organizationId}/subjects/${subject.id}/edit`}
-              icon={<AiOutlineEdit />}
-            />
+              <CardAction
+                title={t("general_actions.edit")}
+                href={`/${Roles.SOCIAL_ASSISTANT}/organizations/${organizationId}/subjects/${subject.id}/edit`}
+                icon={<AiOutlineEdit />}
+              />
+            </HBox>
           </HBox>
         </Paper>
       ))}

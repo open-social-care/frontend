@@ -2,6 +2,7 @@ import { Paper, VBox } from "@/components/containers";
 import { Heading, Text } from "@/components/ui";
 import { t } from "@/lang";
 import { FormAnswerWithQuestionAnswers } from "@/schemas";
+import dayjs from "dayjs";
 import { twMerge } from "tailwind-merge";
 import { fetchFormAnswer } from "./_actions";
 
@@ -23,16 +24,12 @@ export default async function page({ params }: PageProps) {
       <Paper className="mt-5">
         <Text className="font-semibold">{formAnswer.form_template_title}</Text>
 
-        <Text>
+        <Text>{dayjs(formAnswer.created_at).format("DD/MM/YYYY HH:mm")}</Text>
+
+        <Text className="text-gray-400">
           {t("labels.filled_by")}
           {": "}
           {formAnswer.user_name}
-        </Text>
-
-        <Text>
-          {t("labels.date")}
-          {": "}
-          {formAnswer.created_at}
         </Text>
       </Paper>
 
