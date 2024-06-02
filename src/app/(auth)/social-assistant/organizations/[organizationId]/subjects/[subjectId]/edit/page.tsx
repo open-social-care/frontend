@@ -31,7 +31,7 @@ export default async function page({ params, searchParams }: PageProps) {
 
   const skinColors = SkinColor.array().parse(formInfo.skinColors);
   const states = State.array().parse(statesData);
-  const cities = City.array().parse(citiesData);
+  const { data: cities } = City.array().safeParse(citiesData);
 
   return (
     <>
@@ -41,7 +41,7 @@ export default async function page({ params, searchParams }: PageProps) {
         <UpdateSubjectForm
           subject={subject}
           states={states}
-          cities={cities}
+          cities={cities || []}
           skinColors={skinColors}
         />
       </Paper>

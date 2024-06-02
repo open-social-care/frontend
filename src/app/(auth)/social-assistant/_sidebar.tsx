@@ -3,15 +3,16 @@ import { t } from "@/lang";
 
 import { Roles } from "@/enums/Roles";
 import { BsHouseHeart } from "react-icons/bs";
-import { FaUserLarge } from "react-icons/fa6";
+import { FaUserCheck } from "react-icons/fa";
 import OrganizationLinks from "./_organization-links";
+import SubjctLinks from "./_subject-links";
 
 export default function SocialAssistantSideBar() {
   return (
     <DashboardLayout.SideBar.Root>
       <DashboardLayout.SideBar.LinkGroup
         title="Assistente Social"
-        icon={<FaUserLarge />}
+        icon={<FaUserCheck />}
       >
         {/* <DashboardLayout.SideBar.Link
           href="/social-assistant"
@@ -29,6 +30,8 @@ export default function SocialAssistantSideBar() {
       </DashboardLayout.SideBar.LinkGroup>
 
       <OrganizationLinks />
+
+      <SubjctLinks />
     </DashboardLayout.SideBar.Root>
   );
 }

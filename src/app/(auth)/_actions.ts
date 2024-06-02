@@ -1,5 +1,4 @@
 import api from "@/api";
-import { FlashMessageTypes } from "@/enums/FlashMessageTypes";
 import { ApiResponse } from "@/schemas";
 
 export async function fetchStates(): Promise<ApiResponse> {
@@ -22,14 +21,6 @@ export async function fetchCitiesByState(stateId?: number): Promise<ApiResponse>
       method: "GET",
     },
   });
-
-  if (!response.ok) {
-    return ApiResponse.parse({
-      type: FlashMessageTypes.SUCCESS,
-      message: "",
-      data: [],
-    });
-  }
 
   const json = await response.json();
 

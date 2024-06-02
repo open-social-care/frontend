@@ -215,7 +215,7 @@ export function UpdateSubjectForm({ subject, skinColors, states, cities }: Updat
         label={t("labels.complement")}
         placeholder={t("labels.complement")}
         errors={state?.errors?.["addresses.0.complement"]}
-        defaultValue={address?.complement}
+        defaultValue={address?.complement!}
       />
 
       <Form.Button

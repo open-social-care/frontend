@@ -1,5 +1,5 @@
 import { HBox, Paper } from "@/components/containers";
-import { AiOutlineEdit } from "react-icons/ai";
+import { AiOutlineEdit, AiOutlineFileDone } from "react-icons/ai";
 
 import { t } from "@/lang";
 
@@ -33,13 +33,26 @@ export default async function SubjectList({ organizationId, search, page }: Subj
           key={subject.id}
         >
           <Text className="font-semibold">{subject.name}</Text>
+
           <Text className="text-sm">
             {t("labels.birth_date")}
             {": "}
             {subject.birth_date}
           </Text>
 
+          <Text className="mt-4 text-sm">
+            {t("labels.last_form_answer_date")}
+            {": "}
+            {subject.last_form_answer_date}
+          </Text>
+
           <HBox className="mt-4 justify-end gap-4">
+            <CardAction
+              title={t("page_titles.filled_forms")}
+              href={`/${Roles.SOCIAL_ASSISTANT}/organizations/${organizationId}/subjects/${subject.id}/form-answers`}
+              icon={<AiOutlineFileDone />}
+            />
+
             <CardAction
               title={t("general_actions.edit")}
               href={`/${Roles.SOCIAL_ASSISTANT}/organizations/${organizationId}/subjects/${subject.id}/edit`}

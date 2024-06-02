@@ -4,9 +4,7 @@ import { Heading, Text } from "@/components/ui";
 import { Roles } from "@/enums/Roles";
 import { t } from "@/lang";
 import Image from "next/image";
-import { BsPersonFillGear } from "react-icons/bs";
-import { FaUserSecret } from "react-icons/fa";
-import { FaUserLarge } from "react-icons/fa6";
+import { FaUserCheck, FaUserCog, FaUserSecret } from "react-icons/fa";
 import ProfileLink from "./_profile-link";
 
 export default async function page() {
@@ -32,7 +30,7 @@ export default async function page() {
 
             {user.roles_ids.includes(2) && (
               <ProfileLink
-                icon={<BsPersonFillGear />}
+                icon={<FaUserCog />}
                 href={`/${Roles.MANAGER}/organizations`}
               >
                 {t(`roles.${Roles.MANAGER}`)}
@@ -41,7 +39,7 @@ export default async function page() {
 
             {user.roles_ids.includes(3) && (
               <ProfileLink
-                icon={<FaUserLarge />}
+                icon={<FaUserCheck />}
                 href={`/${Roles.SOCIAL_ASSISTANT}/organizations`}
               >
                 {t(`roles.${Roles.SOCIAL_ASSISTANT}`)}
