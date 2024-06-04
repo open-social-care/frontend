@@ -4,8 +4,8 @@ import { HBox, VBox } from "@/components/containers";
 import { Text } from "@/components/ui";
 import Pagination from "@/components/ui/Pagination";
 import { t } from "@/lang";
+import { fetchUsersByRole } from "./_actions";
 import DissociateAction from "./_dissociate-action";
-import { fetchUsersByRole } from "./actions";
 
 interface OrganizationMembersProps {
   profile: Role;
