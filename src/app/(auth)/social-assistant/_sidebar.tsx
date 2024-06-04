@@ -1,17 +1,20 @@
 import { DashboardLayout } from "@/components/layouts";
 import { t } from "@/lang";
 
+import auth from "@/auth";
 import { Roles } from "@/enums/Roles";
 import { BsHouseHeart } from "react-icons/bs";
 import { FaUserCheck } from "react-icons/fa";
 import OrganizationLinks from "./_organization-links";
-import SubjctLinks from "./_subject-links";
+import SubjectLinks from "./_subject-links";
 
-export default function SocialAssistantSideBar() {
+export default async function SocialAssistantSideBar() {
+  const { user } = await auth();
+
   return (
     <DashboardLayout.SideBar.Root>
       <DashboardLayout.SideBar.LinkGroup
-        title="Assistente Social"
+        title={t(`roles.${Roles.SOCIAL_ASSISTANT}`)}
         icon={<FaUserCheck />}
       >
         {/* <DashboardLayout.SideBar.Link
@@ -29,9 +32,9 @@ export default function SocialAssistantSideBar() {
         </DashboardLayout.SideBar.Link>
       </DashboardLayout.SideBar.LinkGroup>
 
-      <OrganizationLinks />
+      <OrganizationLinks user={user} />
 
-      <SubjctLinks />
+      <SubjectLinks />
     </DashboardLayout.SideBar.Root>
   );
 }

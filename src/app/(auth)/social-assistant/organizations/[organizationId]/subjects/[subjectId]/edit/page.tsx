@@ -1,4 +1,5 @@
 import { fetchCitiesByState, fetchStates } from "@/app/(auth)/_actions";
+import { fetchSubjectAction } from "@/app/(auth)/social-assistant/_actions";
 import { Paper } from "@/components/containers";
 import { Heading } from "@/components/ui";
 import { t } from "@/lang";
@@ -6,7 +7,6 @@ import { State, SubjectDetails } from "@/schemas";
 import { City } from "@/schemas/City";
 import { SkinColor } from "@/schemas/SkinColor";
 import { fetchFormInfo } from "../../_actions";
-import { fetchSubjectAction } from "./_actions";
 import { UpdateSubjectForm } from "./_form";
 
 interface PageProps {
@@ -19,7 +19,7 @@ interface PageProps {
 }
 
 export default async function page({ params, searchParams }: PageProps) {
-  const { data: subjectData } = await fetchSubjectAction(params.subjectId);
+  const { data: subjectData } = await fetchSubjectAction(params.subjectId.toString());
 
   const subject = SubjectDetails.parse(subjectData);
 

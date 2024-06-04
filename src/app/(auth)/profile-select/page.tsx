@@ -22,7 +22,7 @@ export default async function page() {
             {user.roles_ids.includes(1) && (
               <ProfileLink
                 icon={<FaUserSecret />}
-                href={`/${Roles.ADMIN}/organization`}
+                href={`/${Roles.ADMIN}/organizations`}
               >
                 {t(`roles.${Roles.ADMIN}`)}
               </ProfileLink>

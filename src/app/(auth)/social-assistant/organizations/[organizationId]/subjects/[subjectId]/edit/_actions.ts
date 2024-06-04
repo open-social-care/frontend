@@ -6,19 +6,6 @@ import { Roles } from "@/enums/Roles";
 import { ApiResponse } from "@/schemas";
 import { redirect } from "next/navigation";
 
-export async function fetchSubjectAction(subjectId: number): Promise<ApiResponse> {
-  const response = await api({
-    input: `/${Roles.SOCIAL_ASSISTANT}/subjects/show/${subjectId}`,
-    init: {
-      method: "GET",
-    },
-  });
-
-  const json = await response.json();
-
-  return ApiResponse.parse(json);
-}
-
 export async function updateSubjectAction(
   organizationId: string,
   subjectId: number,

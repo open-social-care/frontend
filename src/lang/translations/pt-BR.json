@@ -57,6 +57,8 @@
 
     "labels": {
       "start": "Início",
+      "subject_reference": "Referência para sujeito(os)",
+      "subjects": "Sujeitos",
       "name": "Nome",
       "phone": "Telefone",
       "organization": "Organização",
