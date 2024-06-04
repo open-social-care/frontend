@@ -42,7 +42,7 @@ export async function dissociateUserAction({
     input: `/admin/organizations/${organizationId}/disassociate-users`,
     init: {
       method: "POST",
-      body: JSON.stringify({ data: [{ user_id: userId, role: role }] }),
+      body: JSON.stringify({ data: [{ user_id: userId, role_name: role }] }),
     },
   });
 
