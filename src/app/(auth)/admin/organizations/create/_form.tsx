@@ -54,6 +54,14 @@ export function CreateOrganizationForm() {
         errors={state?.errors?.["document"]}
       />
 
+      <Form.Input
+        name="subject_ref"
+        label={t("labels.subject_reference")}
+        placeholder={t("labels.subject_reference")}
+        withAsterisk
+        errors={state?.errors?.["subject_ref"]}
+      />
+
       <Form.Button
         className="self-end"
         data-testid={testIDs.SUBMIT_BUTTON}

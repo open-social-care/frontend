@@ -1,12 +1,15 @@
 import { DashboardLayout } from "@/components/layouts";
 import { t } from "@/lang";
 
+import auth from "@/auth";
 import { Roles } from "@/enums/Roles";
 import { BsHouseHeart } from "react-icons/bs";
 import { FaUserCog } from "react-icons/fa";
 import OrganizationLinks from "./_organization-links";
 
 export default async function ManagerSideBar() {
+  const { user } = await auth();
+
   return (
     <DashboardLayout.SideBar.Root>
       <DashboardLayout.SideBar.LinkGroup
@@ -21,7 +24,7 @@ export default async function ManagerSideBar() {
         </DashboardLayout.SideBar.Link>
       </DashboardLayout.SideBar.LinkGroup>
 
-      <OrganizationLinks />
+      <OrganizationLinks user={user} />
     </DashboardLayout.SideBar.Root>
   );
 }

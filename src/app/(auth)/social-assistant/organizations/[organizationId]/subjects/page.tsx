@@ -1,4 +1,5 @@
 import { ActionFlashes } from "@/action-flash/ActionFlashes";
+import auth from "@/auth";
 import { HBox, VBox } from "@/components/containers";
 import { Button, Heading, Search, Skeleton } from "@/components/ui";
 import { Roles } from "@/enums/Roles";
@@ -15,13 +16,17 @@ interface PageProps {
   };
 }
 
-export default function page({ params, searchParams }: PageProps) {
+export default async function page({ params, searchParams }: PageProps) {
+  const orgs = (await auth()).user.organizations;
+
+  const organization = orgs?.find((org) => org.id == params.organizationId);
+
   return (
     <>
       <ActionFlashes />
 
       <HBox className="justify-between">
-        <Heading h1>{"subjects_ref"}</Heading>
+        <Heading h1>{organization?.subject_ref || t("labels.subjects")}</Heading>
 
         <Button
           href={`/${Roles.SOCIAL_ASSISTANT}/organizations/${params.organizationId}/subjects/create`}

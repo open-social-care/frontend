@@ -34,9 +34,11 @@ export default async function OrganizationList({ profile, search, page }: Organi
         >
           <Text className="font-semibold">{organization.name}</Text>
 
-          <Text className="text-sm">
-            {t(`document_types.${organization.document_type}`)}: {organization.document}
-          </Text>
+          {organization.document_type && (
+            <Text className="text-sm">
+              {t(`document_types.${organization.document_type}`)}: {organization.document}
+            </Text>
+          )}
 
           {organization.phone && (
             <Text className="text-sm">
@@ -55,17 +57,19 @@ export default async function OrganizationList({ profile, search, page }: Organi
 
             {profile == Roles.SOCIAL_ASSISTANT && (
               <CardAction
-                title={"subjects_ref"}
+                title={organization.subject_ref || t("labels.subjects")}
                 href={`/${profile}/organizations/${organization.id}/subjects`}
                 icon={<AiOutlineUsergroupAdd />}
               />
             )}
 
-            <CardAction
-              title={t("general_actions.edit")}
-              href={`/${profile}/organizations/${organization.id}/edit`}
-              icon={<AiOutlineEdit />}
-            />
+            {profile !== Roles.SOCIAL_ASSISTANT && (
+              <CardAction
+                title={t("general_actions.edit")}
+                href={`/${profile}/organizations/${organization.id}/edit`}
+                icon={<AiOutlineEdit />}
+              />
+            )}
           </HBox>
         </Paper>
       ))}
