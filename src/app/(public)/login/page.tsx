@@ -1,8 +1,6 @@
+import { Paper } from "@/components/containers";
 import { t } from "@/lang";
 import Image from "next/image";
-
-import { Paper } from "@/components/containers";
-
 import LoginForm from "./_form";
 
 export const metadata = {
@@ -15,8 +13,8 @@ export default function page() {
       <Image
         src="/images/logo.png"
         alt="logo"
-        width="260"
-        height="75" // keep aspect ratio from original file
+        width="282"
+        height="65" // keep aspect ratio from original file
         priority
       />
 
