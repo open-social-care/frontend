@@ -43,7 +43,7 @@ export async function updateQuestionAction(
 
   if (response.ok) {
     actionFlash("success", json.message);
-    redirect(`/manager/organizations/${organizationId}/form-templates/${templateId}/questions`);
+    redirect(`/manager/organizations/${organizationId}/form-templates/${templateId}`);
   }
 
   return ApiResponse.parse(json);
