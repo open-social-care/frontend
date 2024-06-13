@@ -42,11 +42,15 @@ export default async function SubjectList({ organizationId, search, page }: Subj
           </Text>
 
           <HBox className="mt-4 flex-col justify-between gap-4 sm:flex-row">
-            <Text className="text-gray-400">
-              {t("labels.last_form_answer_date")}
-              {": "}
-              {dayjs(subject.last_form_answer_date).format("DD/MM/YYYY HH:mm")}
-            </Text>
+            <div>
+              {subject.last_form_answer_date && (
+                <Text className="text-gray-400">
+                  {t("labels.last_form_answer_date")}
+                  {": "}
+                  {dayjs(subject.last_form_answer_date).format("DD/MM/YYYY HH:mm")}
+                </Text>
+              )}
+            </div>
 
             <HBox className="justify-end gap-4">
               <CardAction
