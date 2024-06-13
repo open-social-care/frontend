@@ -17,6 +17,10 @@ export default async function FormAnswers({ subjectId, page, search }: FormAnswe
 
   const formAnswers = FormAnswer.array().parse(data);
 
+  if (formAnswers.length == 0) {
+    return <Text>{t("informations.form_answers_not_found")}</Text>;
+  }
+
   return (
     <>
       {formAnswers.map((formAnswer) => (

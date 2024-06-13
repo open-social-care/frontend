@@ -86,13 +86,15 @@
       "city": "Cidade",
       "complement": "Complemento",
       "relative_relation": "Parente/conhecido próximo",
-      "relative_relation_type": "Tipo de relação"
+      "relative_relation_type": "Tipo de relação",
+      "select_a_template": "Escolha um template:"
     },
 
     "informations": {
       "users_not_found": "Nenhum usuário encontrado.",
       "organization_not_found": "Nenhuma organização encontrada.",
       "form_templates_not_found": "Nenhum template encontrado.",
+      "form_answers_not_found": "Nenhuma resposta de formulário encontrada.",
       "questions_not_found": "Nenhuma questão encontrada.",
       "question_not_filled": "Questão não preenchida.",
       "role_not_found": "Nenhum perfil encontrado, contate o administrador do sistema.",
