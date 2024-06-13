@@ -35,7 +35,7 @@ export default async function page({ params, searchParams }: PageProps) {
 
   return (
     <>
-      <Heading h1>{t("page_titles.edit_subject")}</Heading>
+      <Heading h1>{t("page_titles.edit_subject", { subject_ref: subject.name })}</Heading>
 
       <Paper className="mt-4">
         <UpdateSubjectForm

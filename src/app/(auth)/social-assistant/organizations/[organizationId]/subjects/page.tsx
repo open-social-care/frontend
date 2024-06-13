@@ -1,8 +1,8 @@
 import { ActionFlashes } from "@/action-flash/ActionFlashes";
-import auth from "@/auth";
 import { HBox, VBox } from "@/components/containers";
 import { Button, Heading, Search, Skeleton } from "@/components/ui";
 import { Roles } from "@/enums/Roles";
+import subjectRefByOrganizationId from "@/helpers/subjectRefByOrganizationId";
 import { t } from "@/lang";
 import SubjectList from "./_subjects";
 
@@ -17,16 +17,14 @@ interface PageProps {
 }
 
 export default async function page({ params, searchParams }: PageProps) {
-  const orgs = (await auth()).user.organizations;
-
-  const organization = orgs?.find((org) => org.id == params.organizationId);
+  const subjectRef = await subjectRefByOrganizationId(params.organizationId);
 
   return (
     <>
       <ActionFlashes />
 
       <HBox className="justify-between">
-        <Heading h1>{organization?.subject_ref || t("labels.subjects")}</Heading>
+        <Heading h1>{subjectRef}</Heading>
 
         <Button
           href={`/${Roles.SOCIAL_ASSISTANT}/organizations/${params.organizationId}/subjects/create`}
