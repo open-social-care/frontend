@@ -3,6 +3,7 @@
 import { HBox, VBox } from "@/components/containers";
 import { CardAction, Heading, Text } from "@/components/ui";
 import useQueryParam from "@/hooks/useQueryParam";
+import { t } from "@/lang";
 import { FormTemplate } from "@/schemas";
 import { AiOutlineSelect, AiOutlineSwap } from "react-icons/ai";
 
@@ -12,6 +13,10 @@ type SelecTemplateProps = {
 
 export default function SelecTemplate({ templates }: SelecTemplateProps) {
   const { paramValue, set, del } = useQueryParam({ queryParam: "template" });
+
+  if (templates.length == 0) {
+    return <Text>{t("informations.form_templates_not_found")}</Text>;
+  }
 
   return (
     <>
@@ -29,7 +34,7 @@ export default function SelecTemplate({ templates }: SelecTemplateProps) {
 
       {!paramValue && (
         <>
-          <Heading h2>Escolha um template:</Heading>
+          <Heading h2>{t("labels.select_a_template")}</Heading>
 
           <div className="mt-2">
             {templates.map((template) => (

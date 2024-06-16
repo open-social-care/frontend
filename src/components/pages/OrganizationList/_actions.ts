@@ -1,3 +1,5 @@
+"use server";
+
 import api from "@/api";
 import { ApiResponse, Role } from "@/schemas";
 
