@@ -62,7 +62,5 @@ export async function createFormAnswer(
     );
   }
 
-  console.log(json);
-
   return ApiResponse.parse(json);
 }

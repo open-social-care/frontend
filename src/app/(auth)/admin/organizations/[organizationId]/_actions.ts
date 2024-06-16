@@ -56,8 +56,5 @@ export async function associateUserAction(
   }
 
   const json = await response.json();
-
-  console.log(json);
-
   return ApiResponse.parse(json);
 }
