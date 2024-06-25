@@ -57,6 +57,7 @@
 
     "labels": {
       "start": "Início",
+      "change_profile": "Alternar perfil",
       "subject_reference": "Referência para sujeito(os)",
       "subjects": "Sujeitos",
       "name": "Nome",
