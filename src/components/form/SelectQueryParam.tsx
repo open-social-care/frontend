@@ -17,7 +17,7 @@ export default function SelectQueryParam({ queryName, ...rest }: SelectQueryPara
       onChange={(e) => {
         set(e.currentTarget.value);
       }}
-      defaultValue={rest.defaultValue || value}
+      defaultValue={rest.defaultValue?.toString() || value}
     />
   );
 }

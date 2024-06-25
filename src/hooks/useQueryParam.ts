@@ -23,5 +23,11 @@ export default function useQueryParam({ queryParam, paramsToDeleteOnSet }: useQu
     replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  return { value: searchParams.get(queryParam)?.toString(), set };
+  const del = () => {
+    params.delete(queryParam);
+
+    replace(`${pathname}?${params.toString()}`);
+  };
+
+  return { value: searchParams.get(queryParam)?.toString(), set, del };
 }

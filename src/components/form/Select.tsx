@@ -23,6 +23,7 @@ export default function Select({
   className,
   ...rest
 }: SelectProps) {
+  console.log(rest.defaultValue, data);
   return (
     <div className={twMerge("mt-4 w-full", className)}>
       {label && (
@@ -45,6 +46,7 @@ export default function Select({
       >
         <option
           disabled
+          value=""
           selected={!rest.defaultValue}
         >
           {placeholder || "--"}
