@@ -1,24 +1,11 @@
 "use client";
 
+import useQueryParam from "@/hooks/useQueryParam";
 import { t } from "@/lang";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 
 export default function Search({ className }: React.ComponentPropsWithoutRef<"input">) {
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
-
-  function handleSearch(term: string) {
-    const params = new URLSearchParams(searchParams);
-    if (term) {
-      params.set("search", term);
-      params.delete("page");
-    } else {
-      params.delete("search");
-    }
-    replace(`${pathname}?${params.toString()}`);
-  }
+  const { value, set } = useQueryParam({ queryParam: "search", paramsToDeleteOnSet: ["page"] });
 
   return (
     <input
@@ -28,9 +15,9 @@ export default function Search({ className }: React.ComponentPropsWithoutRef<"in
       )}
       placeholder={t("general_actions.search")}
       onChange={(e) => {
-        handleSearch(e.target.value);
+        set(e.target.value);
       }}
-      defaultValue={searchParams.get("search")?.toString()}
+      defaultValue={value}
     />
   );
 }
