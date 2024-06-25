@@ -10,6 +10,7 @@ import { DocumentTypes } from "@/enums/DocumentTypes";
 import { State, SubjectDetails } from "@/schemas";
 import { City } from "@/schemas/City";
 import { SkinColor } from "@/schemas/SkinColor";
+import dayjs from "dayjs";
 import { useParams } from "next/navigation";
 import { updateSubjectAction } from "./_actions";
 
@@ -62,7 +63,7 @@ export function UpdateSubjectForm({ subject, skinColors, states, cities }: Updat
         mask="00/00/0000"
         withAsterisk
         errors={state?.errors?.["birth_date"]}
-        defaultValue={subject.birth_date}
+        defaultValue={dayjs(subject.birth_date).format("DD/MM/YYYY")}
       />
 
       <Form.Input
