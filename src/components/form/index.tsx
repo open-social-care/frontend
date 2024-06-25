@@ -4,6 +4,7 @@ import Button from "./Button";
 import FlashMessage from "./FlashMessage";
 import Input from "./Input";
 import Select from "./Select";
+import SelectQueryParam from "./SelectQueryParam";
 import Switch from "./Switch";
 
 export default function Form({
@@ -25,4 +26,5 @@ Form.FlashMessage = FlashMessage;
 Form.Input = Input;
 Form.Button = Button;
 Form.Select = Select;
+Form.SelectQueryParam = SelectQueryParam;
 Form.Switch = Switch;

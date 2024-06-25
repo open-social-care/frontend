@@ -166,7 +166,7 @@ export function UpdateSubjectForm({ subject, skinColors, states, cities }: Updat
         {t("labels.address")}
       </Heading>
 
-      <Form.Select
+      <Form.SelectQueryParam
         name="state_id"
         label={t("labels.state")}
         placeholder={t("labels.state")}

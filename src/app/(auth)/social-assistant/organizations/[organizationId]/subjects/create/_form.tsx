@@ -151,7 +151,7 @@ export function CreateSubjectForm({ skinColors, states, cities }: CreateSubjectF
         {t("labels.address")}
       </Heading>
 
-      <Form.Select
+      <Form.SelectQueryParam
         name="state_id"
         label={t("labels.state")}
         placeholder={t("labels.state")}

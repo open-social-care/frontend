@@ -12,7 +12,7 @@ type SelecTemplateProps = {
 };
 
 export default function SelecTemplate({ templates }: SelecTemplateProps) {
-  const { paramValue, set, del } = useQueryParam({ queryParam: "template" });
+  const { value, set, del } = useQueryParam({ queryParam: "template" });
 
   if (templates.length == 0) {
     return <Text>{t("informations.form_templates_not_found")}</Text>;
@@ -20,9 +20,9 @@ export default function SelecTemplate({ templates }: SelecTemplateProps) {
 
   return (
     <>
-      {paramValue && (
+      {value && (
         <HBox className="justify-between">
-          <Heading h2>{templates.find((t) => t.id.toString() == paramValue)?.title}</Heading>
+          <Heading h2>{templates.find((t) => t.id.toString() == value)?.title}</Heading>
 
           <CardAction
             title=" Trocar template"
@@ -32,7 +32,7 @@ export default function SelecTemplate({ templates }: SelecTemplateProps) {
         </HBox>
       )}
 
-      {!paramValue && (
+      {!value && (
         <>
           <Heading h2>{t("labels.select_a_template")}</Heading>
 

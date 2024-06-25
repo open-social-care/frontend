@@ -1,8 +1,8 @@
 "use client";
 
 import { HBox } from "@/components/containers";
+import useQueryParam from "@/hooks/useQueryParam";
 import { Paginate } from "@/schemas";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { LuChevronLeft, LuChevronRight, LuChevronsLeft, LuChevronsRight } from "react-icons/lu";
 import { twMerge } from "tailwind-merge";
 import Text from "../Text";
@@ -20,26 +20,10 @@ export default function Pagination({
   className,
   ...rest
 }: PaginationProps) {
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
+  const { value, set } = useQueryParam({ queryParam: queryName || "page" });
 
   if (!paginate || paginate.last_page == 1) {
     return;
-  }
-
-  function handlePaginate(page: number) {
-    const params = new URLSearchParams(searchParams);
-
-    const qName = queryName || "page";
-
-    if (page) {
-      params.set(qName, page.toString());
-    } else {
-      params.delete(qName);
-    }
-
-    replace(`${pathname}?${params.toString()}`);
   }
 
   return (
@@ -49,14 +33,14 @@ export default function Pagination({
     >
       <PaginationButton
         disabled={paginate.current_page == 1}
-        onClick={() => handlePaginate(1)}
+        onClick={() => set("1")}
       >
         <LuChevronsLeft />
       </PaginationButton>
 
       <PaginationButton
         disabled={paginate.current_page == 1}
-        onClick={() => handlePaginate(paginate.current_page - 1)}
+        onClick={() => set(`${paginate.current_page - 1}`)}
       >
         <LuChevronLeft />
       </PaginationButton>
@@ -67,14 +51,14 @@ export default function Pagination({
 
       <PaginationButton
         disabled={paginate.current_page == paginate.last_page}
-        onClick={() => handlePaginate(paginate.current_page + 1)}
+        onClick={() => set(`${paginate.current_page + 1}`)}
       >
         <LuChevronRight />
       </PaginationButton>
 
       <PaginationButton
         disabled={paginate.current_page == paginate.last_page}
-        onClick={() => handlePaginate(paginate.last_page)}
+        onClick={() => set(`${paginate.last_page}`)}
       >
         <LuChevronsRight />
       </PaginationButton>
