@@ -32,6 +32,7 @@ export default function Pagination({
       {...rest}
     >
       <PaginationButton
+        data-testid="first-page-button"
         disabled={paginate.current_page == 1}
         onClick={() => set("1")}
       >
@@ -39,6 +40,7 @@ export default function Pagination({
       </PaginationButton>
 
       <PaginationButton
+        data-testid="prev-page-button"
         disabled={paginate.current_page == 1}
         onClick={() => set(`${paginate.current_page - 1}`)}
       >
@@ -50,6 +52,7 @@ export default function Pagination({
       </Text>
 
       <PaginationButton
+        data-testid="next-page-button"
         disabled={paginate.current_page == paginate.last_page}
         onClick={() => set(`${paginate.current_page + 1}`)}
       >
@@ -57,6 +60,7 @@ export default function Pagination({
       </PaginationButton>
 
       <PaginationButton
+        data-testid="last-page-button"
         disabled={paginate.current_page == paginate.last_page}
         onClick={() => set(`${paginate.last_page}`)}
       >
