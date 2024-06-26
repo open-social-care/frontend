@@ -8,6 +8,7 @@ import { FaChevronDown } from "react-icons/fa";
 import useOnclickOutside from "react-cool-onclickoutside";
 import { twMerge } from "tailwind-merge";
 
+import { t } from "@/lang";
 import { useRef } from "react";
 import { useDashboardLayoutContext } from "../../_context";
 import MenuLink from "./_MenuLink";
@@ -70,13 +71,13 @@ export default function ProfileMenu({ children, className, user, ...rest }: Prof
 
         <MenuLink
           href="/profile-select"
-          title="Alterar Perfil"
+          title={t("labels.change_profile")}
         />
 
-        <MenuLink
+        {/* <MenuLink
           href="#"
           title="Ver Perfil"
-        />
+        /> */}
 
         <MenuLink
           href="/login"

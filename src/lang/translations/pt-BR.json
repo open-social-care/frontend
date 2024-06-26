@@ -57,6 +57,7 @@
 
     "labels": {
       "start": "Início",
+      "change_profile": "Alternar perfil",
       "subject_reference": "Referência para sujeito(os)",
       "subjects": "Sujeitos",
       "name": "Nome",
@@ -81,7 +82,7 @@
       "skin_color": "Cor de pele",
       "nationality": "Nacionalidade",
       "number": "Número",
-      "district": "Distrito",
+      "district": "Bairro",
       "state": "Estado",
       "city": "Cidade",
       "complement": "Complemento",

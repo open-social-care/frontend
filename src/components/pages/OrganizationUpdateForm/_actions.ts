@@ -20,7 +20,7 @@ export async function updateOrganizationAction(
         phone: formData.get("phone"),
         document_type: formData.get("document_type"),
         document: formData.get("document"),
-        sybject_ref: formData.get("subject_ref"),
+        subject_ref: formData.get("subject_ref"),
       }),
     },
   });

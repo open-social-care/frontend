@@ -7,6 +7,7 @@ import { Text } from "@/components/ui";
 import CardAction from "@/components/ui/CardAction";
 import Pagination from "@/components/ui/Pagination";
 import { Roles } from "@/enums/Roles";
+import subjectRefByOrganizationId from "@/helpers/subjectRefByOrganizationId";
 import { Subject } from "@/schemas";
 import dayjs from "dayjs";
 import { fetchSubjectsAction } from "./_actions";
@@ -18,12 +19,14 @@ interface SubjectListProps {
 }
 
 export default async function SubjectList({ organizationId, search, page }: SubjectListProps) {
+  const subjectRef = await subjectRefByOrganizationId(organizationId);
+
   const { data, pagination } = await fetchSubjectsAction(organizationId, search, page);
 
   const subjects = Subject.array().parse(data);
 
   if (subjects.length == 0) {
-    return <Text>{t("informations.subjects_not_found")}</Text>;
+    return <Text>{t("informations.subjects_not_found", { subject_ref: subjectRef })}</Text>;
   }
 
   return (

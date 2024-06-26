@@ -13,11 +13,13 @@ export default function PaginationButton({
   onClick,
   children,
   disabled = false,
+  ...rest
 }: PaginationButtonProps) {
   return (
     <a
       className={twMerge(pageLinkDefaultClasses, disabled && pageLinkDisabledClasses, "ml-0 w-12")}
       onClick={onClick}
+      {...rest}
     >
       {children}
     </a>
