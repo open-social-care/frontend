@@ -50,7 +50,7 @@ export function CreateOrganizationForm() {
         label={t("labels.document")}
         placeholder={t("labels.document")}
         withAsterisk
-        mask={[{ mask: "000.000.000-00" }, { mask: "00.000.000/0000-00" }]}
+        // Validar essa mask aqui mask={[{ mask: "000.000.000-00" }, { mask: "00.000.000/0000-00" }]}
         errors={state?.errors?.["document"]}
       />
 

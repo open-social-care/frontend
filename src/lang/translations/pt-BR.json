@@ -10,7 +10,7 @@
     "auth": {
       "login": "Login",
       "email": "Email",
-      "password": "Senha",
+      "password": "Senha (6 dígitos)",
       "password_confirmation": "Confirmação de senha"
     },
 
@@ -52,7 +52,8 @@
       "update": "Atualizar",
       "remove": "Remover",
       "search": "Pesquisar",
-      "view": "Visualizar"
+      "view": "Visualizar",
+      "add_option": "Adicionar opção"
     },
 
     "labels": {
@@ -88,7 +89,12 @@
       "complement": "Complemento",
       "relative_relation": "Parente/conhecido próximo",
       "relative_relation_type": "Tipo de relação",
-      "select_a_template": "Escolha um template:"
+      "select_a_template": "Escolha um template:",
+      "option": "Opção",
+      "options": "Opções",
+      "question_type": "Tipo da pergunta",
+      "multiple_choice": "Múltipla escolha",
+      "short_answer": "Resposta curta"
     },
 
     "informations": {
