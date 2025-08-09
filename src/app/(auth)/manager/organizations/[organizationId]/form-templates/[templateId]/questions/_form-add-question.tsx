@@ -18,7 +18,7 @@ export function FormAddQuestion() {
     undefined,
   );
 
-  const [type, setType] = useState<"short_text" | "multiple_choice">("short_text");
+  const [type, setType] = useState<"short_question" | "multiple_choice">("short_question");
   const [options, setOptions] = useState<string[]>([""]);
 
   function handleOptionChange(index: number, value: string) {
@@ -32,7 +32,7 @@ export function FormAddQuestion() {
   }
 
   useEffect(() => {
-    if (type === "short_text") {
+    if (type === "short_question") {
       setOptions([""]);
     }
   }, [type]);
@@ -64,9 +64,9 @@ export function FormAddQuestion() {
               name="data_type"
               label={t("labels.question_type")}
               value={type}
-              onChange={(e) => setType(e.target.value as "short_text" | "multiple_choice")}
+              onChange={(e) => setType(e.target.value as "short_question" | "multiple_choice")}
               data={[
-                { value: "short_text", label: t("labels.short_answer") },
+                { value: "short_question", label: t("labels.short_answer") },
                 { value: "multiple_choice", label: t("labels.multiple_choice") },
               ]}
               className="mb-4"
