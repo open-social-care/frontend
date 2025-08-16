@@ -26,14 +26,31 @@ export async function createQuestionAction(
   prevState: any,
   formData: FormData,
 ): Promise<ApiResponse> {
+  const type = formData.get("data_type") as string;
+
+  const payload: any = {
+    description: formData.get("description"),
+    answer_required: formData.get("answer_required") === "on",
+    type,
+  };
+
+  if (type === "multiple_choice") {
+    const options: string[] = [];
+    let idx = 0;
+    let option = formData.get(`options[${idx}]`);
+    while (option !== null) {
+      options.push(option.toString());
+      idx++;
+      option = formData.get(`options[${idx}]`);
+    }
+    payload.options = options;
+  }
+
   const response = await api({
     input: `/manager/form-templates/${templateId}/short-questions`,
     init: {
       method: "POST",
-      body: JSON.stringify({
-        description: formData.get("description"),
-        answer_required: formData.get("answer_required") == "on" ? true : false,
-      }),
+      body: JSON.stringify(payload),
     },
   });
 
@@ -45,6 +62,7 @@ export async function createQuestionAction(
 
   return ApiResponse.parse(json);
 }
+
 
 export async function removeQuestionAction(
   templateId: number,

@@ -82,23 +82,41 @@ export function FormAddQuestion() {
 
         {type === "multiple_choice" && (
           <div className="mb-6 rounded-md border p-4">
-            {" "}
             <Heading
               h3
               className="mb-4"
             >
               {t("labels.options")}
-            </Heading>{" "}
-            {options.map((opt, idx) => (
-              <Form.Input
-                key={idx}
-                name={`options[${idx}]`}
-                label={`${t("labels.option")} ${idx + 1}`}
-                value={opt}
-                onChange={(e) => handleOptionChange(idx, (e.target as HTMLInputElement).value)}
-                className="mb-3"
-              />
-            ))}
+            </Heading>
+            <div className="flex flex-col gap-3">
+              {options.map((opt, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-2"
+                >
+                  <Form.Input
+                    name={`options[${idx}]`}
+                    label={`${t("labels.option")} ${idx + 1}`}
+                    value={opt}
+                    onChange={(e) => handleOptionChange(idx, (e.target as HTMLInputElement).value)}
+                    className="flex-1"
+                  />
+                  {options.length > 1 && (
+                    <button
+                      type="button"
+                      className="text-xl font-bold text-red-500 hover:text-red-700"
+                      onClick={() => {
+                        const updated = options.filter((_, i) => i !== idx);
+                        setOptions(updated);
+                      }}
+                      aria-label="Remover opção"
+                    >
+                      ×
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div>
             <Form.Button
               type="button"
               onClick={addOptionField}
