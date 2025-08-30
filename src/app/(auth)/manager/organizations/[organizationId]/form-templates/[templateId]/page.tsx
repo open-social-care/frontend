@@ -37,7 +37,11 @@ export default async function page({ params }: PageProps) {
           className="h-28"
           length={5}
         >
-          <QuestionList {...params} />
+          <QuestionList
+            questions={formTemplate.questions}
+            templateId={params.templateId}
+            organizationId={params.organizationId}
+          />{" "}
         </Skeleton>
       </VBox>
     </>

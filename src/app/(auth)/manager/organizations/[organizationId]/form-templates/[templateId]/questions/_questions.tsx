@@ -1,24 +1,18 @@
 import { HBox, Paper } from "@/components/containers";
-
-import { t } from "@/lang";
-
 import { CardAction, Text } from "@/components/ui";
+import { t } from "@/lang";
 import { Question } from "@/schemas";
 import { AiOutlineEdit } from "react-icons/ai";
-import { fetchQuestionsAction } from "./_actions";
 import { FormAddQuestion } from "./_form-add-question";
 import RemoveQuestionAction from "./_remove-question";
 
 interface QuestionListProps {
   templateId: number;
   organizationId: number;
+  questions: Question[];
 }
 
-export default async function QuestionList({ templateId, organizationId }: QuestionListProps) {
-  const { data } = await fetchQuestionsAction(templateId);
-
-  const questions = Question.array().parse(data);
-
+export default function QuestionList({ templateId, organizationId, questions }: QuestionListProps) {
   return (
     <>
       {questions.map((question) => (
@@ -28,7 +22,16 @@ export default async function QuestionList({ templateId, organizationId }: Quest
         >
           <Text className="font-semibold">{question.description}</Text>
 
-          <Text className="text-sm">
+          {question.type === "multiple_choice" && (
+            <ul className="mt-2 list-disc pl-6 text-sm text-gray-600">
+              <p>Opções:</p>
+              {question.options.map((option) => (
+                <li key={option.id}>{option.description}</li>
+              ))}
+            </ul>
+          )}
+
+          <Text className="mt-2 text-sm">
             {question.answer_required && (
               <>
                 {t("labels.answer_required")}
@@ -43,7 +46,6 @@ export default async function QuestionList({ templateId, organizationId }: Quest
               title={t("general_actions.edit")}
               href={`/manager/organizations/${organizationId}/form-templates/${templateId}/questions/${question.id}/edit`}
             />
-
             <RemoveQuestionAction
               templateId={templateId}
               questionId={question.id}

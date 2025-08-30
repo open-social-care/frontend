@@ -1,13 +1,13 @@
-import { FlashMessageTypes } from "@/enums/FlashMessageTypes";
 import { z } from "zod";
-import { Paginate } from "./Paginate";
+// ... outros imports
 
+// O Schema Zod (o VALOR)
 export const ApiResponse = z.object({
-  type: z.nativeEnum(FlashMessageTypes),
+  // ... sua estrutura de ApiResponse ...
+  type: z.string(), // ou z.nativeEnum se preferir
   message: z.string(),
-  errors: z.optional(z.record(z.string(), z.array(z.string()))),
-  data: z.optional(z.any()),
-  pagination: Paginate.optional(),
+  data: z.any().optional(),
 });
 
+// O Tipo TypeScript (inferido do valor)
 export type ApiResponse = z.infer<typeof ApiResponse>;
