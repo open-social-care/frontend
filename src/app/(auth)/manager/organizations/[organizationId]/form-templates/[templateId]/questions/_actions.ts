@@ -67,9 +67,15 @@ export async function createQuestionAction(
 export async function removeQuestionAction(
   templateId: number,
   questionId: number,
+  questionType: "short_question" | "multiple_choice",
 ): Promise<ApiResponse> {
+
+  const questionTypeSegment = questionType === 'short_question'
+    ? 'short-questions'
+    : 'multiple-choice-questions';
+
   const response = await api({
-    input: `/manager/form-templates/${templateId}/short-questions/${questionId}`,
+    input: `/manager/form-templates/${templateId}/${questionTypeSegment}/${questionId}`,
     init: {
       method: "DELETE",
     },

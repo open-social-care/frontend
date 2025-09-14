@@ -34,20 +34,18 @@ export default async function page({ params }: PageProps) {
       </Paper>
 
       <VBox className="mt-2">
-        {formAnswer.short_answers.map((question_answer) => {
-          const questionFilled = !!question_answer.answer;
+        {formAnswer.question_answers.map((answer) => {
+          const questionFilled = !!answer.answer;
 
           return (
-            <Paper key={question_answer.id}>
+            <Paper key={answer.id}>
               <Text className={twMerge("font-semibold", !questionFilled && "text-gray-400")}>
-                {question_answer.short_question.description}
-                {question_answer.short_question.answer_required && (
-                  <span className="ml-1 text-sm text-red-400">*</span>
-                )}
+                {answer.question_description || "Descrição da pergunta não encontrada"}
+                {answer.answer_required && <span className="ml-1 text-sm text-red-400">*</span>}
               </Text>
 
               <Text className={twMerge(!questionFilled && "text-gray-400")}>
-                {question_answer.answer || t("informations.question_not_filled")}
+                {answer.answer || t("informations.question_not_filled")}
               </Text>
             </Paper>
           );

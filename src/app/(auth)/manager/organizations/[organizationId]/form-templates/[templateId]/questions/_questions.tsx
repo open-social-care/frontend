@@ -44,11 +44,12 @@ export default function QuestionList({ templateId, organizationId, questions }: 
             <CardAction
               icon={<AiOutlineEdit />}
               title={t("general_actions.edit")}
-              href={`/manager/organizations/${organizationId}/form-templates/${templateId}/questions/${question.id}/edit`}
+              href={`/manager/organizations/${organizationId}/form-templates/${templateId}/questions/${question.id}/edit?type=${question.type}`}
             />
             <RemoveQuestionAction
               templateId={templateId}
               questionId={question.id}
+              questionType={question.type}
             />
           </HBox>
         </Paper>

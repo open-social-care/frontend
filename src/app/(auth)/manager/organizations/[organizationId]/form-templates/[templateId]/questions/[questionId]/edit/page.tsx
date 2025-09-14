@@ -10,10 +10,19 @@ interface PageProps {
     templateId: number;
     questionId: number;
   };
+  searchParams: {
+    type?: "short_question" | "multiple_choice";
+  };
 }
 
-export default async function page({ params }: PageProps) {
-  const { data } = await fetchQuestionAction(params.templateId, params.questionId);
+export default async function page({ params, searchParams }: PageProps) {
+  const questionType = searchParams.type;
+
+  if (!questionType) {
+    return <p>Erro: Tipo da pergunta não especificado.</p>;
+  }
+
+  const { data } = await fetchQuestionAction(params.templateId, params.questionId, questionType);
 
   const question = Question.parse(data);
 

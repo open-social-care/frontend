@@ -3,7 +3,7 @@ import { FormTemplate } from "./FormTemplate";
 import { Question } from "./Question";
 
 export const FormTemplateWithQuestions = FormTemplate.extend({
-  short_questions: Question.array(),
+  questions: z.array(Question),
 });
 
 export type FormTemplateWithQuestions = z.infer<typeof FormTemplateWithQuestions>;

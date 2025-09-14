@@ -2,7 +2,7 @@ import { ActionFlashes } from "@/action-flash/ActionFlashes";
 import { HBox, VBox } from "@/components/containers";
 import { Button, Heading, Skeleton } from "@/components/ui";
 import { t } from "@/lang";
-import { FormTemplate } from "@/schemas";
+import { FormTemplateWithQuestions } from "@/schemas";
 import { fetchFormTemplateAction } from "./_actions";
 import QuestionList from "./questions/_questions";
 
@@ -16,7 +16,7 @@ interface PageProps {
 export default async function page({ params }: PageProps) {
   const { data } = await fetchFormTemplateAction(params.templateId);
 
-  const formTemplate = FormTemplate.parse(data);
+  const formTemplate = FormTemplateWithQuestions.parse(data);
 
   return (
     <>

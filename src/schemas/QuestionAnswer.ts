@@ -1,10 +1,20 @@
 import { z } from "zod";
-import { Question } from "./Question";
 
-export const QuestionAnswer = z.object({
-  id: z.number(),
-  answer: z.string().nullable(),
-  short_question: Question,
-});
+export const QuestionAnswerSchema = z.discriminatedUnion("type", [
+  z.object({
+    id: z.number(),
+    type: z.literal("short_question"),
+    question_description: z.string().nullable(),
+    answer_required: z.boolean(),
+    answer: z.string().nullable(),
+  }),
+  z.object({
+    id: z.number(),
+    type: z.literal("multiple_choice"),
+    question_description: z.string().nullable(),
+    answer_required: z.boolean(),
+    answer: z.string().nullable(),
+  }),
+]);
 
-export type QuestionAnswer = z.infer<typeof QuestionAnswer>;
+export type QuestionAnswer = z.infer<typeof QuestionAnswerSchema>;

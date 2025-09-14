@@ -8,6 +8,7 @@ import { removeQuestionAction } from "./_actions";
 export type RemoveQuestionActionValues = {
   templateId: number;
   questionId: number;
+  questionType: "short_question" | "multiple_choice";
 };
 
 export default function RemoveQuestionAction(props: RemoveQuestionActionValues) {
@@ -15,7 +16,7 @@ export default function RemoveQuestionAction(props: RemoveQuestionActionValues) 
     <CardAction
       title={t("general_actions.remove")}
       icon={<AiOutlineDelete />}
-      onClick={() => removeQuestionAction(props.templateId, props.questionId)}
+      onClick={() => removeQuestionAction(props.templateId, props.questionId, props.questionType)}
     />
   );
 }
