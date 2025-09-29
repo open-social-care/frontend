@@ -39,7 +39,8 @@
       "view_form_answer": "Visualizar formulário preenchido",
       "edit_form_template": "Editar template de formulário",
       "create_subject": "Cadastrar {{subject_ref}}",
-      "edit_subject": "Editar {{subject_ref}}"
+      "edit_subject": "Editar {{subject_ref}}",
+      "analytics": "Analytics"
     },
 
     "general_actions": {

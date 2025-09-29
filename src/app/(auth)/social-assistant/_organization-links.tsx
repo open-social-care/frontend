@@ -6,7 +6,7 @@ import { t } from "@/lang";
 import { User } from "@/schemas";
 import { useParams } from "next/navigation";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
-import { BsFillHouseGearFill } from "react-icons/bs";
+import { BsFillHouseGearFill, BsHouseHeart } from "react-icons/bs";
 
 type OrganizationLinksProps = {
   user: User;
@@ -29,6 +29,12 @@ export default function OrganizationLinks({ user }: OrganizationLinksProps) {
         icon={<AiOutlineUsergroupAdd />}
       >
         {organization?.subject_ref || t("labels.subjects")}
+      </DashboardLayout.SideBar.Link>
+      <DashboardLayout.SideBar.Link
+        href={`/${Roles.SOCIAL_ASSISTANT}/organizations/${organizationId}/analytics`}
+        icon={<BsHouseHeart />}
+      >
+        {t("page_titles.analytics")}
       </DashboardLayout.SideBar.Link>
     </DashboardLayout.SideBar.LinkGroup>
   );

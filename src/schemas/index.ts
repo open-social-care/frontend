@@ -1,4 +1,5 @@
 export { Address } from "./Address";
+export { AnalyticsDataSchema } from "./AnalyticsData";
 export { ApiResponse } from "./ApiResponse";
 export { City } from "./City";
 export { FormAnswer } from "./FormAnswer";
