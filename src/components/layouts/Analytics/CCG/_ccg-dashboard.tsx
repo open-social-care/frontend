@@ -7,10 +7,10 @@ import { Skeleton } from "@/components/ui";
 
 import { Paper, VBox } from "@/components/containers";
 import { Heading } from "@/components/ui";
-import { AnalyticsData } from "@/schemas/AnalyticsData";
+import { CcgAnalyticsData } from "@/schemas/AnalyticsData";
 
 type CcgDashboardProps = {
-  data: AnalyticsData;
+  data: CcgAnalyticsData;
 };
 
 const titles: Record<string, string> = {
@@ -106,8 +106,8 @@ export default function CcgDashboard({
                   </Heading>
                 </div>
                 <PieChart
-                  series={Object.values(data.demographic.genderDistribution || {})}
-                  labels={Object.keys(data.demographic.genderDistribution || {})}
+                  series={Object.values(data.demographic?.genderDistribution || {})}
+                  labels={Object.keys(data.demographic?.genderDistribution || {})}
                 />
               </Paper>
               <Paper className="flex flex-col gap-2 rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-gray-50 to-blue-50 p-6 shadow-lg lg:col-span-2">
@@ -144,9 +144,9 @@ export default function CcgDashboard({
                 </div>
                 <BarChart
                   series={[
-                    { name: "Total", data: Object.values(data.demographic.ageDistribution || {}) },
+                    { name: "Total", data: Object.values(data.demographic?.ageDistribution || {}) },
                   ]}
-                  categories={Object.keys(data.demographic.ageDistribution || {})}
+                  categories={Object.keys(data.demographic?.ageDistribution || {})}
                 />
               </Paper>
             </>
@@ -233,9 +233,12 @@ export default function CcgDashboard({
                 </div>
                 <BarChart
                   series={[
-                    { name: "Total", data: Object.values(data.socioeconomic.educationLevel || {}) },
+                    {
+                      name: "Total",
+                      data: Object.values(data.socioeconomic?.educationLevel || {}),
+                    },
                   ]}
-                  categories={Object.keys(data.socioeconomic.educationLevel || {})}
+                  categories={Object.keys(data.socioeconomic?.educationLevel || {})}
                 />
               </Paper>
               <Paper className="flex flex-col gap-2 rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-gray-50 to-purple-50 p-6 shadow-lg lg:col-span-1">
@@ -269,8 +272,8 @@ export default function CcgDashboard({
                   </Heading>
                 </div>
                 <PieChart
-                  series={Object.values(data.socioeconomic.employmentStatus || {})}
-                  labels={Object.keys(data.socioeconomic.employmentStatus || {})}
+                  series={Object.values(data.socioeconomic?.employmentStatus || {})}
+                  labels={Object.keys(data.socioeconomic?.employmentStatus || {})}
                 />
               </Paper>
             </>
@@ -330,17 +333,17 @@ export default function CcgDashboard({
             <>
               <KpiCard
                 title={titles.referrals}
-                value={Object.keys(data.operational.referrals || {}).length}
+                value={Object.keys(data.operational?.referrals || {}).length}
                 subtitle="Tipos de Encaminhamentos"
               />
               <KpiCard
                 title={titles.topNeighborhoods}
-                value={Object.keys(data.operational.topNeighborhoods || {}).length}
+                value={Object.keys(data.operational?.topNeighborhoods || {}).length}
                 subtitle="Bairros Mapeados"
               />
               <KpiCard
                 title="Total de Respostas"
-                value={Object.values(data.demographic.ageDistribution || {}).reduce(
+                value={Object.values(data.demographic?.ageDistribution || {}).reduce(
                   (a, b) => a + b,
                   0,
                 )}

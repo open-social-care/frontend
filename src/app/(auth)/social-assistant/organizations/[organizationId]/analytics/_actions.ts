@@ -14,10 +14,9 @@ export async function fetchAnalyticsTemplatesAction(organizationId: number): Pro
 
 export async function fetchAnalyticsDataAction(
   templateId: number,
-  period?: string, // Adicione o período aqui
+  period?: string,
 ): Promise<ApiResponse> {
-  // Constrói a URL com o período, se ele for fornecido
-  const url = period && period !== 'all' 
+  const url = period && period !== 'all'
     ? `/social-assistant/analytics/form-template/${templateId}?period=${period}`
     : `/social-assistant/analytics/form-template/${templateId}`;
 
@@ -25,11 +24,20 @@ export async function fetchAnalyticsDataAction(
     input: url,
     init: { method: "GET" },
   });
-  
+
   const json = await res.json();
 
-  // DEBUG: Veja o que a API realmente retornou
-  console.log("JSON RECEBIDO PELA ACTION DE ANALYTICS:", json);
-
   return ApiResponse.parse(json);
+}
+
+export async function fetchExportDataAction(templateId: number, period?: string) {
+    const periodQuery = (period && period !== 'all') ? `?period=${period}` : '';
+    const url = `/social-assistant/analytics/form-template/${templateId}/export-data${periodQuery}`;
+
+    const res = await api({
+        input: url,
+        init: { method: "GET" },
+    });
+
+    return await res.json();
 }

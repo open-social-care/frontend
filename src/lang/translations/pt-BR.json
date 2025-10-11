@@ -108,6 +108,47 @@
       "role_not_found": "Nenhum perfil encontrado, contate o administrador do sistema.",
       "subjects_not_found": "Nenhum {{subject_ref}} encontrado."
     },
+    "analytics": {
+      "category": "Categoria",
+      "analysis": "Análise",
+      "item": "Item",
+      "value_count": "Valor/Contagem",
+      "categories": {
+        "demographic": "Demográfico",
+        "socioeconomic": "Socioeconômico",
+        "operational": "Operacional",
+        "mobility_profile": "Perfil de Mobilidade",
+        "health_profile": "Perfil de Saúde",
+        "socioeconomic_profile": "Perfil Socioeconômico"
+      },
+      "analyses": {
+        "genderDistribution": "Distribuição de Gênero",
+        "ageDistribution": "Distribuição por Faixa Etária",
+        "householdSize": "Tamanho do Núcleo Familiar",
+        "educationLevel": "Nível de Escolaridade",
+        "employmentStatus": "Situação de Trabalho",
+        "incomeSources": "Principais Fontes de Renda",
+        "referrals": "Principais Encaminhamentos",
+        "topNeighborhoods": "Bairros Mais Atendidos",
+        "recurrentVisitors": "Visitantes Recorrentes",
+        "topOriginCities": "Principais Cidades de Origem",
+        "raceDistribution": "Distribuição por Raça/Cor",
+        "chronicDiseases": "Doenças Crônicas",
+        "substanceUse": "Uso de Substâncias",
+        "psychologicalConditions": "Condições Psicológicas",
+        "hasSoughtTreatment": "Procurou Tratamento",
+        "usesMedication": "Faz Uso de Medicação",
+        "medicationAccess": "Acesso à Medicação",
+        "receivesFollowUp": "Em Acompanhamento Profissional",
+        "hasCadUnico": "Inscritos no CadÚnico",
+        "socialBenefits": "Recebe Benefício Social",
+        "pensionBenefits": "Recebe Benefício Previdenciário",
+        "documentation": "Documentação",
+        "hasRG": "Posse de RG",
+        "hasCPF": "Posse de CPF",
+        "hasWorkCard": "Posse de Carteira de Trabalho"
+      }
+    },
 
     "document_types": {
       "cpf": "CPF",

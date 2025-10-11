@@ -14,13 +14,10 @@ export default function SelectTemplate({ templates }: SelectTemplateProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // 2. Guarda as seleções atuais em um estado local.
-  //    Inicializa com os valores da URL para manter o estado após o recarregamento.
   const [selectedTemplate, setSelectedTemplate] = useState(searchParams.get("template") || "");
   const [selectedPeriod, setSelectedPeriod] = useState(searchParams.get("period") || "all");
 
   const handleSearch = () => {
-    // 3. A função de busca só é chamada ao clicar no botão.
     const params = new URLSearchParams();
     if (selectedTemplate) {
       params.set("template", selectedTemplate);
